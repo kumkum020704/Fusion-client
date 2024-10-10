@@ -1,0 +1,41 @@
+.pageContainer {
+    width: 80%;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    padding: 1rem;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .progressBarContainer {
+    width: 100%;
+    height: 0.25rem;
+    background-color: #b3cde0;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .progressButton {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: #b3cde0;
+  }
+  
+  .active {
+    background-color: blue;
+  }
+  
+  .inactive {
+    background-color: #b3cde0; /* Inactive button color */
+  }
+  button{
+    border: none;
+    background-color: transparent;
+  }

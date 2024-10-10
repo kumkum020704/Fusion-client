@@ -9,6 +9,9 @@ import LoginPage from "./pages/login";
 import ForgotPassword from "./pages/forgotPassword";
 import AcademicPage from "./Modules/Academic/index";
 import ValidateAuth from "./helper/validateauth";
+import ScholarshipPage from "./Modules/Scholarship/user/pages/scholarshipPage";
+import ScholarStatusPage from "./Modules/Scholarship/user/pages/ScholarshipStatusPage";
+import UserBreadcumbs from "./Modules/Scholarship/user/components/UserBreadcumbs";
 
 export default function App() {
   const location = useLocation();
@@ -40,6 +43,34 @@ export default function App() {
             </Layout>
           }
         />
+
+        {/* scholarship */}
+        <Route
+          path="/scholarship"
+          element={
+            <Layout>
+              <ScholarshipPage></ScholarshipPage>
+            </Layout>
+          }
+        />
+        <Route
+          path="/user/browseApplication"
+          element={
+            <Layout>
+              <UserBreadcumbs></UserBreadcumbs>
+            </Layout>
+          }
+        />
+        <Route
+          path="/user/scholarshipStatus"
+          element={
+            <Layout>
+              <ScholarStatusPage></ScholarStatusPage>
+            </Layout>
+          }
+        />
+
+        
         <Route
           path="/profile"
           element={

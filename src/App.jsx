@@ -9,9 +9,12 @@ import LoginPage from "./pages/login";
 import ForgotPassword from "./pages/forgotPassword";
 import AcademicPage from "./Modules/Academic/index";
 import ValidateAuth from "./helper/validateauth";
-import ScholarshipPage from "./Modules/Scholarship/user/pages/scholarshipPage";
+// eslint-disable-next-line import/no-unresolved
+import ScholarshipPage from "./Modules/Scholarship/user/pages/ScholarshipPage";
+// eslint-disable-next-line import/no-unresolved
 import ScholarStatusPage from "./Modules/Scholarship/user/pages/ScholarshipStatusPage";
 import UserBreadcumbs from "./Modules/Scholarship/user/components/UserBreadcumbs";
+import Convenor from "./Modules/Scholarship/convenor/pages/Convenor";
 
 export default function App() {
   const location = useLocation();
@@ -49,7 +52,7 @@ export default function App() {
           path="/scholarship"
           element={
             <Layout>
-              <ScholarshipPage></ScholarshipPage>
+              <ScholarshipPage />
             </Layout>
           }
         />
@@ -57,7 +60,7 @@ export default function App() {
           path="/user/browseApplication"
           element={
             <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
+              <UserBreadcumbs />
             </Layout>
           }
         />
@@ -65,12 +68,19 @@ export default function App() {
           path="/user/scholarshipStatus"
           element={
             <Layout>
-              <ScholarStatusPage></ScholarStatusPage>
+              <ScholarStatusPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/convenor/members"
+          element={
+            <Layout>
+              <Convenor />
             </Layout>
           }
         />
 
-        
         <Route
           path="/profile"
           element={

@@ -13,16 +13,16 @@ function SpacsMembers() {
           <h1 className={styles.cardHeading}>SPACS Convenor</h1>
           <img src={conv} alt="img" />
           <p>Atul Gupta</p>
-          <p>Phone</p>
-          <p>Email</p>
+          <p>Phone: +91 12345 67890</p>
+          <p>Email: convenor@gmail.com</p>
         </div>
 
         <div className={`${styles.memberCard} ${styles.assistantCard}`}>
           <h1 className={styles.cardHeading}>SPACS Assistant</h1>
           <img src={assi} alt="img" />
-          <p>Atul Gupta</p>
-          <p>Phone</p>
-          <p>Email</p>
+          <p>RMishra</p>
+          <p>Phone: +91 12345 67890</p>
+          <p>Email: staff@gmail.com</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './PreviousWinners.module.css';
+import styles from "./PreviousWinners.module.css";
 
 const PreviousWinners = () => {
   return (

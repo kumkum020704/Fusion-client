@@ -118,7 +118,6 @@ export default function App() {
             </Layout>
           }
         />
-
         <Route
           path="/profile"
           element={

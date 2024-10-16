@@ -11,7 +11,7 @@ function SpacsMembers() {
       <div className={styles.membersContainer}>
         <div className={styles.memberCard}>
           <h1 className={styles.cardHeading}>SPACS Convenor</h1>
-          <img src={conv} alt="img" />
+          <img src={conv} className={styles.memb} alt="img" />
           <p>Atul Gupta</p>
           <p>
             Phone: <span> 123-456-7890</span>
@@ -23,7 +23,7 @@ function SpacsMembers() {
 
         <div className={`${styles.memberCard} ${styles.assistantCard}`}>
           <h1 className={styles.cardHeading}>SPACS Assistant</h1>
-          <img src={assi} alt="img" />
+          <img src={assi} className={styles.memb} alt="img" />
           <p>RMishra</p>
 
           <p>

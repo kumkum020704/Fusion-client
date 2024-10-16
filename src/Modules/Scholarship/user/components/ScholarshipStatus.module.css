@@ -1,67 +1,67 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    justify-content: space-between;
-  }
-  
-  .boldText {
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .submitButton {
-    height: 2rem;
-    width: 9rem;
-    background-color: #add8e6; /* Light blue */
-    border-radius: 0.375rem; /* Rounded corners */
-    border: 2px solid blue;
-    cursor: pointer;
-  }
-  
-  .formContainer {
-    margin-top: 1rem;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .radioLabel {
-    margin: 1rem;
-  }
-  
-  .inputContainer {
-    margin: 0 1rem;
-  }
-  
-  .inputField {
-    height: 2rem;
-    width: 15rem;
-    border: 2px solid #d1d5db; /* Light gray border */
-    margin-top: 0.5rem;
-  }
-  
-  .submitFormButton {
-    height: 2rem;
-    width: 9rem;
-    background-color: #add8e6;
-    border-radius: 0.375rem;
-    border: 2px solid blue;
-    margin: 0 1rem;
-    cursor: pointer;
-  }
-  
-  .statusMessage {
-    color: #4682b4; /* Steel blue */
-    margin-top: 1rem;
-  }
-  
-  .inputs{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+.boldText {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.submitButton {
+  height: 2rem;
+  width: 9rem;
+  background-color: #add8e6; /* Light blue */
+  border-radius: 0.375rem; /* Rounded corners */
+  border: 2px solid blue;
+  cursor: pointer;
+}
+
+.formContainer {
+  margin-top: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.radioLabel {
+  margin: 1rem;
+}
+
+.inputContainer {
+  margin: 0 1rem;
+}
+
+.inputField {
+  height: 2rem;
+  width: 15rem;
+  border: 2px solid #d1d5db; /* Light gray border */
+  margin-top: 0.5rem;
+}
+
+.submitFormButton {
+  height: 2rem;
+  width: 9rem;
+  background-color: #add8e6;
+  border-radius: 0.375rem;
+  border: 2px solid blue;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.statusMessage {
+  color: #4682b4; /* Steel blue */
+  margin-top: 1rem;
+}
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+}

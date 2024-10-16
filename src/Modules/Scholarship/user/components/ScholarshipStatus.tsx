@@ -85,7 +85,9 @@ const ScholarshipStatus = () => {
       {desc == 3 && (
         <div className={styles.form}>
           <div className={styles.boldText}>Merit-Cum-Means Scholarship</div>
-          <div className={styles.statusMessage}>Application is under review</div>
+          <div className={styles.statusMessage}>
+            Application is under review
+          </div>
         </div>
       )}
     </div>

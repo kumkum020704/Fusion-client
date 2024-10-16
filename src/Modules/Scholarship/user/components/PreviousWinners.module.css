@@ -1,51 +1,46 @@
 /* Wrapper for the form */
 .wrapper {
-    border-top: 2px solid #3b82f6; 
-    margin-top: 2rem; 
-    padding: 1rem; 
-  }
-  
- 
-  .formRow {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem; 
-    flex-wrap: wrap;
-  }
-  
-  
-  .formItem {
-    padding: 1rem; 
-  }
-  
-  
-  .formItem label {
-    font-size: 14px; 
-  }
-  
-  
-  .formItem select {
-    height: 30px; 
-    width: 200px; 
-    border: 2px solid black; 
-    margin-top: 1rem; 
-    padding-left: 0.5rem;
-  }
-  
-  .buttonContainer {
-    padding: 1rem; 
-  }
-  
-  .submitButton {
-    height: 2rem; 
-    width: 9rem; 
-    background-color: #93c5fd; 
-    border-radius: 0.375rem; 
-    border: 2px solid #3b82f6; 
-    cursor: pointer;
-  }
-  
-  .submitButton:hover {
-    background-color: #60a5fa; 
-  }
-  
+  border-top: 2px solid #3b82f6;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.formItem {
+  padding: 1rem;
+}
+
+.formItem label {
+  font-size: 14px;
+}
+
+.formItem select {
+  height: 30px;
+  width: 200px;
+  border: 2px solid black;
+  margin-top: 1rem;
+  padding-left: 0.5rem;
+}
+
+.buttonContainer {
+  padding: 1rem;
+}
+
+.submitButton {
+  height: 2rem;
+  width: 9rem;
+  background-color: #93c5fd;
+  border-radius: 0.375rem;
+  border: 2px solid #3b82f6;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #60a5fa;
+}

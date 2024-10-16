@@ -1,23 +1,23 @@
 /* UserBreadcumbs.module.css */
 .ctr {
-    padding: 0 1rem;
-    display: flex;
-    gap: 1rem;
-    font-size: 0.875rem; /* Equivalent to text-sm */
-    margin-left: 5%;
-  }
-  
-  .activeLink {
-    color: blue;
-  }
-  
-  .inactiveLink {
-    color: gray;
-  }
-  
-  .caret {
-    display: flex;
-    justify-content: center; /* Center the caret horizontally */
-    align-items: center; /* Center the caret vertically */
-    margin: 0 0.5rem; /* Adjust margin for spacing */
-  }
+  padding: 0 1rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  margin-left: 5%;
+}
+
+.activeLink {
+  color: blue;
+}
+
+.inactiveLink {
+  color: gray;
+}
+
+.caret {
+  display: flex;
+  justify-content: center; /* Center the caret horizontally */
+  align-items: center; /* Center the caret vertically */
+  margin: 0 0.5rem; /* Adjust margin for spacing */
+}

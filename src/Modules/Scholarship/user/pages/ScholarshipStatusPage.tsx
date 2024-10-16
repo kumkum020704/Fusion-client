@@ -12,21 +12,24 @@ const ScholarStatusPage = () => {
 
   return (
     <>
-    <UserBreadcumbs></UserBreadcumbs>
-     <div className={styles.pageContainer}>
-      <div className={styles.gridContainer}>
-        <button onClick={changeDesc} value={1}>View Application Status</button>
+      <UserBreadcumbs></UserBreadcumbs>
+      <div className={styles.pageContainer}>
+        <div className={styles.gridContainer}>
+          <button onClick={changeDesc} value={1}>
+            View Application Status
+          </button>
+        </div>
+        <div className={styles.progressBarContainer}>
+          <button
+            onClick={changeDesc}
+            value={1}
+            className={`${styles.progressButton} ${desc == 1 ? styles.active : styles.inactive}`}
+          ></button>
+        </div>
+        <hr />
+        {desc == 1 && <ScholarshipStatus />}
       </div>
-      <div className={styles.progressBarContainer}>
-        <button
-          onClick={changeDesc}
-          value={1}
-          className={`${styles.progressButton} ${desc == 1 ? styles.active : styles.inactive}`}
-        ></button>
-      </div>
-      <hr />
-      {desc == 1 && <ScholarshipStatus />}
-    </div></>
+    </>
   );
 };
 

@@ -121,7 +121,8 @@ function AwardsAndScholarshipCatalog() {
               4.3.3 D&M Proficiency Gold Medals may not be awarded if projects/theses submitted for the award are found to have an inadequate cross-disciplinary content.<br/>
               4.3.4 The D&M Proficiency Gold Medals shall be made out of 15 gm of 18 carat gold.<br/>
               4.3.5 In the event of a group being awarded the best cross-disciplinary project, each individual student shall be awarded the medal provided the student satisfies following eligibility criteria for the award. (a) The students must have at least a CPI of 6.5. (b) At the time of application, there should not be any backlog of courses for the student. (c) Student’s grade in the project must be A, A+ or S. TEST.<br/>
-            </Text>
+
+            </Text>
           </>
         )}
         {desc === 3 && (
@@ -135,7 +136,9 @@ function AwardsAndScholarshipCatalog() {
               4.1 However, a reporting CPI of 8.0 shall be the minimum requirement for the award of the Director's Gold Medal.<br/>
               4.2.3 The student receiving the award should not have been involved in any act of indiscipline (except warning under clause 3.2.2.1 of SACS manual) during her/his entire academic programme.<br/>
               4.2.4 The DGMs shall be made out of 15 gm of 18 carat gold.<br/>
+
             </Text>
+
           </>
         )}
         {desc === 4 && (
@@ -147,7 +150,9 @@ function AwardsAndScholarshipCatalog() {
               4.6.1 Director's Silver Medals (DSMs) shall be presented at the time of Institute’s Convocation for the outstanding performance in (i) Games & Sports activities and (ii) Cultural activities from among the graduating undergraduate and postgraduate students.<br/>
               4.6.2 The award of DSMs shall be decided by the separate committee appointed for this purpose by the Chairman, Academic Senate. The committee shall lay down the criteria for short listing the candidates before calling them for an interview.<br/>
               4.6.3 Director's Silver Medals shall be made out of 15 gm silver.<br/>
+
             </Text>
+
           </>
         )}
         {desc === 5 && (
@@ -161,7 +166,9 @@ function AwardsAndScholarshipCatalog() {
               4.7.3 The value of the Notional Prize shall be as prescribed from time to time, by the Ministry of Human Resources and Development8 . 8 The present amount is Rs. 2000/-.<br/>
               4.7.4 In calculating the actual number of awards to be made in any year or for any department, any fraction shall usually be rounded off to the next integer. However, this may not be done in those cases where there is a significant difference in the performance level of the students.<br/>
               4.7.5 The award shall, in principle, be given only on the basis of the annual performance. (By dividing credits earned in two regular semester with total credits for two semester) Further the award may not be made for any department having student strength of less than 5. It may also not be made if the highest CPI for any department is considerably lower than the performance levels at which the award is being made for other departments or minimum CPI limit of 8.5.<br/>
+
             </Text>
+
           </>
         )}
       </div>

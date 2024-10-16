@@ -9,9 +9,9 @@ import LoginPage from "./pages/login";
 import ForgotPassword from "./pages/forgotPassword";
 import AcademicPage from "./Modules/Academic/index";
 import ValidateAuth from "./helper/validateauth";
-import ScholarshipPage from "./Modules/Scholarship/user/pages/scholarshipPage";
-import ScholarStatusPage from "./Modules/Scholarship/user/pages/ScholarshipStatusPage";
-import UserBreadcumbs from "./Modules/Scholarship/user/components/UserBreadcumbs";
+import DocumentUploadForm2 from "./Modules/Scholarship/DocumentUploadForm2";
+import DirectorSilver from "./Modules/Scholarship/DirectorSilver";
+import ConvocationMedal from "./Modules/Scholarship/ConvocationMedal";
 
 export default function App() {
   const location = useLocation();
@@ -44,33 +44,6 @@ export default function App() {
           }
         />
 
-        {/* scholarship */}
-        <Route
-          path="/scholarship"
-          element={
-            <Layout>
-              <ScholarshipPage></ScholarshipPage>
-            </Layout>
-          }
-        />
-        <Route
-          path="/user/browseApplication"
-          element={
-            <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
-            </Layout>
-          }
-        />
-        <Route
-          path="/user/scholarshipStatus"
-          element={
-            <Layout>
-              <ScholarStatusPage></ScholarStatusPage>
-            </Layout>
-          }
-        />
-
-        
         <Route
           path="/profile"
           element={
@@ -79,6 +52,33 @@ export default function App() {
             </Layout>
           }
         />
+
+        {/* Scholarship */}
+        <Route
+          path="/ConvocationMedal"
+          element={
+            <Layout>
+              <ConvocationMedal />
+            </Layout>
+          }
+        />
+        <Route
+          path="/DirectorSilver"
+          element={
+            <Layout>
+              <DirectorSilver />
+            </Layout>
+          }
+        />
+        <Route
+          path="/DocumentUploadForm2"
+          element={
+            <Layout>
+              <DocumentUploadForm2 />
+            </Layout>
+          }
+        />
+
         <Route path="/accounts/login" element={<LoginPage />} />
         <Route path="/reset-password" element={<ForgotPassword />} />
       </Routes>

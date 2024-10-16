@@ -34,6 +34,7 @@ function InviteApplications() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <div className={styles.inputGroup}>
+            <label htmlFor="type">Type</label>
             <select
               id="type"
               name="type"
@@ -45,6 +46,7 @@ function InviteApplications() {
             </select>
           </div>
           <div className={styles.inputGroup}>
+            <label htmlFor="programme">Programme</label>
             <select
               id="programme"
               name="programme"
@@ -56,6 +58,7 @@ function InviteApplications() {
             </select>
           </div>
           <div className={styles.inputGroup}>
+            <label htmlFor="batch">Batch</label>
             <select
               id="batch"
               name="batch"
@@ -69,6 +72,7 @@ function InviteApplications() {
         </div>
         <div className={styles.row}>
           <div className={styles.inputGroup}>
+            <label htmlFor="startDate">Start date</label>
             <input
               type="date"
               id="startDate"
@@ -79,6 +83,7 @@ function InviteApplications() {
             />
           </div>
           <div className={styles.inputGroup}>
+            <label htmlFor="endDate">End Date</label>
             <input
               type="date"
               id="endDate"
@@ -90,6 +95,7 @@ function InviteApplications() {
           </div>
         </div>
         <div className={styles.inputGroup}>
+          <label htmlFor="remarks">Remarks:</label>
           <textarea
             id="remarks"
             name="remarks"

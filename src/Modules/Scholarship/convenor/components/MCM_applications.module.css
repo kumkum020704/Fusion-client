@@ -1,0 +1,54 @@
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .breadcrumbs {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .activeTab {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+  }
+  
+  .tabs > div:not(.activeTab) {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .table button {
+    width: 100%;
+  }

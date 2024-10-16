@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
@@ -14,7 +15,12 @@ import ScholarshipPage from "./Modules/Scholarship/user/pages/ScholarshipPage";
 // eslint-disable-next-line import/no-unresolved
 import ScholarStatusPage from "./Modules/Scholarship/user/pages/ScholarshipStatusPage";
 import UserBreadcumbs from "./Modules/Scholarship/user/components/UserBreadcumbs";
+// eslint-disable-next-line import/no-unresolved
 import Convenor from "./Modules/Scholarship/convenor/pages/Convenor";
+import AwardsAndScholarshipCatalogC from "./Modules/Scholarship/convenor/components/AwardsAndScholarshipCatalogC";
+import InviteApplications from "./Modules/Scholarship/convenor/forms/inviteApplications";
+import MCM_Applications from "./Modules/Scholarship/convenor/components/MCM_Applications";
+import Medal_applications from "./Modules/Scholarship/convenor/components/medal_applications";
 
 export default function App() {
   const location = useLocation();
@@ -73,10 +79,42 @@ export default function App() {
           }
         />
         <Route
+          path="/convenor/awards"
+          element={
+            <Layout>
+              <AwardsAndScholarshipCatalogC />
+            </Layout>
+          }
+        />
+        <Route
           path="/convenor/members"
           element={
             <Layout>
               <Convenor />
+            </Layout>
+          }
+        />
+        <Route
+          path="/convenor/invite"
+          element={
+            <Layout>
+              <InviteApplications />
+            </Layout>
+          }
+        />
+        <Route
+          path="/convenor/MCM_application"
+          element={
+            <Layout>
+              <MCM_Applications />
+            </Layout>
+          }
+        />
+        <Route
+          path="/convenor/Medal_applications"
+          element={
+            <Layout>
+              <Medal_applications />
             </Layout>
           }
         />

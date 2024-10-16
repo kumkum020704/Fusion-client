@@ -1,0 +1,86 @@
+.container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .breadcrumbs {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .activeTab {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+  }
+  
+  .title {
+    margin-bottom: 20px;
+  }
+  
+  .awardSelector {
+    margin-bottom: 20px;
+  }
+  
+  .awardSelector label {
+    margin-right: 10px;
+  }
+  
+  .awardSelector select {
+    padding: 5px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .fileButton {
+    background-color: #007bff;
+  }
+  
+  .acceptButton {
+    background-color: #28a745;
+  }
+  
+  .rejectButton {
+    background-color: #dc3545;
+  }
+  
+  .button:hover {
+    opacity: 0.8;
+  }

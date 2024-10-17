@@ -6,7 +6,7 @@ function ConvenorBreadcumbs() {
   return (
     <div className={styles.ctr}>
       <NavLink
-        to="/Convenor"
+        to="/convenor/awards"
         className={({ isActive }) =>
           isActive ? styles.activeLink : styles.inactiveLink
         }
@@ -17,23 +17,23 @@ function ConvenorBreadcumbs() {
         <CaretRight />
       </div>
       <NavLink
-        to="/Convenor/inviteApplications"
+        to="/convenor/invite"
         className={({ isActive }) =>
           isActive ? styles.activeLink : styles.inactiveLink
         }
       >
-        Invite Applications
+        Invite Application
       </NavLink>
       <div className={styles.caret}>
         <CaretRight />
       </div>
       <NavLink
-        to="/Convenor/BrowseApplications"
+        to="/convenor/MCM_application"
         className={({ isActive }) =>
           isActive ? styles.activeLink : styles.inactiveLink
         }
       >
-        Browse Applications
+        Browse Application
       </NavLink>
     </div>
   );

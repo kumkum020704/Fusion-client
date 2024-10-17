@@ -21,6 +21,7 @@ import AwardsAndScholarshipCatalogC from "./Modules/Scholarship/convenor/compone
 import InviteApplications from "./Modules/Scholarship/convenor/forms/inviteApplications";
 import MCM_Applications from "./Modules/Scholarship/convenor/components/MCM_Applications";
 import Medal_applications from "./Modules/Scholarship/convenor/components/medal_applications";
+import ConvenorBreadcumbs from "./Modules/Scholarship/convenor/components/ConvenorBreadcumbs";
 
 export default function App() {
   const location = useLocation();
@@ -54,6 +55,7 @@ export default function App() {
         />
 
         {/* scholarship */}
+        {/* user routes */}
         <Route
           path="/scholarship"
           element={
@@ -78,10 +80,12 @@ export default function App() {
             </Layout>
           }
         />
+        {/* convenor routes */}
         <Route
           path="/convenor/awards"
           element={
             <Layout>
+              <ConvenorBreadcumbs></ConvenorBreadcumbs>
               <AwardsAndScholarshipCatalogC />
             </Layout>
           }
@@ -90,6 +94,7 @@ export default function App() {
           path="/convenor/members"
           element={
             <Layout>
+              <ConvenorBreadcumbs></ConvenorBreadcumbs>
               <Convenor />
             </Layout>
           }
@@ -98,6 +103,7 @@ export default function App() {
           path="/convenor/invite"
           element={
             <Layout>
+              <ConvenorBreadcumbs></ConvenorBreadcumbs>
               <InviteApplications />
             </Layout>
           }
@@ -106,6 +112,7 @@ export default function App() {
           path="/convenor/MCM_application"
           element={
             <Layout>
+              <ConvenorBreadcumbs></ConvenorBreadcumbs>
               <MCM_Applications />
             </Layout>
           }
@@ -114,6 +121,7 @@ export default function App() {
           path="/convenor/Medal_applications"
           element={
             <Layout>
+              <ConvenorBreadcumbs></ConvenorBreadcumbs>
               <Medal_applications />
             </Layout>
           }

@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import styles from "./medal_applications.module.css";
+import { NavLink } from "react-router-dom";
 
 function Medal_applications() {
   const [selectedAward, setSelectedAward] = useState("Director's Silver Medal");
@@ -13,11 +14,15 @@ function Medal_applications() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.breadcrumbs}>
-        Catalogue &gt; Invite Applications &gt; Browse Application &gt;
-      </div>
       <div className={styles.tabs}>
-        <div className={styles.tab}>Merit-cum-Means Scholarship</div>
+        <div className={styles.tab}><NavLink
+          to="/convenor/MCM_application"
+          className={({ isActive }) =>
+            isActive ? styles.activeLink : styles.inactiveLink
+          }
+        >
+          Merit-cum-Means Scholarship
+        </NavLink></div>
         <div className={`${styles.tab} ${styles.activeTab}`}>
           Convocation Medals
         </div>

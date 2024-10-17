@@ -1,6 +1,8 @@
 import React from "react";
 import { Table, Button } from "@mantine/core";
 import styles from "./MCM_applications.module.css";
+import { NavLink } from "react-router-dom";
+import ConvenorBreadcumbs from "./ConvenorBreadcumbs";
 
 function MCM_Applications() {
   const applications = [
@@ -12,12 +14,16 @@ function MCM_Applications() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.breadcrumbs}>
-        Catalogue &gt; Invite Applications &gt; Browse Application &gt;
-      </div>
       <div className={styles.tabs}>
         <div className={styles.activeTab}>Merit-cum-Means Scholarship</div>
-        <div>Convocation Medals</div>
+        <div><NavLink
+          to="/convenor/Medal_applications"
+          className={({ isActive }) =>
+            isActive ? styles.activeLink : styles.inactiveLink
+          }
+        >
+          Convocation Medals
+        </NavLink></div>
       </div>
       <h2>Merit-cum-Means Scholarship</h2>
       <Table className={styles.table}>

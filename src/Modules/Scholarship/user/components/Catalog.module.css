@@ -24,4 +24,6 @@
   flex-grow: 1; /* Ensure the content takes up the remaining space */
   padding: 1rem;
   max-width: 60%; /* Optional, but can be removed to avoid unnecessary space */
+  height: 50vh;
+  overflow-y: scroll;
 }

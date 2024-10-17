@@ -3,11 +3,17 @@
   margin-left: 3rem;
   margin-top: 1rem;
   padding: 1rem;
+
+  /* New Black Box Styling */
+  border: 0.5mm solid #C9EBFF; /* 1mm thick black border */
+  border-radius: 0.5rem; /* Optional: Rounded corners */
+  background-color: white; /* Optional: Background inside the box */
 }
 
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; /* Add spacing between grid items */
 }
 
 .progressBarContainer {
@@ -26,15 +32,17 @@
   width: 100%;
   border-radius: 0.5rem;
   background-color: #b3cde0;
+  border: none; /* Remove button border */
 }
 
 .active {
-  background-color: blue;
+  background-color: #17ABFF; /* Active progress bar color */
 }
 
 .inactive {
-  background-color: #b3cde0; /* Inactive button color */
+  background-color: #b3cde0; /* Inactive progress bar color */
 }
+
 button {
   border: none;
   background-color: transparent;

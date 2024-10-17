@@ -13,8 +13,8 @@ function UserBreadcumbs() {
       >
         Catalog
       </NavLink>
-      <div className={styles.caret}>
-        <CaretRight />
+      <div className={styles.caret} style={{ color: "inherit" }}>
+        <CaretRight className={styles.caret} style={{ color: "inherit" }} />
       </div>
       <NavLink
         to="/user/browseApplication"
@@ -24,8 +24,8 @@ function UserBreadcumbs() {
       >
         Browse Application
       </NavLink>
-      <div className={styles.caret}>
-        <CaretRight />
+      <div className={styles.caret} style={{ color: "inherit" }}>
+        <CaretRight className={styles.caret} style={{ color: "inherit" }} />
       </div>
       <NavLink
         to="/user/scholarshipStatus"
@@ -35,6 +35,9 @@ function UserBreadcumbs() {
       >
         Scholarship Status
       </NavLink>
+      <div className={styles.caret} style={{ color: "inherit" }}>
+        <CaretRight className={styles.caret} style={{ color: "inherit" }} />
+      </div>
     </div>
   );
 }

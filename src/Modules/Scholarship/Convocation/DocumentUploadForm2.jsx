@@ -10,7 +10,7 @@ import {
   Container,
   Alert,
 } from "@mantine/core";
-import { IconCheck, IconUpload, IconAlertCircle } from "@tabler/icons-react";
+import { CheckFat, Upload, Warning } from "@phosphor-icons/react"; // Import the new icons
 import Header from "./Header";
 
 function DocumentUploadForm2() {
@@ -65,7 +65,7 @@ function DocumentUploadForm2() {
           </Text>
 
           <Alert
-            icon={<IconAlertCircle size={16} />}
+            icon={<Warning size={32} />} // Use the new Warning icon
             title="Important"
             color="blue"
             mb="lg"
@@ -90,9 +90,9 @@ function DocumentUploadForm2() {
                       fullWidth
                       leftIcon={
                         uploadStatus[doc.id] === "success" ? (
-                          <IconCheck size={16} />
+                          <CheckFat size={32} /> // Use the new CheckFat icon
                         ) : (
-                          <IconUpload size={16} />
+                          <Upload size={32} /> // Use the new Upload icon
                         )
                       }
                       color={

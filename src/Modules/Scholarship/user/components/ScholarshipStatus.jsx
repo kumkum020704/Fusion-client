@@ -1,97 +1,96 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import styles from "./ScholarshipStatus.module.css";
 
-const ScholarshipStatus = () => {
-  const [desc, setDesc] = useState(1);
+function ScholarshipStatus() {
+  const [page, setPage] = useState(1);
+  const [showStatus, setShowStatus] = useState(false);
 
-  const changeDesc = (event) => {
-    event.preventDefault(); // Prevents page reload
-    setDesc(event.target.value);
+  const navigateToForm = () => {
+    setPage(2);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setShowStatus(true);
   };
 
   return (
-    <div>
-      {desc == 1 && (
-        <div className={styles.container}>
-          <div className={styles.boldText}>Merit-Cum-Means Scholarship</div>
-          <button
-            className={styles.submitButton}
-            value={2}
-            onClick={changeDesc}
-          >
-            Submit
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>View Application Status</h2>
+      <div className={styles.underline} />
+
+      {page === 1 && (
+        <div className={styles.scholarshipContainer}>
+          <div className={styles.scholarshipName}>
+            Merit-Cum-Means Scholarship
+          </div>
+          <button className={styles.checkStatusButton} onClick={navigateToForm}>
+            Check Status
           </button>
         </div>
       )}
-      {desc == 2 && (
-        <div className={styles.formContainer}>
-          <div className={styles.boldText}>Merit-Cum-Means Scholarship</div>
-          <form className={styles.form}>
-            <div>
-              <label className={styles.radioLabel}>
-                <input type="radio" name="applicationType" value="fresh" />
-                Fresh
-              </label>
 
-              <label className={styles.radioLabel}>
-                <input type="radio" name="applicationType" value="renewal" />
-                Renewal
-              </label>
-            </div>
-            <div className={styles.inputs}>
+      {page === 2 && (
+        <div className={styles.formContainer}>
+          <h3 className={styles.scholarshipName}>
+            Merit-Cum-Means Scholarship
+          </h3>
+          {!showStatus ? (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={styles.radioGroup}>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    name="applicationType"
+                    value="fresh"
+                    defaultChecked
+                  />
+                  Fresh
+                </label>
+                <label className={styles.radioLabel}>
+                  <input type="radio" name="applicationType" value="renewal" />
+                  Renewal
+                </label>
+              </div>
               <div className={styles.inputContainer}>
-                <label htmlFor="academicYear">Select Academic Year</label>
-                <br></br>
+                <select className={styles.select} defaultValue="" required>
+                  <option value="" disabled>
+                    Select Academic Year
+                  </option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                </select>
+              </div>
+              <div className={styles.inputContainer}>
                 <input
-                  id="academicYear"
                   className={styles.inputField}
                   type="text"
+                  placeholder="Application ID"
                   required
                 />
               </div>
               <div className={styles.inputContainer}>
-                <label htmlFor="applicationId">Application Id</label>
-                <br></br>
                 <input
-                  id="applicationId"
-                  className={styles.inputField}
-                  type="text"
-                  required
-                />
-              </div>
-              <div className={styles.inputContainer}>
-                <label htmlFor="password">Password</label>
-                <br></br>
-                <input
-                  id="password"
                   className={styles.inputField}
                   type="password"
+                  placeholder="Password"
                   required
                 />
               </div>
+              <button type="submit" className={styles.checkStatusButton}>
+                Check Status
+              </button>
+            </form>
+          ) : (
+            <div className={styles.statusMessage}>
+              Application is under review
             </div>
-
-            <button
-              type="submit"
-              className={styles.submitFormButton}
-              value={3}
-              onClick={changeDesc}
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      )}
-      {desc == 3 && (
-        <div className={styles.form}>
-          <div className={styles.boldText}>Merit-Cum-Means Scholarship</div>
-          <div className={styles.statusMessage}>
-            Application is under review
-          </div>
+          )}
         </div>
       )}
     </div>
   );
-};
+}
 
 export default ScholarshipStatus;

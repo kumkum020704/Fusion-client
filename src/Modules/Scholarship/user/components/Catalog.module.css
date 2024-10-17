@@ -1,18 +1,20 @@
 .wrapper {
   display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping to avoid strange spacing issues */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  gap: 1rem; /* Add spacing between the list and content */
 }
 
 .listContainer {
-  width: 15rem;
+  width: 12rem; /* Set the desired width for the list container */
   padding: 1rem;
-  flex-shrink: 0; /* Prevent the list from shrinking */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .listItem {
   cursor: pointer;
   color: gray;
   padding: 0.5rem;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .activeItem {
@@ -21,9 +23,29 @@
 }
 
 .contentContainer {
-  flex-grow: 1; /* Ensure the content takes up the remaining space */
+  flex-grow: 1; /* Take up remaining space */
   padding: 1rem;
-  max-width: 60%; /* Optional, but can be removed to avoid unnecessary space */
-  height: 50vh;
-  overflow-y: scroll;
+  max-height: 60vh; /* Limit height */
+  overflow: auto; /* Allow scrolling */
+  word-break: break-word; /* Handle long words */
+  background-color: #fff; /* Optional: Background */
+}
+
+/* Custom Scrollbar */
+.contentContainer::-webkit-scrollbar {
+  width: 4px; /* Thin scrollbar */
+}
+
+.contentContainer::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray scrollbar track */
+  border-radius: 10px; /* Rounded track */
+}
+
+.contentContainer::-webkit-scrollbar-thumb {
+  background-color: #17ABFF; /* Blue thumb */
+  border-radius: 5px; /* Rounded thumb */
+}
+
+.contentContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #0d87d6; /* Darker blue on hover */
 }

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { List, Text, Title, Divider, Container } from "@mantine/core";
-import styles from "./CatalogC.module.css";
+import { Pencil } from "@phosphor-icons/react"; // Import the Pencil icon
+import styles from "./CatalogC.module.css"; // Assuming you have this CSS file
 
 function AwardsAndScholarshipCatalog() {
-  const [desc, setDesc] = useState(1); // Track which section is selected
+  const [desc, setDesc] = useState(1);
   const [editStates, setEditStates] = useState({
     1: false,
     2: false,
@@ -12,10 +13,10 @@ function AwardsAndScholarshipCatalog() {
     5: false,
   });
 
-  // Handle section change
-  const changeDesc = (value) => setDesc(value);
+  const changeDesc = (value) => {
+    setDesc(value);
+  };
 
-  // Toggle edit state for a specific section
   const toggleEdit = (section) => {
     setEditStates((prev) => ({
       ...prev,
@@ -25,20 +26,14 @@ function AwardsAndScholarshipCatalog() {
 
   const renderContent = (section, title, defaultText) => (
     <>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className={styles.header}>
         <Title order={2}>{title}</Title>
         <button
           className={styles.editButton}
-          style={{ backgroundColor: "red", color: "white" }}
           onClick={() => toggleEdit(section)}
         >
           {editStates[section] ? "Save" : "Edit"}
+          <Pencil className={styles.pencilIcon} />
         </button>
       </div>
       <Divider my="sm" />
@@ -92,36 +87,31 @@ function AwardsAndScholarshipCatalog() {
           renderContent(
             1,
             "Merit-Cum-Means",
-            `4.1 or 3.1.4.2 
-as well as means criterion (Section 2.2.) 3.1.3.2 A holder of any other scholarship from any other source shall not be eligible to apply for the MCM Scholarship unless the same is surrendered. 3.1.3.3 On the commencement of each academic year, the Convener, SPACS shall invite applications for the award of MCM Scholarships from students of all years except those of first year...`,
+            `The MCM (Merit-Cum-Means) Scholarship is designed to support students from economically disadvantaged backgrounds while encouraging academic excellence. Eligibility Criteria: Candidates holding any other scholarship from a different source are not eligible to apply for the MCM Scholarship unless they surrender their existing scholarship. The Convener, SPACS will invite applications for the MCM Scholarship at the beginning of each academic year for students in all years except first-year students. Eligible candidates must apply using the prescribed format, available in this document, on the Institute’s website, and from the Academic Section. Completed applications, along with supporting documents specified in Annexures I through V, must be submitted before the deadline set by the Convener, SPACS. An income affidavit for the year preceding the application year must be submitted by the parent or guardian along with the completed application. First-year students may apply for the MCM Scholarship at the beginning of the second semester of their program. In cases where a student's financial circumstances change unexpectedly—such as the death or retirement of the earning parent(s)—and if unutilized MCM scholarships are available, the Convener, SPACS may accept applications at any time during the academic year. If awarded, the scholarship will take effect from the month the circumstances change. Award Duration and Conditions: For students other than first-year students, a minimum Cumulative Performance Index (CPI) of 6.0 for general category students and 5.5 for SC/ST category students is required at the end of the preceding academic year to qualify for the scholarship. First-year students must achieve a minimum Semester Performance Index (SPI) of 6.0 for general category students and 5.5 for SC/ST students at the end of their first semester. Each renewal of the MCM Scholarship requires fulfillment of both merit and means criteria as outlined in the relevant sections. Meeting the merit and means criteria does not guarantee the award of the scholarship. In cases where applications exceed available scholarships, the decision will depend on the financial liabilities of the applicants’ parents under current social conditions. Consequently, the minimum CPI/SPI requirements may be adjusted by SPACS based on the quality and quantity of applications from similar social backgrounds. The MCM Scholarship will be awarded for one year but may be renewed by SPACS upon submission of a new application in subsequent years. The total duration of the MCM Scholarship for a single student shall not exceed 45 months. Students on leave for a semester will not be eligible to receive the MCM Scholarship during that semester if awarded.`,
           )}
         {desc === 2 &&
           renderContent(
             2,
             "DSM Proficiency Gold Medal",
-            `4.3 D&M Proficiency Gold Medals 
-4.3.1 Design and Manufacturing Proficiency Gold Medals are awarded at the time of Institute’s Convocation to students excelling in their respective fields...`,
+            `Design and Manufacturing Proficiency Gold Medals are awarded at the time of Institute’s Convocation for the best cross-disciplinary project from among the graduating BTech students and the best cross-disciplinary thesis from among the graduating MTech / MDes / PhD students.`,
           )}
         {desc === 3 &&
           renderContent(
             3,
             "Director’s Gold Medal",
-            `4.2 Director's Gold Medals 
-4.2.1 Director's Gold Medals (DGMs), presented at the Institute Convocation every year, are awarded to the best-performing students across various departments...`,
+            `Director's Gold Medals (DGMs), to be presented at the Institute Convocation every year, shall be awarded for the best all-round performance from among the graduating B Tech batch and M Tech/M Des/PhD students.`,
           )}
         {desc === 4 &&
           renderContent(
             4,
             "Director’s Silver Medal",
-            `4.6 Director's Silver Medals 
-4.6.1 Director's Silver Medals (DSMs) are presented at the Institute’s Convocation to the students achieving second-best performance in their respective fields...`,
+            `Director's Silver Medals (DSMs) shall be presented at the time of Institute’s Convocation for outstanding performance in Games & Sports and Cultural activities from among the graduating undergraduate and postgraduate students.`,
           )}
         {desc === 5 &&
           renderContent(
             5,
             "Notional Prices",
-            `4.7 Notional Prizes and Certificates of Merit 
-4.7.1 Notional Prizes and Certificates of Merit are awarded to 7 percent of the students of each undergraduate and postgraduate batch, recognizing their academic excellence...`,
+            `Notional Prices will be awarded at the time of Institute’s Convocation every year for the best BTPs/projects/thesis from among the graduating BTech and MTech/MDes/PhD students.`,
           )}
       </div>
     </Container>

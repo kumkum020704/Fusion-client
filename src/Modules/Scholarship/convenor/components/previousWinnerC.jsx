@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import { CaretDown } from "@phosphor-icons/react";
-import styles from "./PreviousWinners.module.css";
+import styles from "./previousWinnersC.module.css";
 
 function PreviousWinners() {
   return (

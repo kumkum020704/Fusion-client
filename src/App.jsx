@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-pascal-case */
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
@@ -89,7 +90,7 @@ export default function App() {
           element={
             <Layout>
               <ConvenorBreadcumbs />
-              <AwardsAndScholarshipCatalogC />
+              <Convenor />
             </Layout>
           }
         />

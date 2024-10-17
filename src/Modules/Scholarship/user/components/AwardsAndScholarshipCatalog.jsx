@@ -1,0 +1,224 @@
+import React, { useState } from "react";
+import { List, Text, Title, Divider, Container } from "@mantine/core";
+import styles from "./Catalog.module.css"; // Assuming you have this CSS file
+// eslint-disable-next-line no-unused-vars
+import UserBreadcumbs from "./UserBreadcumbs"; // Make sure this component is available
+
+function AwardsAndScholarshipCatalog() {
+  const [desc, setDesc] = useState(1);
+
+  const changeDesc = (value) => {
+    setDesc(value);
+  };
+
+  return (
+    <Container className={styles.wrapper}>
+      <div className={styles.listContainer}>
+        <List spacing="sm" size="lg">
+          <List.Item
+            onClick={() => changeDesc(1)}
+            className={`${styles.listItem} ${desc === 1 ? styles.activeItem : ""}`}
+          >
+            Merit-Cum-Means
+          </List.Item>
+          <List.Item
+            onClick={() => changeDesc(2)}
+            className={`${styles.listItem} ${desc === 2 ? styles.activeItem : ""}`}
+          >
+            DSM Proficiency Gold Medal
+          </List.Item>
+          <List.Item
+            onClick={() => changeDesc(3)}
+            className={`${styles.listItem} ${desc === 3 ? styles.activeItem : ""}`}
+          >
+            Director’s Gold Medal
+          </List.Item>
+          <List.Item
+            onClick={() => changeDesc(4)}
+            className={`${styles.listItem} ${desc === 4 ? styles.activeItem : ""}`}
+          >
+            Director’s Silver Medal
+          </List.Item>
+          <List.Item
+            onClick={() => changeDesc(5)}
+            className={`${styles.listItem} ${desc === 5 ? styles.activeItem : ""}`}
+          >
+            Notional Prices
+          </List.Item>
+        </List>
+      </div>
+
+      <div className={styles.contentContainer}>
+        {desc === 1 && (
+          <>
+            <Title order={2}>Merit-Cum-Means</Title>
+            <Divider my="sm" />
+            <Text>
+              The MCM (Merit-Cum-Means) Scholarship is designed to support
+              students from economically disadvantaged backgrounds while
+              encouraging academic excellence. Eligibility Criteria: Candidates
+              holding any other scholarship from a different source are not
+              eligible to apply for the MCM Scholarship unless they surrender
+              their existing scholarship. The Convener, SPACS will invite
+              applications for the MCM Scholarship at the beginning of each
+              academic year for students in all years except first-year
+              students. Eligible candidates must apply using the prescribed
+              format, available in this document, on the Institute’s website,
+              and from the Academic Section. Completed applications, along with
+              supporting documents specified in Annexures I through V, must be
+              submitted before the deadline set by the Convener, SPACS. An
+              income affidavit for the year preceding the application year must
+              be submitted by the parent or guardian along with the completed
+              application. First-year students may apply for the MCM Scholarship
+              at the beginning of the second semester of their program. In cases
+              where a student's financial circumstances change unexpectedly—such
+              as the death or retirement of the earning parent(s)—and if
+              unutilized MCM scholarships are available, the Convener, SPACS may
+              accept applications at any time during the academic year. If
+              awarded, the scholarship will take effect from the month the
+              circumstances change. Award Duration and Conditions: For students
+              other than first-year students, a minimum Cumulative Performance
+              Index (CPI) of 6.0 for general category students and 5.5 for SC/ST
+              category students is required at the end of the preceding academic
+              year to qualify for the scholarship. First-year students must
+              achieve a minimum Semester Performance Index (SPI) of 6.0 for
+              general category students and 5.5 for SC/ST students at the end of
+              their first semester. Each renewal of the MCM Scholarship requires
+              fulfillment of both merit and means criteria as outlined in the
+              relevant sections. Meeting the merit and means criteria does not
+              guarantee the award of the scholarship. In cases where
+              applications exceed available scholarships, the decision will
+              depend on the financial liabilities of the applicants’ parents
+              under current social conditions. Consequently, the minimum CPI/SPI
+              requirements may be adjusted by SPACS based on the quality and
+              quantity of applications from similar social backgrounds. The MCM
+              Scholarship will be awarded for one year but may be renewed by
+              SPACS upon submission of a new application in subsequent years.
+              The total duration of the MCM Scholarship for a single student
+              shall not exceed 45 months. Students on leave for a semester will
+              not be eligible to receive the MCM Scholarship during that
+              semester if awarded.
+            </Text>
+          </>
+        )}
+        {desc === 2 && (
+          <>
+            <Title order={2}>DSM Proficiency Gold Medal</Title>
+            <Divider my="sm" />
+            <Text>
+              4.3 D&M Proficiency Gold Medals
+              <br />
+              4.3.1 Design and Manufacturing Proficiency Gold Medals are awarded
+              at the time of Institute’s Convocation for the best
+              cross-disciplinary project from among the graduating BTech
+              students and the best cross-disciplinary thesis from among the
+              graduating MTech / MDes / PhD students. Award of design and
+              manufacturing proficiency gold medal (D&MPGM) is applicable for
+              BTP/PBI or Design and Fabrication projects.
+              <br />
+              4.3.2 The award of D&M Proficiency Gold Medals shall be decided by
+              the separate committee appointed for this purpose by the Chairman,
+              Academic Senate which will seek applications after finalizing a
+              short listing criterion. After short listing of applications, the
+              committee shall call all the short listed applicants for a
+              presentation/demonstration.
+              <br />
+              4.3.3 D&M Proficiency Gold Medals may not be awarded if
+              projects/theses submitted for the award are found to have an
+              inadequate cross-disciplinary content.
+              <br />
+              4.3.4 The D&M Proficiency Gold Medals shall be made out of 15 gm
+              of 18 carat gold.
+              <br />
+              4.3.5 In the event of a group being awarded the best
+              cross-disciplinary project, each individual student shall be
+              awarded the medal provided the student satisfies following
+              eligibility criteria for the award. (a) The students must have at
+              least a CPI of 6.5. (b) At the time of application, there should
+              not be any backlog of courses for the student. (c) Student’s grade
+              in the project must be A, A+ or S.
+              <br />
+            </Text>
+          </>
+        )}
+        {desc === 3 && (
+          <>
+            <Title order={2}>Director’s Gold Medal</Title>
+            <Divider my="sm" />
+            <Text>
+              4.2 Director's Gold Medals
+              <br />
+              4.2.1 Director's Gold Medals (DGMs), to be presented at the
+              Institute Convocation every year, shall be awarded for the best
+              all round performance from among the graduating (a) B Tech batch
+              and (b) M Tech/M Des/PhD students. Students of all
+              disciplines/programme shall be eligible for the award of DGM.
+              <br />
+              4.2.2 The all-round performance shall be judged by a separate
+              committee appointed by the Chairman Senate. Criteria for short
+              listing the candidates shall be laid down by the committee as per
+              Section 2.
+              <br />
+              4.1 However, a reporting CPI of 8.0 shall be the minimum
+              requirement for the award of the Director's Gold Medal.
+              <br />
+              4.2.3 The student receiving the award should not have been
+              involved in any act of indiscipline (except warning under clause
+              3.2.2.1 of SACS manual) during her/his entire academic programme.
+              <br />
+              4.2.4 The DGMs shall be made out of 15 gm of 18 carat gold.
+              <br />
+            </Text>
+          </>
+        )}
+        {desc === 4 && (
+          <>
+            <Title order={2}>Director’s Silver Medal</Title>
+            <Divider my="sm" />
+            <Text>
+              4.6 Director's Silver Medals
+              <br />
+              4.6.1 Director's Silver Medals (DSMs) shall be presented at the
+              time of Institute’s Convocation for the outstanding performance in
+              (i) Games & Sports activities and (ii) Cultural activities from
+              among the graduating undergraduate and postgraduate students.
+              <br />
+              4.6.2 The award of DSMs shall be decided by the separate committee
+              appointed for this purpose by the Chairman, Academic Senate. The
+              committee shall lay down the criteria for short listing the
+              candidates before calling them for an interview.
+              <br />
+              4.6.3 Director's Silver Medals shall be made out of 15 gm silver.
+              <br />
+            </Text>
+          </>
+        )}
+        {desc === 5 && (
+          <>
+            <Title order={2}>Notional Prices</Title>
+            <Divider my="sm" />
+            <Text>
+              4.5 Notional Prices
+              <br />
+              4.5.1 Notional Prices will be awarded at the time of Institute’s
+              Convocation every year for the best BTPs/projects/thesis from
+              among the graduating (a) BTech batch and (b) MTech/MDes/PhD
+              students.
+              <br />
+              4.5.2 The selection criteria for the award of Notional Prices
+              shall be laid down by the respective departments in accordance
+              with the norms prescribed by the Academic Senate.
+              <br />
+              4.5.3 The Notional Prices may not be awarded if the
+              projects/theses submitted for the award are found to be of
+              inadequate quality as decided by the respective departments.
+              <br />
+            </Text>
+          </>
+        )}
+      </div>
+    </Container>
+  );
+}
+
+export default AwardsAndScholarshipCatalog;

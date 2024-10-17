@@ -1,4 +1,4 @@
-/* UserBreadcumbs.module.css */
+/* ConvenorBreadcumbs.module.css */
 .ctr {
   padding: 0 1rem;
   display: flex;
@@ -8,11 +8,13 @@
 }
 
 .activeLink {
-  color: blue;
+  color: #17ABFF;
+  text-decoration: none; /* Ensure no underline for active links */
 }
 
 .inactiveLink {
   color: gray;
+  text-decoration: none; /* Remove underline for inactive links */
 }
 
 .caret {

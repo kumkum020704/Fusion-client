@@ -17,7 +17,7 @@ function UserBreadcumbs() {
         <CaretRight className={styles.caret} style={{ color: "inherit" }} />
       </div>
       <NavLink
-        to="/user/browseApplication"
+        to="/ConvocationMedal"
         className={({ isActive }) =>
           isActive ? styles.activeLink : styles.inactiveLink
         }

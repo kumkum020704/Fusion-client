@@ -12,7 +12,7 @@ function SpacsMembers() {
       <div className={styles.membersContainer}>
         <div className={styles.memberCard}>
           <h1 className={styles.cardHeading}>SPACS Convenor</h1>
-          <img src={conv} alt="SPACS Convenor" />
+          <img src={conv} className={styles.memb} alt="SPACS Convenor" />
           <div className={styles.nameRole}>
             <h2 className={styles.name}>Atul Gupta</h2>
             <p className={styles.role}>Faculty</p>
@@ -33,7 +33,7 @@ function SpacsMembers() {
 
         <div className={`${styles.memberCard} ${styles.assistantCard}`}>
           <h1 className={styles.cardHeading}>SPACS Assistant</h1>
-          <img src={assi} alt="SPACS Assistant" />
+          <img src={assi} className={styles.memb} alt="SPACS Assistant" />
           <div className={styles.nameRole}>
             <h2 className={styles.name}>RMishra</h2>
             <p className={styles.role}>Staff</p>

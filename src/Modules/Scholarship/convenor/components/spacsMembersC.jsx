@@ -1,9 +1,8 @@
-/* eslint-disable import/no-unresolved */
 import React from "react";
 import { EnvelopeSimple, Phone } from "@phosphor-icons/react"; // Import Phosphor icons
-import styles from "./spacsMembersC.module.css";
-import conv from "../images/convener.png"; // Ensure this path is correct
-import assi from "../images/assistant.png"; // Ensure this path is correct
+import styles from "./SpacsMembersC.module.css";
+import conv from "../images/convener.png";
+import assi from "../images/assistant.png";
 
 function SpacsMembers() {
   return (
@@ -13,7 +12,7 @@ function SpacsMembers() {
       <div className={styles.membersContainer}>
         <div className={styles.memberCard}>
           <h1 className={styles.cardHeading}>SPACS Convenor</h1>
-          <img src={conv} alt="SPACS Convenor" />
+          <img src={conv} className={styles.memb} alt="SPACS Convenor" />
           <div className={styles.nameRole}>
             <h2 className={styles.name}>Atul Gupta</h2>
             <p className={styles.role}>Faculty</p>
@@ -34,7 +33,7 @@ function SpacsMembers() {
 
         <div className={`${styles.memberCard} ${styles.assistantCard}`}>
           <h1 className={styles.cardHeading}>SPACS Assistant</h1>
-          <img src={assi} alt="SPACS Assistant" />
+          <img src={assi} className={styles.memb} alt="SPACS Assistant" />
           <div className={styles.nameRole}>
             <h2 className={styles.name}>RMishra</h2>
             <p className={styles.role}>Staff</p>

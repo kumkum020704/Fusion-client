@@ -134,6 +134,7 @@ export default function App() {
           path="/ConvocationMedal"
           element={
             <Layout>
+              <UserBreadcumbs></UserBreadcumbs>
               <ConvocationMedal />
             </Layout>
           }
@@ -142,6 +143,7 @@ export default function App() {
           path="/DirectorSilver"
           element={
             <Layout>
+              <UserBreadcumbs></UserBreadcumbs>
               <DirectorSilver />
             </Layout>
           }
@@ -150,6 +152,7 @@ export default function App() {
           path="/DocumentUploadForm2"
           element={
             <Layout>
+              <UserBreadcumbs></UserBreadcumbs>
               <DocumentUploadForm2 />
             </Layout>
           }

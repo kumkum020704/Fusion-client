@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping */
+  flex-wrap: nowrap; /* Prevent wrapping for larger screens */
   gap: 1rem; /* Add spacing between the list and content */
 }
 
@@ -48,4 +48,24 @@
 
 .contentContainer::-webkit-scrollbar-thumb:hover {
   background-color: #0d87d6; /* Darker blue on hover */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column; /* Stack the list and content vertically */
+    gap: 0; /* Remove extra spacing when stacked */
+  }
+
+  .listContainer {
+    width: 100%; /* Full width for smaller screens */
+    padding: 0.5rem; /* Adjust padding */
+    text-align: center; /* Center the list items */
+  }
+
+  .contentContainer {
+    max-height: none; /* Remove max-height */
+    overflow: visible; /* No overflow for small screens */
+    padding: 1rem; /* Adjust padding */
+  }
 }

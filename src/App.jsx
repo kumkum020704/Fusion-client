@@ -26,6 +26,8 @@ import ConvenorBreadcumbs from "./Modules/Scholarship/convenor/components/Conven
 import DocumentUploadForm2 from "./Modules/Scholarship/Convocation/DocumentUploadForm2";
 import DirectorSilver from "./Modules/Scholarship/Convocation/DirectorSilver";
 import ConvocationMedal from "./Modules/Scholarship/Convocation/ConvocationMedal";
+import ScholarshipForm from "./Modules/Scholarship/MCM_Application/ScholarshipForm";
+import DocumentUploadForm from "./Modules/Scholarship/MCM_Application/DocumentUploadForm";
 
 export default function App() {
   const location = useLocation();
@@ -157,6 +159,26 @@ export default function App() {
             </Layout>
           }
         />
+        // Rakshit's Route
+        <Route
+          path="/ScholarshipForm"
+          element={
+            <Layout>
+              <UserBreadcumbs></UserBreadcumbs>
+             <ScholarshipForm/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/scholar2"
+          element={
+            <Layout>
+             <UserBreadcumbs></UserBreadcumbs>
+             <DocumentUploadForm/>
+            </Layout>
+          }
+        />
+
         <Route
           path="/profile"
           element={

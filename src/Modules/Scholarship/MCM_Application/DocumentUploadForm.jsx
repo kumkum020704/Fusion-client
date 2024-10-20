@@ -42,6 +42,7 @@ const DocumentUploadForm = () => {
           </Text>
 
           <Alert title="Important" color="blue" mb="lg">
+
             All documents should be clear and legible. Supported formats: PDF, JPEG, PNG, DOC.
           </Alert>
 

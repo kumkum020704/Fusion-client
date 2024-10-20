@@ -4,7 +4,7 @@ import { CaretDown } from "@phosphor-icons/react";
 import styles from "./PreviousWinners.module.css";
 
 function PreviousWinners() {
- 
+
   const [programme, setProgramme] = useState("");
   const [academicYear, setAcademicYear] = useState("");
   const [award, setAward] = useState("");
@@ -29,7 +29,7 @@ function PreviousWinners() {
     };
     console.log("Form data submitted:", formData);
   };
-  
+
   return (
     <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
@@ -40,7 +40,9 @@ function PreviousWinners() {
               Programme
             </label>
             <div className={styles.selectContainer}>
+
             <select
+
                 id="programme1"
                 className={styles.select}
                 value={programme}
@@ -63,7 +65,9 @@ function PreviousWinners() {
               Academic Year
             </label>
             <div className={styles.selectContainer}>
+
             <select
+
                 id="academicProgramme"
                 className={styles.select}
                 value={academicYear}
@@ -86,7 +90,9 @@ function PreviousWinners() {
               Scholarship/Awards
             </label>
             <div className={styles.selectContainer}>
+
             <select
+
                 id="programme2"
                 className={styles.select}
                 value={award}

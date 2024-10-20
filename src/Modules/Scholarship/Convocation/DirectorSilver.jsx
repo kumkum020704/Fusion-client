@@ -15,12 +15,13 @@ import Header from "./Header";
 export default function DirectorSilver() {
   const [formData, setFormData] = useState({
     award: "Director's Silver Medal",
-    hallNo: "",
-    roomNo: "A-302",
+    DirectorMedalID: "",
+    AwardID: "",
+    StudentID: "",
     type: "",
-    fatherName: "",
-    motherName: "",
-    permanentAddress: "",
+    Status: "",
+    Date: "",
+    Justification: "",
     correspondenceAddress: "",
     policeStation: "",
     railwayStation: "",
@@ -29,6 +30,29 @@ export default function DirectorSilver() {
     achievementInside: "",
     achievementOutside: "",
     pbiProject: "", // For D&M Proficiency Gold Medal
+    Social: "",
+    Corporate: "",
+    HallActivities: "",
+    GymkhanaActivities: "",
+    InstituteActivities: "",
+    CounsellingActivities: "",
+    OtherActivities: "",
+    TitleName: "",
+    NumberofStudents: "",
+    RollNumber1: "",
+    RollNumber2: "",
+    RollNumber3: "",
+    RollNumber4: "",
+    RollNumber5: "",
+    BriefDiscription: "",
+    ECETopic: "",
+    CSETopic: "",
+    MECHTopic: "",
+    DesignTopic: "",
+    ECEPercentage: "",
+    CSEPercentage: "",
+    MECHPercentage: "",
+    DesignPercentage: "",
   });
 
   const navigate = useNavigate(); // Initialize useNavigate for navigation
@@ -85,57 +109,58 @@ export default function DirectorSilver() {
               />
             </Grid.Col>
 
-            {/* Hall and Room Numbers */}
             <Grid.Col xs={6} sm={3}>
               <TextInput
-                label="Hall No"
-                name="hallNo"
-                value={formData.hallNo}
+                label="Director Medal ID"
+                name="DirectorMedalID"
+                type="number"
+                value={formData.DirectorMedalID}
                 onChange={handleChange}
-                placeholder="0"
+                placeholder="DirectorMedalID"
               />
             </Grid.Col>
 
             <Grid.Col xs={6} sm={3}>
               <TextInput
-                label="Room No"
-                name="roomNo"
-                value={formData.roomNo}
+                label="Award ID"
+                name="AwardID"
+                type="number"
+                value={formData.AwardID}
                 onChange={handleChange}
-                placeholder="A-302"
-              />
-            </Grid.Col>
-
-            {/* Parent Names */}
-            <Grid.Col xs={12} sm={6}>
-              <TextInput
-                label="Father's Name"
-                name="fatherName"
-                value={formData.fatherName}
-                onChange={handleChange}
-                placeholder="Father's Name"
+                placeholder="AwardID"
               />
             </Grid.Col>
 
             <Grid.Col xs={12} sm={6}>
               <TextInput
-                label="Mother's Name"
-                name="motherName"
-                value={formData.motherName}
+                label="Student ID"
+                name="StudentID"
+                type="number"
+                value={formData.StudentID}
                 onChange={handleChange}
-                placeholder="Mother's Name"
+                placeholder="StudentID"
               />
             </Grid.Col>
 
-            {/* Addresses */}
+            <Grid.Col xs={12} sm={6}>
+              <TextInput
+                label="Date"
+                name="Date"
+                type="date"
+                value={formData.Date}
+                onChange={handleChange}
+                placeholder="Date"
+              />
+            </Grid.Col>
+
             <Grid.Col xs={12} sm={6}>
               <Textarea
-                label="Permanent Address"
-                name="permanentAddress"
-                value={formData.permanentAddress}
+                label="Justification"
+                name="Justification"
+                value={formData.Justification}
                 onChange={handleChange}
-                placeholder="Enter permanent address"
-                minRows={3}
+                placeholder="Jusification"
+                minRows={2}
               />
             </Grid.Col>
 
@@ -147,6 +172,16 @@ export default function DirectorSilver() {
                 onChange={handleChange}
                 placeholder="Enter correspondence address"
                 minRows={3}
+              />
+            </Grid.Col>
+
+            <Grid.Col xs={12} sm={6}>
+              <TextInput
+                label="Status"
+                name="Status"
+                value={formData.Status}
+                onChange={handleChange}
+                placeholder="Status"
               />
             </Grid.Col>
 
@@ -187,6 +222,7 @@ export default function DirectorSilver() {
               <TextInput
                 label="Grand Total Amount"
                 name="totalAmount"
+                tupe="number"
                 value={formData.totalAmount}
                 onChange={handleChange}
                 placeholder="Total"
@@ -195,35 +231,96 @@ export default function DirectorSilver() {
 
             {/* Achievements - Conditionally Rendered */}
             {formData.award === "Director's Gold Medal" && (
-              <Grid.Col xs={12}>
-                <Textarea
-                  label="Brief Description of Academic Achievement"
-                  name="achievementInside"
-                  value={formData.achievementInside}
-                  onChange={handleChange}
-                  placeholder="Enter academic achievements"
-                  minRows={3}
-                />
-              </Grid.Col>
-            )}
-
-            {formData.award === "D&M Proficiency Gold Medal" && (
-              <Grid.Col xs={12}>
-                <TextInput
-                  label="PBI Project/Design Project"
-                  name="pbiProject"
-                  value={formData.pbiProject}
-                  onChange={handleChange}
-                  placeholder="Enter PBI Project details"
-                />
-              </Grid.Col>
-            )}
-
-            {formData.award === "Director's Silver Medal" && (
               <>
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Brief Description of Games and Sports/Cultural Achievement: (Inside IIITDMJ)"
+                    label="Brief Description of Academic Achievement"
+                    name="achievementInside"
+                    value={formData.achievementInside}
+                    onChange={handleChange}
+                    placeholder="Enter academic achievements"
+                    minRows={3}
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Social"
+                    name="Social"
+                    value={formData.Social}
+                    onChange={handleChange}
+                    placeholder="Social"
+                    minRows={2}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Corporate"
+                    name="Corporate"
+                    value={formData.Corporate}
+                    onChange={handleChange}
+                    placeholder="Corporate"
+                    minRows={2}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12} sm={3}>
+                  <Textarea
+                    label="Hall Activities"
+                    name="HallActivities"
+                    value={formData.HallActivities}
+                    onChange={handleChange}
+                    placeholder="Hall Activities"
+                    minRows={2}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Gynkhana Activities"
+                    name="GymkhanaActivities"
+                    value={formData.GymkhanaActivities}
+                    onChange={handleChange}
+                    placeholder="Gymkhana Activities"
+                    minRows={2}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Institute Activities"
+                    name="InstituteActivities"
+                    value={formData.InstituteActivities}
+                    onChange={handleChange}
+                    placeholder="Institute Activities"
+                    minRows={2}
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Counselling Activities"
+                    name="CounsellingActivities"
+                    value={formData.CounsellingActivities}
+                    onChange={handleChange}
+                    placeholder="Counselling Activities"
+                    minRows={2}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Other Activities"
+                    name="OtherActivities"
+                    value={formData.OtherActivities}
+                    onChange={handleChange}
+                    placeholder="Other Activities"
+                    minRows={2}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Brief Description of Science/Sports/Cultural Achievement: (Inside IIITDMJ)"
                     name="achievementInside"
                     value={formData.achievementInside}
                     onChange={handleChange}
@@ -234,7 +331,214 @@ export default function DirectorSilver() {
 
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Brief Description of Games and Sports/Cultural Achievement: (Outside IIITDMJ)"
+                    label="Brief Description of Science/Sports/Cultural Achievement: (Outside IIITDMJ)"
+                    name="achievementOutside"
+                    value={formData.achievementOutside}
+                    onChange={handleChange}
+                    placeholder="Enter achievements outside IIITDMJ"
+                    minRows={3}
+                  />
+                </Grid.Col>
+              </>
+            )}
+
+            {formData.award === "D&M Proficiency Gold Medal" && (
+              <>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="PBI Project/Design Project"
+                    name="pbiProject"
+                    value={formData.pbiProject}
+                    onChange={handleChange}
+                    placeholder="Enter PBI Project details"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="Title Name"
+                    name="TitleName"
+                    value={formData.TitleName}
+                    onChange={handleChange}
+                    placeholder="Title Name"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="Number of Students"
+                    name="NumberofStudents"
+                    type="number"
+                    value={formData.NumberofStudents}
+                    onChange={handleChange}
+                    placeholder="Number of Students"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="RollNumber 1"
+                    name="RollNumber1"
+                    type="number"
+                    value={formData.RollNumber1}
+                    onChange={handleChange}
+                    placeholder="Enter RollNumber"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="RollNumber 2"
+                    name="RollNumber2"
+                    type="number"
+                    value={formData.RollNumber2}
+                    onChange={handleChange}
+                    placeholder="Enter RollNumber"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="RollNumber 3"
+                    name="RollNumber3"
+                    type="number"
+                    value={formData.RollNumber3}
+                    onChange={handleChange}
+                    placeholder="Enter RollNumber"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="RollNumber 4"
+                    name="RollNumber4"
+                    type="number"
+                    value={formData.RollNumber4}
+                    onChange={handleChange}
+                    placeholder="Enter RollNumber"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="RollNumber 5"
+                    name="RollNumber5"
+                    type="number"
+                    value={formData.RollNumber5}
+                    onChange={handleChange}
+                    placeholder="Enter RollNumber"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="Brief Discription"
+                    name="BriefDiscription"
+                    type="text"
+                    value={formData.BriefDiscription}
+                    onChange={handleChange}
+                    placeholder="Brief Discription"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="CSE Topic"
+                    name="CSETopic"
+                    type="text"
+                    value={formData.CSETopic}
+                    onChange={handleChange}
+                    placeholder="Enter Topic"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="ECE Topic"
+                    name="ECETopic"
+                    type="text"
+                    value={formData.ECETopic}
+                    onChange={handleChange}
+                    placeholder="Enter Topic"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="MECH Topic"
+                    name="MECHTopic"
+                    type="text"
+                    value={formData.MECHTopic}
+                    onChange={handleChange}
+                    placeholder="Enter Topic"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="Design Topic"
+                    name="DesignTopic"
+                    type="text"
+                    value={formData.DesignTopic}
+                    onChange={handleChange}
+                    placeholder="Enter Topic"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="CSE Percentage"
+                    name="CSEPercentage"
+                    type="number"
+                    value={formData.CSEPercentage}
+                    onChange={handleChange}
+                    placeholder="Enter Percentage"
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="ECE Percentage"
+                    name="ECEPercentage"
+                    type="number"
+                    value={formData.ECEPercentage}
+                    onChange={handleChange}
+                    placeholder="Enter Percentage"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="MECH Percentage"
+                    name="MECHPercentage"
+                    type="number"
+                    value={formData.MECHPercentage}
+                    onChange={handleChange}
+                    placeholder="Enter Percentage"
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <TextInput
+                    label="Design Percentage"
+                    name="DesignPercentage"
+                    type="number"
+                    value={formData.DesignPercentage}
+                    onChange={handleChange}
+                    placeholder="Enter Percentage"
+                  />
+                </Grid.Col>
+              </>
+            )}
+
+            {formData.award === "Director's Silver Medal" && (
+              <>
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Brief Description of Science/Sports/Cultural Achievement: (Inside IIITDMJ)"
+                    name="achievementInside"
+                    value={formData.achievementInside}
+                    onChange={handleChange}
+                    placeholder="Enter achievements inside IIITDMJ"
+                    minRows={3}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Brief Description of Science/Sports/Cultural Achievement: (Outside IIITDMJ)"
                     name="achievementOutside"
                     value={formData.achievementOutside}
                     onChange={handleChange}

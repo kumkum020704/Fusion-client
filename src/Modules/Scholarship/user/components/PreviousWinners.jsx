@@ -9,6 +9,7 @@ function PreviousWinners() {
   const [award, setAward] = useState("");
   const [winners, setWinners] = useState([]);
 
+
   const awardMapping = {
     "Director's Gold": 2,
     "Director's Silver": 3,
@@ -73,7 +74,9 @@ function PreviousWinners() {
               Programme
             </label>
             <div className={styles.selectContainer}>
-              <select
+
+            <select
+
                 id="programme1"
                 className={styles.select}
                 value={programme}
@@ -96,7 +99,9 @@ function PreviousWinners() {
               Academic Year
             </label>
             <div className={styles.selectContainer}>
-              <select
+
+            <select
+
                 id="academicProgramme"
                 className={styles.select}
                 value={academicYear}
@@ -119,7 +124,9 @@ function PreviousWinners() {
               Scholarship/Awards
             </label>
             <div className={styles.selectContainer}>
-              <select
+
+            <select
+
                 id="programme2"
                 className={styles.select}
                 value={award}

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from "react";
 import AwardsAndScholarshipCatalog from "../components/AwardsAndScholarshipCatalog";
 import SpacsMembers from "../components/SpacsMembers";
@@ -6,7 +5,7 @@ import PreviousWinners from "../components/PreviousWinners";
 import styles from "./ScholarshipPage.module.css";
 import UserBreadcumbs from "../components/UserBreadcumbs";
 
-function CatalogPage() {
+const CatalogPage = () => {
   const [desc, setDesc] = useState(1);
 
   const changeDesc = (event) => {
@@ -15,14 +14,14 @@ function CatalogPage() {
 
   return (
     <>
-      <UserBreadcumbs />
+      <UserBreadcumbs></UserBreadcumbs>
       <div className={styles.wrapper}>
         <div className={styles.buttonContainer}>
           <button onClick={changeDesc} value={1} className={styles.button}>
-            Awards and Scholarship Catalogue
+            Awards and Scholarships Catalogue
           </button>
           <button onClick={changeDesc} value={2} className={styles.button}>
-            SPACS Members and details
+            SPACS Member and Details
           </button>
           <button onClick={changeDesc} value={3} className={styles.button}>
             Previous Winners
@@ -55,6 +54,6 @@ function CatalogPage() {
       </div>
     </>
   );
-}
+};
 
 export default CatalogPage;

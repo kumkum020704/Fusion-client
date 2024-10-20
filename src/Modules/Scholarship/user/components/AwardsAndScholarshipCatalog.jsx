@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { List, Text, Title, Divider, Container } from "@mantine/core";
-import styles from "./Catalog.module.css"; // Assuming you have this CSS file
-// eslint-disable-next-line no-unused-vars
-import UserBreadcumbs from "./UserBreadcumbs"; // Make sure this component is available
+import styles from "./Catalog.module.css";
+import UserBreadcumbs from "./UserBreadcumbs";
 
 function AwardsAndScholarshipCatalog() {
   const [desc, setDesc] = useState(1);
@@ -43,7 +42,7 @@ function AwardsAndScholarshipCatalog() {
             onClick={() => changeDesc(5)}
             className={`${styles.listItem} ${desc === 5 ? styles.activeItem : ""}`}
           >
-            Notional Prices
+            National Prices
           </List.Item>
         </List>
       </div>
@@ -54,6 +53,7 @@ function AwardsAndScholarshipCatalog() {
             <Title order={2}>Merit-Cum-Means</Title>
             <Divider my="sm" />
             <Text>
+              {/* MCM Scholarship Overview <br /> */}
               The MCM (Merit-Cum-Means) Scholarship is designed to support
               students from economically disadvantaged backgrounds while
               encouraging academic excellence. Eligibility Criteria: Candidates
@@ -136,8 +136,9 @@ function AwardsAndScholarshipCatalog() {
               eligibility criteria for the award. (a) The students must have at
               least a CPI of 6.5. (b) At the time of application, there should
               not be any backlog of courses for the student. (c) Student’s grade
-              in the project must be A, A+ or S.
+              in the project must be A, A+ or S. TEST.
               <br />
+                       
             </Text>
           </>
         )}
@@ -195,23 +196,43 @@ function AwardsAndScholarshipCatalog() {
         )}
         {desc === 5 && (
           <>
-            <Title order={2}>Notional Prices</Title>
+            <Title order={2}>National Prices</Title>
             <Divider my="sm" />
             <Text>
-              4.5 Notional Prices
+              4.7 National Prizes and Certificates of Merit
               <br />
-              4.5.1 Notional Prices will be awarded at the time of Institute’s
-              Convocation every year for the best BTPs/projects/thesis from
-              among the graduating (a) BTech batch and (b) MTech/MDes/PhD
-              students.
+              4.7.1 National Prizes and Certificates of Merit shall be awarded
+              to 7 percent of the students of each undergraduate and
+              postgraduate batch for excellent academic performance in an
+              academic year. In the first two years, the 7 percent shall be
+              calculated for the entire B Tech batch, whereas for the third year
+              the award shall be made for each discipline taking into account
+              their respective strengths. For PG student, the 7 percent shall be
+              calculated based on the academic performance of the first two
+              semester of PG program for each discipline taking into account
+              their respective strengths.
               <br />
-              4.5.2 The selection criteria for the award of Notional Prices
-              shall be laid down by the respective departments in accordance
-              with the norms prescribed by the Academic Senate.
+              4.7.2 The National Prize may be awarded to a student irrespective
+              of whether he/she is a recipient of any other scholarship or not.
               <br />
-              4.5.3 The Notional Prices may not be awarded if the
-              projects/theses submitted for the award are found to be of
-              inadequate quality as decided by the respective departments.
+              4.7.3 The value of the National Prize shall be as prescribed from
+              time to time, by the Ministry of Human Resources and Development8
+              . 8 The present amount is Rs. 2000/-.
+              <br />
+              4.7.4 In calculating the actual number of awards to be made in any
+              year or for any department, any fraction shall usually be rounded
+              off to the next integer. However, this may not be done in those
+              cases where there is a significant difference in the performance
+              level of the students.
+              <br />
+              4.7.5 The award shall, in principle, be given only on the basis of
+              the annual performance. (By dividing credits earned in two regular
+              semester with total credits for two semester) Further the award
+              may not be made for any department having student strength of less
+              than 5. It may also not be made if the highest CPI for any
+              department is considerably lower than the performance levels at
+              which the award is being made for other departments or minimum CPI
+              limit of 8.5.
               <br />
             </Text>
           </>

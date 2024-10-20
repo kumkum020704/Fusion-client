@@ -1,12 +1,38 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useState } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import styles from "./PreviousWinners.module.css";
 
 function PreviousWinners() {
+ 
+  const [programme, setProgramme] = useState("");
+  const [academicYear, setAcademicYear] = useState("");
+  const [award, setAward] = useState("");
+
+
+  const awardMapping = {
+    "Director's Gold": 3,
+    "Director's Silver": 2,
+    "Merit-cum-means Scholarship": 1,
+    "Notional Prizes": 4,
+    "D&M Proficiency Gold Medal": 5,
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const awardId = awardMapping[award];
+
+    const formData = {
+      programme,
+      academicYear,
+      awardId,
+    };
+    console.log("Form data submitted:", formData);
+  };
+  
   return (
     <div className={styles.wrapper}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={styles.formRow}>
           {/* Programme Selection */}
           <div className={styles.formItem}>
@@ -14,12 +40,18 @@ function PreviousWinners() {
               Programme
             </label>
             <div className={styles.selectContainer}>
-              <select id="programme1" className={styles.select}>
-                <option>B.Tech</option>
-                <option>M.Tech</option>
-                <option>B.Des</option>
-                <option>M.Des</option>
-                <option>PhD</option>
+            <select
+                id="programme1"
+                className={styles.select}
+                value={programme}
+                onChange={(e) => setProgramme(e.target.value)}
+              >
+                <option value="">Select Programme</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="M.Tech">M.Tech</option>
+                <option value="B.Des">B.Des</option>
+                <option value="M.Des">M.Des</option>
+                <option value="PhD">PhD</option>
               </select>
               <CaretDown className={styles.caretIcon} />
             </div>
@@ -31,18 +63,18 @@ function PreviousWinners() {
               Academic Year
             </label>
             <div className={styles.selectContainer}>
-              <select id="academicProgramme" className={styles.select}>
-                <option>2014</option>
-                <option>2015</option>
-                <option>2016</option>
-                <option>2017</option>
-                <option>2018</option>
-                <option>2019</option>
-                <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
-                <option>2023</option>
-                <option>2024</option>
+            <select
+                id="academicProgramme"
+                className={styles.select}
+                value={academicYear}
+                onChange={(e) => setAcademicYear(e.target.value)}
+              >
+                <option value="">Select Year</option>
+                {[...Array(11).keys()].map((i) => (
+                  <option key={2014 + i} value={2014 + i}>
+                    {2014 + i}
+                  </option>
+                ))}
               </select>
               <CaretDown className={styles.caretIcon} />
             </div>
@@ -54,12 +86,18 @@ function PreviousWinners() {
               Scholarship/Awards
             </label>
             <div className={styles.selectContainer}>
-              <select id="programme2" className={styles.select}>
-                <option>Director's Gold</option>
-                <option>Director's Silver</option>
-                <option>Merit-cum-means Scholarship</option>
-                <option>Notional Prizes</option>
-                <option>D&M Proficiency Gold Medal</option>
+            <select
+                id="programme2"
+                className={styles.select}
+                value={award}
+                onChange={(e) => setAward(e.target.value)}
+              >
+                <option value="">Select Award</option>
+                {Object.keys(awardMapping).map((awardName) => (
+                  <option key={awardMapping[awardName]} value={awardName}>
+                    {awardName}
+                  </option>
+                ))}
               </select>
               <CaretDown className={styles.caretIcon} />
             </div>

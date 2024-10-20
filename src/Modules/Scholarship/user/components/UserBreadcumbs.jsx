@@ -9,7 +9,7 @@ function UserBreadcrumbs() {
   const navigate = useNavigate(); // Initialize the useNavigate hook
   const tabItems = [
     { path: "/scholarship", label: "Catalog" },
-    { path: "/ConvocationMedal", label: "Browse Application" },
+    { path: "/ScholarshipForm", label: "Browse Application" },
     { path: "/user/scholarshipStatus", label: "Scholarship Status" },
   ];
 

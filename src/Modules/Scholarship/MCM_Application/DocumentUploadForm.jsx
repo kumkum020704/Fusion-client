@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, FileButton, Grid, Group, Paper, Text, Title, Container, Alert } from '@mantine/core';
-import { IconCheck, IconUpload, IconAlertCircle } from '@tabler/icons-react';
+// import { IconCheck, IconUpload, IconAlertCircle } from '@tabler/icons-react';
 import Header from "../Convocation/Header";
 
 const DocumentUploadForm = () => {
@@ -41,7 +41,7 @@ const DocumentUploadForm = () => {
             Please upload all required documents for your scholarship application.
           </Text>
 
-          <Alert icon={<IconAlertCircle size={16} />} title="Important" color="blue" mb="lg">
+          <Alert title="Important" color="blue" mb="lg">
             All documents should be clear and legible. Supported formats: PDF, JPEG, PNG, DOC.
           </Alert>
 
@@ -56,13 +56,6 @@ const DocumentUploadForm = () => {
                     <Button
                       onClick={fileButtonProps.onClick}
                       fullWidth
-                      leftIcon={
-                        uploadStatus[doc.id] === 'success' ? (
-                          <IconCheck size={16} />
-                        ) : (
-                          <IconUpload size={16} />
-                        )
-                      }
                       color={uploadStatus[doc.id] === 'success' ? 'green' : 'gray'}
                     >
                       {uploadStatus[doc.id] === 'success'

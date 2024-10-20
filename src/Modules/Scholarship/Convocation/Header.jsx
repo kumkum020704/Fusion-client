@@ -8,7 +8,7 @@ function Header() {
       {/* Tab Navigation */}
       <Group position="left" spacing="xl" mb="sm">
         <NavLink
-          to="/user/browseApplication"
+          to="/ScholarshipForm"
           style={({ isActive }) => ({
             textDecoration: "none",
             paddingBottom: "8px",

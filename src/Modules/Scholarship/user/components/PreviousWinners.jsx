@@ -1,33 +1,65 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from "react";
+import { useState } from "react";
 import { CaretDown } from "@phosphor-icons/react";
+import axios from "axios";
 import styles from "./PreviousWinners.module.css";
 
 function PreviousWinners() {
-
   const [programme, setProgramme] = useState("");
   const [academicYear, setAcademicYear] = useState("");
   const [award, setAward] = useState("");
+  const [winners, setWinners] = useState([]);
 
-  
   const awardMapping = {
-    "Director's Gold": 3,
-    "Director's Silver": 2,
+    "Director's Gold": 2,
+    "Director's Silver": 3,
     "Merit-cum-means Scholarship": 1,
     "Notional Prizes": 4,
     "D&M Proficiency Gold Medal": 5,
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const awardId = awardMapping[award];
 
     const formData = {
       programme,
-      academicYear,
-      awardId,
+      batch: parseInt(academicYear, 10),
+      award_id: awardId,
     };
-    console.log("Form data submitted:", formData);
+
+    try {
+      const token = localStorage.getItem("authToken");
+      const response = await axios.post(
+        "http://127.0.0.1:8000/spacs/get-winners/",
+        formData,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      if (response.data.result === "Success") {
+        // Assuming each of these fields is an array
+        const { student_name, student_program, roll } = response.data;
+        const winnersArray = student_name.map((name, index) => ({
+          name,
+          program: student_program[index],
+          roll: roll[index],
+        }));
+
+        setWinners(winnersArray);
+      } else {
+        console.error("No winners found:", response.data.error);
+        setWinners([]); // Clear winners if not found
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching winners:",
+        error.response ? error.response.data : error.message,
+      );
+    }
   };
 
   return (
@@ -35,6 +67,7 @@ function PreviousWinners() {
       <form onSubmit={handleSubmit}>
         <div className={styles.formRow}>
           {/* Programme Selection */}
+          {/* eslint-disable jsx-a11y/label-has-associated-control */}
           <div className={styles.formItem}>
             <label htmlFor="programme1" className={styles.label}>
               Programme
@@ -111,6 +144,21 @@ function PreviousWinners() {
           </button>
         </div>
       </form>
+
+      {/* Winners List */}
+      <div className={styles.winnersList}>
+        {winners.length > 0 ? (
+          <ul>
+            {winners.map((winner, index) => (
+              <li key={index}>
+                {winner.name} - {winner.roll} - {winner.program}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div>No winners found</div>
+        )}
+      </div>
     </div>
   );
 }

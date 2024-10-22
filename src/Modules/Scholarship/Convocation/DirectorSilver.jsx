@@ -29,7 +29,6 @@ export default function DirectorSilver() {
     totalAmount: "",
     achievementInside: "",
     achievementOutside: "",
-    pbiProject: "", // For D&M Proficiency Gold Medal
     Social: "",
     Corporate: "",
     HallActivities: "",
@@ -53,6 +52,12 @@ export default function DirectorSilver() {
     CSEPercentage: "",
     MECHPercentage: "",
     DesignPercentage: "",
+    ScienceInside: "",
+    ScienceOutside: "",
+    GamesInside: "",
+    GamesOutside: "",
+    CulturalInside: "",
+    CulturalOutside: "",
   });
 
   const navigate = useNavigate(); // Initialize useNavigate for navigation
@@ -234,7 +239,7 @@ export default function DirectorSilver() {
               <>
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Brief Description of Academic Achievement"
+                    label="Academic Achievements"
                     name="achievementInside"
                     value={formData.achievementInside}
                     onChange={handleChange}
@@ -277,7 +282,7 @@ export default function DirectorSilver() {
 
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Gynkhana Activities"
+                    label="Gymkhana Activities"
                     name="GymkhanaActivities"
                     value={formData.GymkhanaActivities}
                     onChange={handleChange}
@@ -320,22 +325,63 @@ export default function DirectorSilver() {
 
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Brief Description of Science/Sports/Cultural Achievement: (Inside IIITDMJ)"
-                    name="achievementInside"
-                    value={formData.achievementInside}
+                    label="Science Inside"
+                    name="ScienceInside"
+                    value={formData.ScienceInside}
                     onChange={handleChange}
-                    placeholder="Enter achievements inside IIITDMJ"
+                    placeholder="Enter Science Inside"
                     minRows={3}
                   />
                 </Grid.Col>
 
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Brief Description of Science/Sports/Cultural Achievement: (Outside IIITDMJ)"
-                    name="achievementOutside"
-                    value={formData.achievementOutside}
+                    label="Science Outside "
+                    name="ScienceOutside"
+                    value={formData.ScienceOutside}
                     onChange={handleChange}
-                    placeholder="Enter achievements outside IIITDMJ"
+                    placeholder="Enter Science Outside "
+                    minRows={3}
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Games Inside "
+                    name="GamesInside"
+                    value={formData.GamesInside}
+                    onChange={handleChange}
+                    placeholder="Enter Games Inside "
+                    minRows={3}
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Games Outside "
+                    name="GamesOutside"
+                    value={formData.GamesOutside}
+                    onChange={handleChange}
+                    placeholder="Enter Games Outside "
+                    minRows={3}
+                  />
+                </Grid.Col>
+
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Cultural Inside "
+                    name="CulturalInside"
+                    value={formData.CulturalInside}
+                    onChange={handleChange}
+                    placeholder="Enter Cultural Inside "
+                    minRows={3}
+                  />
+                </Grid.Col>
+                <Grid.Col xs={12}>
+                  <Textarea
+                    label="Cultural Outside "
+                    name="CulturalOutside"
+                    value={formData.CulturalOutside}
+                    onChange={handleChange}
+                    placeholder="Enter Cultural Outside "
                     minRows={3}
                   />
                 </Grid.Col>
@@ -344,16 +390,6 @@ export default function DirectorSilver() {
 
             {formData.award === "D&M Proficiency Gold Medal" && (
               <>
-                <Grid.Col xs={12}>
-                  <TextInput
-                    label="PBI Project/Design Project"
-                    name="pbiProject"
-                    value={formData.pbiProject}
-                    onChange={handleChange}
-                    placeholder="Enter PBI Project details"
-                  />
-                </Grid.Col>
-
                 <Grid.Col xs={12}>
                   <TextInput
                     label="Title Name"
@@ -527,7 +563,7 @@ export default function DirectorSilver() {
               <>
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Brief Description of Science/Sports/Cultural Achievement: (Inside IIITDMJ)"
+                    label="Inside Achievements"
                     name="achievementInside"
                     value={formData.achievementInside}
                     onChange={handleChange}
@@ -538,7 +574,7 @@ export default function DirectorSilver() {
 
                 <Grid.Col xs={12}>
                   <Textarea
-                    label="Brief Description of Science/Sports/Cultural Achievement: (Outside IIITDMJ)"
+                    label="Outside Achievements"
                     name="achievementOutside"
                     value={formData.achievementOutside}
                     onChange={handleChange}

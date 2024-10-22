@@ -1,6 +1,7 @@
 .wrapper {
   padding: 20px;
 }
+
 .formRow {
   display: flex;
   gap: 20px;
@@ -56,4 +57,28 @@
 
 .submitButton:hover {
   background-color: #1499e6;
+}
+
+
+.tableContainer {
+  border: 1px solid blue; 
+  border-radius: 10px; 
+  background-color: #edf7f8; 
+  overflow: hidden; 
+  margin-top: 20px; 
+}
+
+.table {
+  width: 100%; 
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ccc; 
+}
+
+.table th {
+  background-color: #d2ecf0;
 }

@@ -52,12 +52,12 @@ export default function DirectorSilver() {
     CSEPercentage: "",
     MECHPercentage: "",
     DesignPercentage: "",
-    ScienceInside:"",
-    ScienceOutside:"",
-    GamesInside:"",
-    GamesOutside:"",
-    CulturalInside:"",
-    CulturalOutside:""
+    ScienceInside: "",
+    ScienceOutside: "",
+    GamesInside: "",
+    GamesOutside: "",
+    CulturalInside: "",
+    CulturalOutside: "",
   });
 
   const navigate = useNavigate(); // Initialize useNavigate for navigation
@@ -363,7 +363,7 @@ export default function DirectorSilver() {
                     placeholder="Enter Games Outside "
                     minRows={3}
                   />
-                </Grid.Col>  
+                </Grid.Col>
 
                 <Grid.Col xs={12}>
                   <Textarea
@@ -385,15 +385,11 @@ export default function DirectorSilver() {
                     minRows={3}
                   />
                 </Grid.Col>
-
-
               </>
             )}
 
             {formData.award === "D&M Proficiency Gold Medal" && (
               <>
-                
-
                 <Grid.Col xs={12}>
                   <TextInput
                     label="Title Name"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import axios from "axios";
+import { Select, Button, Table, Text, Loader } from "@mantine/core";
 import styles from "./PreviousWinners.module.css";
 
 function PreviousWinners() {
@@ -8,7 +9,8 @@ function PreviousWinners() {
   const [academicYear, setAcademicYear] = useState("");
   const [award, setAward] = useState("");
   const [winners, setWinners] = useState([]);
-
+  const [showTable, setShowTable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); 
 
   const awardMapping = {
     "Director's Gold": 2,
@@ -21,6 +23,8 @@ function PreviousWinners() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const awardId = awardMapping[award];
+    setShowTable(true);
+    setIsLoading(true); 
 
     const formData = {
       programme,
@@ -38,11 +42,10 @@ function PreviousWinners() {
             Authorization: `Token ${token}`,
             "Content-Type": "application/json",
           },
-        },
+        }
       );
 
       if (response.data.result === "Success") {
-        // Assuming each of these fields is an array
         const { student_name, student_program, roll } = response.data;
         const winnersArray = student_name.map((name, index) => ({
           name,
@@ -53,13 +56,15 @@ function PreviousWinners() {
         setWinners(winnersArray);
       } else {
         console.error("No winners found:", response.data.error);
-        setWinners([]); // Clear winners if not found
+        setWinners([]);
       }
     } catch (error) {
       console.error(
         "Error fetching winners:",
-        error.response ? error.response.data : error.message,
+        error.response ? error.response.data : error.message
       );
+    } finally {
+      setIsLoading(false); 
     }
   };
 
@@ -67,105 +72,89 @@ function PreviousWinners() {
     <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
         <div className={styles.formRow}>
-          {/* Programme Selection */}
-          {/* eslint-disable jsx-a11y/label-has-associated-control */}
           <div className={styles.formItem}>
-            <label htmlFor="programme1" className={styles.label}>
-              Programme
-            </label>
-            <div className={styles.selectContainer}>
-
-            <select
-
-                id="programme1"
-                className={styles.select}
-                value={programme}
-                onChange={(e) => setProgramme(e.target.value)}
-              >
-                <option value="">Select Programme</option>
-                <option value="B.Tech">B.Tech</option>
-                <option value="M.Tech">M.Tech</option>
-                <option value="B.Des">B.Des</option>
-                <option value="M.Des">M.Des</option>
-                <option value="PhD">PhD</option>
-              </select>
-              <CaretDown className={styles.caretIcon} />
-            </div>
+            <Select
+              label="Programme"
+              placeholder="Select Programme"
+              value={programme}
+              onChange={setProgramme}
+              data={[
+                { value: "B.Tech", label: "B.Tech" },
+                { value: "M.Tech", label: "M.Tech" },
+                { value: "B.Des", label: "B.Des" },
+                { value: "M.Des", label: "M.Des" },
+                { value: "PhD", label: "PhD" },
+              ]}
+              rightSection={<CaretDown />}
+            />
           </div>
 
-          {/* Academic Year Selection */}
           <div className={styles.formItem}>
-            <label htmlFor="academicProgramme" className={styles.label}>
-              Academic Year
-            </label>
-            <div className={styles.selectContainer}>
-
-            <select
-
-                id="academicProgramme"
-                className={styles.select}
-                value={academicYear}
-                onChange={(e) => setAcademicYear(e.target.value)}
-              >
-                <option value="">Select Year</option>
-                {[...Array(11).keys()].map((i) => (
-                  <option key={2014 + i} value={2014 + i}>
-                    {2014 + i}
-                  </option>
-                ))}
-              </select>
-              <CaretDown className={styles.caretIcon} />
-            </div>
+            <Select
+              label="Academic Year"
+              placeholder="Select Year"
+              value={academicYear}
+              onChange={setAcademicYear}
+              data={[...Array(11).keys()].map((i) => ({
+                value: `${2014 + i}`,
+                label: `${2014 + i}`,
+              }))}
+              rightSection={<CaretDown />}
+            />
           </div>
 
-          {/* Scholarship/Award Selection */}
           <div className={styles.formItem}>
-            <label htmlFor="programme2" className={styles.label}>
-              Scholarship/Awards
-            </label>
-            <div className={styles.selectContainer}>
-
-            <select
-
-                id="programme2"
-                className={styles.select}
-                value={award}
-                onChange={(e) => setAward(e.target.value)}
-              >
-                <option value="">Select Award</option>
-                {Object.keys(awardMapping).map((awardName) => (
-                  <option key={awardMapping[awardName]} value={awardName}>
-                    {awardName}
-                  </option>
-                ))}
-              </select>
-              <CaretDown className={styles.caretIcon} />
-            </div>
+            <Select
+              label="Scholarship/Awards"
+              placeholder="Select Award"
+              value={award}
+              onChange={setAward}
+              data={Object.keys(awardMapping).map((awardName) => ({
+                value: awardName,
+                label: awardName,
+              }))}
+              rightSection={<CaretDown />}
+            />
           </div>
         </div>
 
-        {/* Submit Button */}
         <div className={styles.buttonContainer}>
-          <button type="submit" className={styles.submitButton}>
-            Submit
-          </button>
+          <Button type="submit">Submit</Button>
         </div>
       </form>
 
-      {/* Winners List */}
-      <div className={styles.winnersList}>
-        {winners.length > 0 ? (
-          <ul>
+      {showTable && (
+  <div className={styles.winnersList}>
+    {isLoading ? ( 
+      <Loader size="lg" />
+    ) : winners.length > 0 ? (
+      <div className={styles.tableContainer}>
+        <Table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Roll No</th>
+              <th>Program</th>
+            </tr>
+          </thead>
+          <tbody>
             {winners.map((winner, index) => (
-              <li key={index}>
-                {winner.name} - {winner.roll} - {winner.program}
-              </li>
+              <tr key={index}>
+                <td>{winner.name}</td>
+                <td>{winner.roll}</td>
+                <td>{winner.program}</td>
+              </tr>
             ))}
-          </ul>
-        ) : (
-          <div>No winners found</div>
-        )}
+          </tbody>
+        </Table>
       </div>
+    ) : (
+      <Text>No winners found</Text>
+    )}
+  </div>
+)}
+
+
     </div>
   );
 }

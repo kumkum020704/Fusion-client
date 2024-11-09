@@ -124,19 +124,10 @@ export default function App() {
           }
         />
         <Route
-          path="/convenor/Medal_applications"
-          element={
-            <Layout>
-              <ConvenorBreadcumbs />
-              <Medal_applications />
-            </Layout>
-          }
-        />
-        <Route
           path="/ConvocationMedal"
           element={
             <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
+              <UserBreadcumbs />
               <ConvocationMedal />
             </Layout>
           }
@@ -145,7 +136,7 @@ export default function App() {
           path="/DirectorSilver"
           element={
             <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
+              <UserBreadcumbs />
               <DirectorSilver />
             </Layout>
           }
@@ -154,18 +145,17 @@ export default function App() {
           path="/DocumentUploadForm2"
           element={
             <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
+              <UserBreadcumbs />
               <DocumentUploadForm2 />
             </Layout>
           }
         />
-        // Rakshit's Route
         <Route
           path="/ScholarshipForm"
           element={
             <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
-             <ScholarshipForm/>
+              <UserBreadcumbs />
+              <ScholarshipForm />
             </Layout>
           }
         />
@@ -173,8 +163,8 @@ export default function App() {
           path="/scholar2"
           element={
             <Layout>
-             <UserBreadcumbs></UserBreadcumbs>
-             <DocumentUploadForm/>
+              <UserBreadcumbs />
+              <DocumentUploadForm />
             </Layout>
           }
         />

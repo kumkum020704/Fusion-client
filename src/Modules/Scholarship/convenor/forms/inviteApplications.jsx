@@ -30,7 +30,6 @@ function InviteApplications() {
     <div className={styles.container}>
       <div className={styles.tabs}>
         <div className={styles.activeTab}>Invite Applications</div>
-        <div>Recent invite applications</div>
       </div>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
@@ -43,7 +42,17 @@ function InviteApplications() {
               onChange={handleChange}
             >
               <option value="">Select</option>
-              {/* Add options here */}
+              <option value="MCM Scholarship">MCM Scholarship</option>
+              <option value="Director's Silver Medal">
+                Director's Silver Medal
+              </option>
+              <option value="Director's Gold Medal">
+                Director's Gold Medal
+              </option>
+              <option value="D&M Proficiency Gold Medal">
+                D&M Proficiency Gold Medal
+              </option>
+              <option value="Notional Prizes">Notional Prizes</option>
             </select>
           </div>
           <div className={styles.inputGroup}>
@@ -55,7 +64,10 @@ function InviteApplications() {
               onChange={handleChange}
             >
               <option value="">Select</option>
-              {/* Add options here */}
+              <option value="BTech">BTech</option>
+              <option value="MTech">MTech</option>
+              <option value="MDes">MDes</option>
+              <option value="PhD">PhD</option>
             </select>
           </div>
           <div className={styles.inputGroup}>
@@ -67,7 +79,13 @@ function InviteApplications() {
               onChange={handleChange}
             >
               <option value="">Select</option>
-              {/* Add options here */}
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
             </select>
           </div>
         </div>
@@ -80,7 +98,6 @@ function InviteApplications() {
               name="startDate"
               value={formData.startDate}
               onChange={handleChange}
-              placeholder="dd/mm/yyyy"
             />
           </div>
           <div className={styles.inputGroup}>
@@ -91,7 +108,6 @@ function InviteApplications() {
               name="endDate"
               value={formData.endDate}
               onChange={handleChange}
-              placeholder="dd/mm/yyyy"
             />
           </div>
         </div>

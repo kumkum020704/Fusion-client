@@ -24,6 +24,7 @@ import Medal_applications from "./Modules/Scholarship/convenor/components/medal_
 import ConvenorBreadcumbs from "./Modules/Scholarship/convenor/components/ConvenorBreadcumbs";
 
 import BrowseApplicationPage from "./Modules/Scholarship/user/pages/BrowseApplicationPage";
+import UserBreadcrumbs from "./Modules/Scholarship/user/components/UserBreadcumbs";
 
 export default function App() {
   const location = useLocation();
@@ -63,6 +64,7 @@ export default function App() {
           path="/scholarship"
           element={
             <Layout>
+              <UserBreadcrumbs></UserBreadcrumbs>
               <ScholarshipPage />
             </Layout>
           }

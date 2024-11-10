@@ -15,19 +15,15 @@ import ValidateAuth from "./helper/validateauth";
 import ScholarshipPage from "./Modules/Scholarship/user/pages/ScholarshipPage";
 // eslint-disable-next-line import/no-unresolved
 import ScholarStatusPage from "./Modules/Scholarship/user/pages/ScholarshipStatusPage";
-import UserBreadcumbs from "./Modules/Scholarship/user/components/UserBreadcumbs";
 // eslint-disable-next-line import/no-unresolved
 import Convenor from "./Modules/Scholarship/convenor/pages/Convenor";
-import AwardsAndScholarshipCatalogC from "./Modules/Scholarship/convenor/components/AwardsAndScholarshipCatalogC";
+
 import InviteApplications from "./Modules/Scholarship/convenor/forms/inviteApplications";
 import MCM_Applications from "./Modules/Scholarship/convenor/components/MCM_Applications";
 import Medal_applications from "./Modules/Scholarship/convenor/components/medal_applications";
 import ConvenorBreadcumbs from "./Modules/Scholarship/convenor/components/ConvenorBreadcumbs";
-import DocumentUploadForm2 from "./Modules/Scholarship/Convocation/DocumentUploadForm2";
-import DirectorSilver from "./Modules/Scholarship/Convocation/DirectorSilver";
-import ConvocationMedal from "./Modules/Scholarship/Convocation/ConvocationMedal";
-import ScholarshipForm from "./Modules/Scholarship/MCM_Application/ScholarshipForm";
-import DocumentUploadForm from "./Modules/Scholarship/MCM_Application/DocumentUploadForm";
+
+import BrowseApplicationPage from "./Modules/Scholarship/user/pages/BrowseApplicationPage";
 
 export default function App() {
   const location = useLocation();
@@ -62,6 +58,7 @@ export default function App() {
 
         {/* scholarship */}
         {/* user routes */}
+
         <Route
           path="/scholarship"
           element={
@@ -74,7 +71,7 @@ export default function App() {
           path="/user/browseApplication"
           element={
             <Layout>
-              <UserBreadcumbs />
+              <BrowseApplicationPage></BrowseApplicationPage>
             </Layout>
           }
         />
@@ -86,6 +83,7 @@ export default function App() {
             </Layout>
           }
         />
+
         {/* convenor routes */}
         <Route
           path="/convenor/awards"
@@ -129,61 +127,6 @@ export default function App() {
             <Layout>
               <ConvenorBreadcumbs />
               <Medal_applications />
-            </Layout>
-          }
-        />
-        <Route
-          path="/ConvocationMedal"
-          element={
-            <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
-              <ConvocationMedal />
-            </Layout>
-          }
-        />
-        <Route
-          path="/DirectorSilver"
-          element={
-            <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
-              <DirectorSilver />
-            </Layout>
-          }
-        />
-        <Route
-          path="/DocumentUploadForm2"
-          element={
-            <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
-              <DocumentUploadForm2 />
-            </Layout>
-          }
-        />
-        // Rakshit's Route
-        <Route
-          path="/ScholarshipForm"
-          element={
-            <Layout>
-              <UserBreadcumbs></UserBreadcumbs>
-             <ScholarshipForm/>
-            </Layout>
-          }
-        />
-        <Route
-          path="/scholar2"
-          element={
-            <Layout>
-             <UserBreadcumbs></UserBreadcumbs>
-             <DocumentUploadForm/>
-            </Layout>
-          }
-        />
-
-        <Route
-          path="/profile"
-          element={
-            <Layout>
-              <Profile />
             </Layout>
           }
         />

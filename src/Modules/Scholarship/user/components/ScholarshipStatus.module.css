@@ -11,10 +11,16 @@
   margin-bottom: 10px;
 }
 
-.underline {
+.underline1 {
   height: 2px;
   background-color: #17ABFF;
   margin-bottom: 20px;
+}
+
+.underline {
+  height: 1px;
+  background-color: grey;
+  margin-bottom: 10px;
 }
 
 .scholarshipName {
@@ -71,6 +77,7 @@
   padding: 10px 20px;
   cursor: pointer;
   font-size: 14px;
+  margin-bottom: 5%;
 }
 
 .checkStatusButton:hover {
@@ -83,3 +90,41 @@
   font-size: 16px;
   margin-top: 20px;
 }
+.status{
+  margin-left: 15%
+}
+
+.statuss{
+  background-color: lightblue;
+  border: 2px solid #1497e0;
+  border-radius: 10px;
+  margin-right: 50%;
+  margin-bottom: 5%;
+}
+
+
+
+.tableContainer {
+  border: 1px solid blue; 
+  border-radius: 10px; 
+  background-color: #edf7f8; 
+  overflow: hidden; 
+  margin-top: 20px; 
+}
+
+.table {
+  width: 100%; 
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ccc; 
+}
+
+.table th {
+  background-color: #d2ecf0;
+}
+
+

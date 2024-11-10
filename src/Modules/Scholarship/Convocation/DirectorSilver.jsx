@@ -11,6 +11,7 @@ import {
   Title,
 } from "@mantine/core";
 import Header from "./Header";
+import DocumentUploadForm2 from "./DocumentUploadForm2";
 
 export default function DirectorSilver() {
   const [formData, setFormData] = useState({
@@ -60,7 +61,7 @@ export default function DirectorSilver() {
     CulturalOutside: "",
   });
 
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
+  const [next,setNext]=useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,17 +72,13 @@ export default function DirectorSilver() {
   };
 
   const handleNext = (e) => {
-    e.preventDefault(); // Prevent the default form submission
-    // Add any validation or data processing logic here before navigating
-    navigate("/DocumentUploadForm2"); // Navigate to the next page, change '/nextPage' to your desired route
+    e.preventDefault();
+    setNext(true);
   };
 
   return (
     <>
-      <div style={{ marginLeft: "-173px" }}>
-        <Header />
-      </div>
-      <Container size="lg" style={{ marginTop: "-40px" }}>
+      {!next && <Container size="lg" >
         <Title order={2} mb="md">
           Award Registration Form
         </Title>
@@ -592,7 +589,9 @@ export default function DirectorSilver() {
             </Button>
           </Group>
         </form>
-      </Container>
+      </Container>}
+      {next&&<DocumentUploadForm2 formData={formData} setNext={setNext}></DocumentUploadForm2>}
+      
     </>
   );
 }

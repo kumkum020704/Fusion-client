@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Paper,
@@ -9,15 +9,17 @@ import {
   Group,
 } from "@mantine/core";
 import { NavLink } from "react-router-dom";
-import Header from "./Header";
+import DirectorSilver from "./DirectorSilver";
 
 function ConvocationMedal() {
+  const [next,setnext]=useState(false);
+  const setNextHandler=()=>{
+    setnext(true);
+  }
+  
   return (
     <>
-      <div style={{ marginLeft: "-173px" }}>
-        <Header />
-      </div>
-      <Container size="lg" my="xl">
+     {!next&& <Container size="lg" my="xl">
         <Paper
           p="-15"
           radius="md"
@@ -65,8 +67,7 @@ function ConvocationMedal() {
           {/* Proceed Button */}
           <Group position="right" mt="lg">
             <Button
-              component={NavLink}
-              to="/DirectorSilver"
+              onClick={setNextHandler}
               color="blue"
               radius="md"
               size="md"
@@ -75,7 +76,8 @@ function ConvocationMedal() {
             </Button>
           </Group>
         </Paper>
-      </Container>
+      </Container>}
+      {next&&<DirectorSilver></DirectorSilver>}
     </>
   );
 }

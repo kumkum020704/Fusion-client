@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import styles from "./medal_applications.module.css";
 
 function Medal_applications() {
@@ -14,34 +13,23 @@ function Medal_applications() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.tabs}>
-        <div className={styles.tab}>
-          <NavLink
-            to="/convenor/MCM_application"
-            className={({ isActive }) =>
-              isActive ? styles.activeLink : styles.inactiveLink
-            }
-          >
-            Merit-cum-Means Scholarship
-          </NavLink>
-        </div>
-        <div className={`${styles.tab} ${styles.activeTab}`}>
-          Convocation Medals
-        </div>
-      </div>
       <h2 className={styles.title}>Convocation Medals</h2>
+
       <div className={styles.awardSelector}>
         <label htmlFor="award-select">Awards:</label>
         <select
           id="award-select"
+          aria-labelledby="award-select"
           value={selectedAward}
           onChange={(e) => setSelectedAward(e.target.value)}
         >
           <option value="Director's Silver Medal">
             Director's Silver Medal
           </option>
+          <option value="Director's Gold Medal">Director's Gold Medal</option>
         </select>
       </div>
+
       <table className={styles.table}>
         <thead>
           <tr>

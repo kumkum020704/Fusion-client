@@ -13,15 +13,14 @@ const CatalogPage = () => {
   };
 
   return (
-    <>
-      <UserBreadcumbs></UserBreadcumbs>
+    <div className={styles.pageBackground}> 
       <div className={styles.wrapper}>
         <div className={styles.buttonContainer}>
           <button onClick={changeDesc} value={1} className={styles.button}>
-            Awards and Scholarships Catalogue
+            Awards and Scholarship Catalogue
           </button>
           <button onClick={changeDesc} value={2} className={styles.button}>
-            SPACS Member and Details
+            SPACS Members and details
           </button>
           <button onClick={changeDesc} value={3} className={styles.button}>
             Previous Winners
@@ -52,7 +51,7 @@ const CatalogPage = () => {
         {desc === 2 && <SpacsMembers />}
         {desc === 3 && <PreviousWinners />}
       </div>
-    </>
+    </div>
   );
 };
 

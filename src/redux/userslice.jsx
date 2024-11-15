@@ -11,7 +11,7 @@ const userSlice = createSlice({
     currentAccessibleModules: {}, // Format---> {module: true}
   },
   reducers: {
-    setUserName: (state, action) => {
+    setUserName: (state, action) => { 
       state.username = action.payload;
     },
     setRollNo: (state, action) => {

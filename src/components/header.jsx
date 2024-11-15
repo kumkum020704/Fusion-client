@@ -22,7 +22,7 @@ import classes from "../Modules/Dashboard/Dashboard.module.css";
 import avatarImage from "../assets/avatar.png";
 import { logoutRoute, updateRoleRoute } from "../routes/dashboardRoutes";
 
-function Header({ opened, toggleSidebar }) {
+function Header({ opened, toggleSidebar }) { 
   const [popoverOpened, setPopoverOpened] = useState(false);
   const username = useSelector((state) => state.user.username);
   const roles = useSelector((state) => state.user.roles);

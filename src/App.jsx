@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-pascal-case */
+import { useDispatch, useSelector } from "react-redux";
+
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
@@ -28,6 +30,7 @@ import UserBreadcrumbs from "./Modules/Scholarship/user/components/UserBreadcumb
 
 export default function App() {
   const location = useLocation();
+  const role = useSelector((state) => state.user.role);
   return (
     <MantineProvider>
       <Notifications
@@ -64,10 +67,14 @@ export default function App() {
           path="/scholarship"
           element={
             <Layout>
-              <UserBreadcrumbs></UserBreadcrumbs>
-              <ScholarshipPage />
+              {role=='spacsconvenor'&& <><ConvenorBreadcumbs />
+                <Convenor /></>}
+              {role=='student' && <><UserBreadcrumbs></UserBreadcrumbs>
+                <ScholarshipPage /></>}
+              {role=='spacsassistant'&& <><ConvenorBreadcumbs />
+                <Convenor /></>}
             </Layout>
-          }
+          } 
         />
         <Route
           path="/user/browseApplication"
@@ -87,15 +94,6 @@ export default function App() {
         />
 
         {/* convenor routes */}
-        <Route
-          path="/convenor/awards"
-          element={
-            <Layout>
-              <ConvenorBreadcumbs />
-              <Convenor />
-            </Layout>
-          }
-        />
         <Route
           path="/convenor/members"
           element={

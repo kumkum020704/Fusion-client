@@ -90,7 +90,9 @@
   color: #2196f3;
   font-weight: bold;
 }
-
+.container {
+  margin-top: 40px; /* Adjust the value as needed */
+}
 .form {
   background-color: #fff;
   padding: 70px;
@@ -150,3 +152,5 @@ textarea {
 .submitButton:hover {
   background-color: #1976d2;
 }
+
+

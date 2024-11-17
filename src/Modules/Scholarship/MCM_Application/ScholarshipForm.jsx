@@ -10,6 +10,7 @@ import {
   FileButton,
   Text,
   Group,
+  Select
 } from '@mantine/core';
 
 const ScholarshipForm = () => {
@@ -69,7 +70,7 @@ const ScholarshipForm = () => {
   };
 
   const handleSubmit = async () => {
-  
+
     const submissionData = new FormData();
 
     Object.keys(formData).forEach((key) => {
@@ -112,9 +113,36 @@ const ScholarshipForm = () => {
               <Grid.Col span={6}>
                 <TextInput label="Category" name="category" placeholder="Enter your category" value={formData.category} onChange={handleInputChange} />
                 <TextInput label="Room no" name="roomNo" placeholder="Enter room number" value={formData.roomNo} onChange={handleInputChange} mt="md" />
-                <TextInput label="Father's Occupation" name="fathersOccupation" placeholder="Enter father's occupation" value={formData.fathersOccupation} onChange={handleInputChange} mt="md" />
+                <Select
+                  label="Father's Occupation"
+                  name="fathersOccupation"
+                  placeholder="Select father's occupation"
+                  value={formData.fathersOccupation}
+                  onChange={(value) => handleInputChange({ target: { name: 'fathersOccupation', value } })}
+                  data={[
+                    { value: 'government', label: 'Government' },
+                    { value: 'private', label: 'Private' },
+                    { value: 'public', label: 'Public' },
+                    { value: 'business', label: 'Business' },
+                    { value: 'medical', label: 'Medical' },
+                    { value: 'consultant', label: 'Consultant' },
+                    { value: 'pensioners', label: 'Pensioners' },
+                  ]}
+                  mt="md"
+                />
                 <TextInput label="Mother's Name" name="mothersName" placeholder="Enter mother's name" value={formData.mothersName} onChange={handleInputChange} mt="md" />
-                <TextInput label="Mother's Occupation" name="mothersOccupation" placeholder="Enter mother's occupation" value={formData.mothersOccupation} onChange={handleInputChange} mt="md" />
+                <Select
+                  label="Mother's Occupation"
+                  name="mothersOccupation"
+                  placeholder="Select mother's occupation"
+                  value={formData.mothersOccupation}
+                  onChange={(value) => handleInputChange({ target: { name: 'mothersOccupation', value } })}
+                  data={[
+                    { value: 'EMPLOYED', label: 'Employed' },
+                    { value: 'HOUSE_WIFE', label: 'House Wife' },
+                  ]}
+                  mt="md"
+                />
                 <TextInput label="Brother's Name" name="brothersName" placeholder="Enter brother's name" value={formData.brothersName} onChange={handleInputChange} mt="md" />
                 <TextInput label="Sister's Occupation" name="sistersOccupation" placeholder="Enter sister's occupation" value={formData.sistersOccupation} onChange={handleInputChange} mt="md" />
                 <TextInput label="Mother's Annual Income" name="mothersIncome" placeholder="Enter mother's income" value={formData.mothersIncome} onChange={handleInputChange} mt="md" />
@@ -133,6 +161,7 @@ const ScholarshipForm = () => {
                 <TextInput label="Other Sources Annual Income" name="otherSourcesIncome" placeholder="Enter other sources' income" value={formData.otherSourcesIncome} onChange={handleInputChange} mt="md" />
                 <TextInput label="Four Wheeler Description" name="fourWheelerDescription" placeholder="Enter vehicle description" value={formData.fourWheelerDescription} onChange={handleInputChange} mt="md" />
               </Grid.Col>
+
             </Grid>
             {/* Next Button */}
             <Group position="right" mt="xl">

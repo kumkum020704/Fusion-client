@@ -10,11 +10,14 @@ import {
   Container,
   Alert,
 } from "@mantine/core";
-import { CheckFat, Upload, Warning } from "@phosphor-icons/react"; // Import the new icons
+import { CheckFat, Upload, Warning } from "@phosphor-icons/react";
 import Header from "./Header";
 
-function DocumentUploadForm2() {
+function DocumentUploadForm2({ formData,setNext }) {
   const [uploadStatus, setUploadStatus] = useState({});
+  const backHandler=()=>{
+    setNext(false);
+  }
 
   const documents = [
     { id: "photo", name: "Student Photo", type: "image/*" },
@@ -22,16 +25,8 @@ function DocumentUploadForm2() {
     { id: "marksheet", name: "Mark Sheet", type: ".pdf,.doc,.docx" },
     { id: "feeReceipt", name: "Fee Receipt", type: ".pdf,.jpg,.jpeg,.png" },
     { id: "bankDetails", name: "Bank Details", type: ".pdf,.doc,.docx" },
-    {
-      id: "residentialCert",
-      name: "Residential Certificate",
-      type: ".pdf,.doc,.docx",
-    },
-    {
-      id: "bonafideCert",
-      name: "Bonafide Student Certificate",
-      type: ".pdf,.doc,.docx",
-    },
+    { id: "residentialCert", name: "Residential Certificate", type: ".pdf,.doc,.docx" },
+    { id: "bonafideCert", name: "Bonafide Student Certificate", type: ".pdf,.doc,.docx" },
     { id: "aadhar", name: "Aadhar Card", type: ".pdf,.jpg,.jpeg,.png" },
   ];
 
@@ -45,41 +40,28 @@ function DocumentUploadForm2() {
     }
   };
 
+  const handleSubmit = () => {
+    console.log("Form Data:", formData);
+    console.log("Document Upload Status:", uploadStatus);
+  };
+
   return (
     <>
-      <div style={{ marginLeft: "-173px" }}>
-        <Header />
-      </div>
       <Container size="lg" my="xl">
-        <Paper
-          p="-15"
-          radius="md"
-          style={{ background: "none", marginTop: "-40px" }}
-        >
-          <Title order={2} mb="lg">
-            Document Upload
-          </Title>
+        <Paper p="-15" radius="md" style={{ background: "none", marginTop: "-40px" }}>
+          <Title order={2} mb="lg">Document Upload</Title>
           <Text color="dimmed" mb="md">
-            Please upload all required documents for your scholarship
-            application.
+            Please upload all required documents for your scholarship application.
           </Text>
 
-          <Alert
-            icon={<Warning size={32} />} // Use the new Warning icon
-            title="Important"
-            color="blue"
-            mb="lg"
-          >
-            All documents should be clear and legible. Supported formats: PDF,
-            JPEG, PNG, DOC.
+          <Alert icon={<Warning size={32} />} title="Important" color="blue" mb="lg">
+            All documents should be clear and legible. Supported formats: PDF, JPEG, PNG, DOC.
           </Alert>
 
           <Grid>
             {documents.map((doc) => (
               <Grid.Col key={doc.id} xs={12} md={6}>
-                <Text size="sm" weight={500} mb="xs">
-                  {doc.name}
-                </Text>
+                <Text size="sm" weight={500} mb="xs">{doc.name}</Text>
                 <FileButton
                   onChange={(file) => handleFileChange(doc.id, file)}
                   accept={doc.type}
@@ -90,14 +72,12 @@ function DocumentUploadForm2() {
                       fullWidth
                       leftIcon={
                         uploadStatus[doc.id] === "success" ? (
-                          <CheckFat size={32} /> // Use the new CheckFat icon
+                          <CheckFat size={32} />
                         ) : (
-                          <Upload size={32} /> // Use the new Upload icon
+                          <Upload size={32} />
                         )
                       }
-                      color={
-                        uploadStatus[doc.id] === "success" ? "green" : "gray"
-                      }
+                      color={uploadStatus[doc.id] === "success" ? "green" : "gray"}
                     >
                       {uploadStatus[doc.id] === "success"
                         ? "Uploaded Successfully"
@@ -110,8 +90,8 @@ function DocumentUploadForm2() {
           </Grid>
 
           <Group position="right" mt="xl">
-            <Button variant="default">Cancel</Button>
-            <Button color="blue">Submit All Documents</Button>
+            <Button variant="default" onClick={backHandler}>back</Button>
+            <Button color="blue" onClick={handleSubmit}>Submit All Documents</Button>
           </Group>
         </Paper>
       </Container>

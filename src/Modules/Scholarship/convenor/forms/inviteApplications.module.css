@@ -42,12 +42,12 @@
     margin-right: 0;
   }
   
-  label {
+  /* label {
     margin-bottom: 5px;
     font-weight: bold;
   }
-  
-  select, input[type="date"], textarea {
+   */
+  /* select, input[type="date"], textarea {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -57,7 +57,7 @@
   textarea {
     resize: vertical;
     min-height: 100px;
-  }
+  } */
   
   .submitButton {
     background-color: #2196f3;
@@ -68,10 +68,10 @@
     float: right;
     width: 120px;
   }
- button{
+ /* button{
   margin-top: 10px;
   
- }
+ } */
   .submitButton:hover {
     background-color: #1976d2;
   max-width: 800px;
@@ -120,12 +120,12 @@
   margin-right: 0;
 }
 
-label {
+/* label {
   margin-bottom: 5px;
   font-weight: bold;
-}
+} */
 
-select,
+/* select,
 input[type="date"],
 textarea {
   padding: 8px;
@@ -137,7 +137,7 @@ textarea {
 textarea {
   resize: vertical;
   min-height: 100px;
-}
+} */
 
 .submitButton {
   background-color: #2196f3;

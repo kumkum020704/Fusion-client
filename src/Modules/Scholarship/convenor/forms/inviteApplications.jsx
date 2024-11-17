@@ -28,10 +28,10 @@ function InviteApplications() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.tabs}>
-        <div className={styles.activeTab}>Invite Applications</div>
-      </div>
       <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.tabs}>
+          <div className={styles.activeTab}>Invite Applications</div>
+        </div>
         <div className={styles.row}>
           <div className={styles.inputGroup}>
             <label htmlFor="type">Type</label>

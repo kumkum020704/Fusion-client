@@ -15,32 +15,39 @@ function CatalogPage() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.buttonContainer}>
-        <button onClick={changeDesc} value={1} className={styles.button}>
+        <button
+          onClick={changeDesc}
+          value={1}
+          className={`${styles.button} ${desc === 1 ? styles.activeButton : ""}`}
+        >
           Awards and Scholarship Catalogue
         </button>
-        <button onClick={changeDesc} value={2} className={styles.button}>
+        <button
+          onClick={changeDesc}
+          value={2}
+          className={`${styles.button} ${desc === 2 ? styles.activeButton : ""}`}
+        >
           SPACS Members and details
         </button>
-        <button onClick={changeDesc} value={3} className={styles.button}>
+        <button
+          onClick={changeDesc}
+          value={3}
+          className={`${styles.button} ${desc === 3 ? styles.activeButton : ""}`}
+        >
           Previous Winners
         </button>
       </div>
 
-      <div className={styles.progressBar}>
-        <button
-          onClick={changeDesc}
-          value={1}
-          className={`${styles.progressButton} ${desc === 1 ? styles.activeProgress : styles.inactiveProgress}`}
+      {/* Line below the active button */}
+      <div className={styles.lineContainer}>
+        <div
+          className={`${styles.line} ${desc === 1 ? styles.activeLine : ""}`}
         />
-        <button
-          onClick={changeDesc}
-          value={2}
-          className={`${styles.progressButton} ${desc === 2 ? styles.activeProgress : styles.inactiveProgress}`}
+        <div
+          className={`${styles.line} ${desc === 2 ? styles.activeLine : ""}`}
         />
-        <button
-          onClick={changeDesc}
-          value={3}
-          className={`${styles.progressButton} ${desc === 3 ? styles.activeProgress : styles.inactiveProgress}`}
+        <div
+          className={`${styles.line} ${desc === 3 ? styles.activeLine : ""}`}
         />
       </div>
 

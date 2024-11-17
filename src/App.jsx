@@ -1,9 +1,11 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-pascal-case */
 import { useDispatch, useSelector } from "react-redux";
 
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import { Notifications } from "@mantine/notifications";
 import { Layout } from "./components/layout";
@@ -13,6 +15,7 @@ import LoginPage from "./pages/login";
 import ForgotPassword from "./pages/forgotPassword";
 import AcademicPage from "./Modules/Academic/index";
 import ValidateAuth from "./helper/validateauth";
+
 // eslint-disable-next-line import/no-unresolved
 import ScholarshipPage from "./Modules/Scholarship/user/pages/ScholarshipPage";
 // eslint-disable-next-line import/no-unresolved
@@ -28,19 +31,17 @@ import ConvenorBreadcumbs from "./Modules/Scholarship/convenor/components/Conven
 import BrowseApplicationPage from "./Modules/Scholarship/user/pages/BrowseApplicationPage";
 import UserBreadcrumbs from "./Modules/Scholarship/user/components/UserBreadcumbs";
 
+import InactivityHandler from "./helper/inactivityhandler";
+
 export default function App() {
   const location = useLocation();
   const role = useSelector((state) => state.user.role);
   return (
     <MantineProvider>
-      <Notifications
-        position="top-right"
-        zIndex={1000}
-        autoClose={2000}
-        limit={1}
-      />
-      {location.pathname !== "/accounts/login" &&
-        location.pathname !== "/reset-password" && <ValidateAuth />}
+      <Notifications position="top-center" autoClose={2000} limit={1} />
+      {location.pathname !== "/accounts/login" && <ValidateAuth />}
+      {location.pathname !== "/accounts/login" && <InactivityHandler />}
+
       <Routes>
         <Route path="/" element={<Navigate to="/accounts/login" replace />} />
         <Route
@@ -67,20 +68,32 @@ export default function App() {
           path="/scholarship"
           element={
             <Layout>
-              {role=='spacsconvenor'&& <><ConvenorBreadcumbs />
-                <Convenor /></>}
-              {role=='student' && <><UserBreadcrumbs></UserBreadcrumbs>
-                <ScholarshipPage /></>}
-              {role=='spacsassistant'&& <><ConvenorBreadcumbs />
-                <Convenor /></>}
+              {role === "spacsconvenor" && (
+                <>
+                  <ConvenorBreadcumbs />
+                  <Convenor />
+                </>
+              )}
+              {role === "student" && (
+                <>
+                  <UserBreadcrumbs />
+                  <ScholarshipPage />
+                </>
+              )}
+              {role === "spacsassistant" && (
+                <>
+                  <ConvenorBreadcumbs />
+                  <Convenor />
+                </>
+              )}
             </Layout>
-          } 
+          }
         />
         <Route
           path="/user/browseApplication"
           element={
             <Layout>
-              <BrowseApplicationPage></BrowseApplicationPage>
+              <BrowseApplicationPage />
             </Layout>
           }
         />

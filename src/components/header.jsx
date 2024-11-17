@@ -6,7 +6,7 @@ import axios from "axios";
 import {
   Avatar,
   Burger,
-  Flex, 
+  Flex,
   Indicator,
   Popover,
   Group,
@@ -17,12 +17,13 @@ import {
   Paper,
 } from "@mantine/core";
 import PropTypes from "prop-types";
+import { notifications } from "@mantine/notifications";
 import { setRole, setCurrentAccessibleModules } from "../redux/userslice";
 import classes from "../Modules/Dashboard/Dashboard.module.css";
 import avatarImage from "../assets/avatar.png";
 import { logoutRoute, updateRoleRoute } from "../routes/dashboardRoutes";
 
-function Header({ opened, toggleSidebar }) { 
+function Header({ opened, toggleSidebar }) {
   const [popoverOpened, setPopoverOpened] = useState(false);
   const username = useSelector((state) => state.user.username);
   const roles = useSelector((state) => state.user.roles);
@@ -44,6 +45,19 @@ function Header({ opened, toggleSidebar }) {
           },
         },
       );
+
+      notifications.show({
+        title: "Role Updated",
+        message: (
+          <Flex gap="4px">
+            <Text fz="sm">Your role has been changed to </Text>
+            <Text fz="sm" fw="500" c="dark">
+              {newRole}
+            </Text>
+          </Flex>
+        ),
+        color: "green",
+      });
       console.log(response.data.message);
       dispatch(setRole(newRole));
       dispatch(setCurrentAccessibleModules());

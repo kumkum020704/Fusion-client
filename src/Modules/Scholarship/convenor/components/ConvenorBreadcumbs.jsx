@@ -6,7 +6,7 @@ function ConvenorBreadcumbs() {
   return (
     <div className={styles.ctr}>
       <NavLink
-        to="/convenor/awards"
+        to="/scholarship"
         className={({ isActive }) =>
           isActive ? styles.activeLink : styles.inactiveLink
         }

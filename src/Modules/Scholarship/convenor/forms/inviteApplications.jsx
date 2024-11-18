@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import styles from "./inviteApplications.module.css";
-
+import axios from "axios";
 function InviteApplications() {
   const [formData, setFormData] = useState({
-    type: "",
+    award: "",
     programme: "",
     batch: "",
-    startDate: "",
-    endDate: "",
+    startdate: "",
+    enddate: "",
     remarks: "",
   });
 
@@ -20,25 +20,52 @@ function InviteApplications() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted:", formData);
+  //   // Add your form submission logic here
+  // };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Add your form submission logic here
+  
+    try {
+      const token = localStorage.getItem("authToken");
+      const response = await fetch("http://127.0.0.1:8000/spacs/release", { // Adjust the URL if needed
+        method: "POST",
+        headers: {
+          Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Form successfully submitted:", data);
+        alert("Application submitted successfully!");
+      } else {
+        const errorData = await response.json();
+        console.error("Error submitting form:", errorData);
+        alert("Failed to submit the application. Please try again.");
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      alert("Network error. Please check your connection.");
+    }
   };
 
   return (
     <div className={styles.container}>
+      <div className={styles.tabs}>
+        <div className={styles.activeTab}>Invite Applications</div>
+      </div>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.tabs}>
-          <div className={styles.activeTab}>Invite Applications</div>
-        </div>
         <div className={styles.row}>
           <div className={styles.inputGroup}>
-            <label htmlFor="type">Type</label>
+            <label htmlFor="award">Type</label>
             <select
-              id="type"
-              name="type"
-              value={formData.type}
+              id="award"
+              name="award"
+              value={formData.award}
               onChange={handleChange}
             >
               <option value="">Select</option>
@@ -91,22 +118,22 @@ function InviteApplications() {
         </div>
         <div className={styles.row}>
           <div className={styles.inputGroup}>
-            <label htmlFor="startDate">Start date</label>
+            <label htmlFor="startdate">Start date</label>
             <input
               type="date"
-              id="startDate"
-              name="startDate"
-              value={formData.startDate}
+              id="startdate"
+              name="startdate"
+              value={formData.startdate}
               onChange={handleChange}
             />
           </div>
           <div className={styles.inputGroup}>
-            <label htmlFor="endDate">End Date</label>
+            <label htmlFor="enddate">End Date</label>
             <input
               type="date"
-              id="endDate"
-              name="endDate"
-              value={formData.endDate}
+              id="enddate"
+              name="enddate"
+              value={formData.enddate}
               onChange={handleChange}
             />
           </div>

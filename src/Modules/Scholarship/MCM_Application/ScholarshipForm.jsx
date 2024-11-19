@@ -15,7 +15,6 @@ import {
 
 
 const ScholarshipForm = () => {
-  const rol = useSelector((state) => state.user.roll);
   const [step, setStep] = useState(1); // Step control for form sections
   const [uploadStatus, setUploadStatus] = useState({});
   const [formData, setFormData] = useState({

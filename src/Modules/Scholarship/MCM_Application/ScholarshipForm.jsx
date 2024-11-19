@@ -13,40 +13,50 @@ import {
   Select
 } from '@mantine/core';
 
+
 const ScholarshipForm = () => {
+  const rol = useSelector((state) => state.user.roll);
   const [step, setStep] = useState(1); // Step control for form sections
   const [uploadStatus, setUploadStatus] = useState({});
   const [formData, setFormData] = useState({
-    category: '',
-    roomNo: '',
-    fathersOccupation: '',
-    mothersName: '',
-    mothersOccupation: '',
-    brothersName: '',
-    sistersOccupation: '',
-    mothersIncome: '',
-    numFourWheeler: '',
-    hallNo: '',
-    fathersName: '',
-    fathersOccupationDescription: '',
-    mothersOccupationDescription: '',
-    brothersOccupation: '',
-    sistersName: '',
-    fathersIncome: '',
-    otherSourcesIncome: '',
-    fourWheelerDescription: '',
+    brother_name: "",
+    brother_occupation: "",
+    sister_name: "",
+    sister_occupation: "",
+    income_father: 0,
+    income_mother: 0,
+    income_other: 0,
+    father_occ: "", 
+    mother_occ: "", 
+    father_occ_desc: "",
+    mother_occ_desc: "",
+    four_wheeler: null,
+    four_wheeler_desc: "",
+    two_wheeler: null,
+    two_wheeler_desc: "",
+    house: "",
+    plot_area: null,
+    constructed_area: null,
+    school_fee: null,
+    school_name: "",
+    bank_name: "",
+    loan_amount: null,
+    college_fee: null,
+    college_name: "", 
+    annual_income: 0,
+    date: "",
+    award_id: 4,
+    student: ""
   });
   const [documents, setDocuments] = useState({});
 
   const documentFields = [
-    { id: 'photo', name: 'Student Photo', type: 'image/*' },
-    { id: 'income', name: 'Income Certificate', type: '.pdf,.doc,.docx' },
-    { id: 'marksheet', name: 'Mark Sheet', type: '.pdf,.doc,.docx' },
-    { id: 'feeReceipt', name: 'Fee Receipt', type: '.pdf,.jpg,.jpeg,.png' },
-    { id: 'bankDetails', name: 'Bank Details', type: '.pdf,.doc,.docx' },
-    { id: 'residentialCert', name: 'Residential Certificate', type: '.pdf,.doc,.docx' },
-    { id: 'bonafideCert', name: 'Bonafide Student Certificate', type: '.pdf,.doc,.docx' },
-    { id: 'aadhar', name: 'Aadhar Card', type: '.pdf,.jpg,.jpeg,.png' },
+    { id: 'income_certificate', name: 'income_certificate', type: '.pdf,.doc,.docx' },
+    { id: 'Marksheet', name: 'Marksheet', type: '.pdf,.doc,.docx' },
+    { id: 'Fee_Receipt', name: ' Fee_Receipt', type: '.pdf,.jpg,.jpeg,.png' },
+    { id: 'Bank_details', name: 'Bank_details', type: '.pdf,.doc,.docx' },
+    { id: 'Affidavit', name: 'Affidavit', type: '.pdf,.doc,.docx' },
+    { id: 'Aadhar_card', name: 'Aadhar_card', type: '.pdf,.jpg,.jpeg,.png' },
   ];
 
   const handleNext = (e) => {
@@ -68,35 +78,41 @@ const ScholarshipForm = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
+  
   const handleSubmit = async () => {
-
+    
     const submissionData = new FormData();
-
+    
     Object.keys(formData).forEach((key) => {
       submissionData.append(key, formData[key]);
     });
-
+    
     Object.keys(documents).forEach((key) => {
       submissionData.append(key, documents[key]);
     });
     for (const [key, value] of submissionData.entries()) {
       console.log(`${key}:`, value);
-    }
-    // try {
-    //   const response = await fetch('http://127.0.0.1:8000/spacs', {
-    //     method: 'POST',
-    //     body: submissionData,
-    //   });
 
-    //   if (response.ok) {
-    //     console.log('Form data and documents submitted successfully.');
-    //   } else {
-    //     console.error('Failed to submit form data and documents:', response.statusText);
-    //   }
-    // } catch (error) {
-    //   console.error('An error occurred:', error);
-    // }
+    }
+    try {
+      const token = localStorage.getItem("authToken");
+      const response = await fetch('http://127.0.0.1:8000/spacs/mcm_update/', {
+        method: 'POST',
+        body: submissionData,
+        headers: {
+          Authorization: `Token ${token}`,
+
+        },
+      });
+
+      if (response.ok) {
+        console.log('Form data and documents submitted successfully.');
+      } else {
+        console.error('Failed to submit form data and documents:', response.statusText);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
   };
 
   return (
@@ -111,14 +127,12 @@ const ScholarshipForm = () => {
             <Grid>
               {/* Left column */}
               <Grid.Col span={6}>
-                <TextInput label="Category" name="category" placeholder="Enter your category" value={formData.category} onChange={handleInputChange} />
-                <TextInput label="Room no" name="roomNo" placeholder="Enter room number" value={formData.roomNo} onChange={handleInputChange} mt="md" />
                 <Select
                   label="Father's Occupation"
-                  name="fathersOccupation"
+                  name="father_occ"
                   placeholder="Select father's occupation"
                   value={formData.fathersOccupation}
-                  onChange={(value) => handleInputChange({ target: { name: 'fathersOccupation', value } })}
+                  onChange={(value) => handleInputChange({ target: { name: 'father_occ', value } })}
                   data={[
                     { value: 'government', label: 'Government' },
                     { value: 'private', label: 'Private' },
@@ -130,36 +144,47 @@ const ScholarshipForm = () => {
                   ]}
                   mt="md"
                 />
-                <TextInput label="Mother's Name" name="mothersName" placeholder="Enter mother's name" value={formData.mothersName} onChange={handleInputChange} mt="md" />
                 <Select
                   label="Mother's Occupation"
-                  name="mothersOccupation"
+                  name="mother_occ"
                   placeholder="Select mother's occupation"
                   value={formData.mothersOccupation}
-                  onChange={(value) => handleInputChange({ target: { name: 'mothersOccupation', value } })}
+                  onChange={(value) => handleInputChange({ target: { name: 'mother_occ', value } })}
                   data={[
                     { value: 'EMPLOYED', label: 'Employed' },
                     { value: 'HOUSE_WIFE', label: 'House Wife' },
                   ]}
                   mt="md"
                 />
-                <TextInput label="Brother's Name" name="brothersName" placeholder="Enter brother's name" value={formData.brothersName} onChange={handleInputChange} mt="md" />
-                <TextInput label="Sister's Occupation" name="sistersOccupation" placeholder="Enter sister's occupation" value={formData.sistersOccupation} onChange={handleInputChange} mt="md" />
-                <TextInput label="Mother's Annual Income" name="mothersIncome" placeholder="Enter mother's income" value={formData.mothersIncome} onChange={handleInputChange} mt="md" />
-                <TextInput label="No of Four Wheeler" name="numFourWheeler" placeholder="Enter number of vehicles" value={formData.numFourWheeler} onChange={handleInputChange} mt="md" />
+                <TextInput label="Brother's Name" name="brother_name" placeholder="Enter brother's name" value={formData.brother_name} onChange={handleInputChange} mt="md" />
+                <TextInput label="Sister's Occupation" name="sister_occupation" placeholder="Enter sister's occupation" value={formData.sister_occupation} onChange={handleInputChange} mt="md" />
+                <TextInput label="Mother's Annual Income" name="income_mother" placeholder="Enter mother's income" value={formData.income_mother} onChange={handleInputChange} mt="md" />
+                <TextInput label="No of Four Wheeler" name="four_wheeler" placeholder="Enter number of vehicles" value={formData.four_wheeler} onChange={handleInputChange} mt="md" />
+                <TextInput label="No of Two Wheeler" name="two_wheeler" placeholder="Enter number of vehicles" value={formData.two_wheeler} onChange={handleInputChange} mt="md" />
+                <TextInput label="Two Wheeler Description" name="two_wheeler_desc" placeholder="Enter number of vehicles" value={formData.two_wheeler_desc} onChange={handleInputChange} mt="md" />
+                <TextInput label="House" name="house" placeholder="Enter number of vehicles" value={formData.house} onChange={handleInputChange} mt="md" />
+                <TextInput label="Plot Area" name="plot_area" placeholder="Enter number of vehicles" value={formData.plot_area} onChange={handleInputChange} mt="md" />
+                <TextInput label="Constructed Area" name="constructed_area" placeholder="Enter number of vehicles" value={formData.constructed_area} onChange={handleInputChange} mt="md" />
+                <TextInput label="Annual Income" name="annual_income" placeholder="Enter number of vehicles" value={formData.annual_income} onChange={handleInputChange} mt="md" />
+                <TextInput label="College Name" name="college_name" placeholder="Enter vehicle description" value={formData.college_name} onChange={handleInputChange} mt="md" />
+
               </Grid.Col>
 
               {/* Right column */}
               <Grid.Col span={6}>
-                <TextInput label="Hall No." name="hallNo" placeholder="Enter hall number" value={formData.hallNo} onChange={handleInputChange} />
-                <TextInput label="Father's Name/Guardian's" name="fathersName" placeholder="Enter father's name" value={formData.fathersName} onChange={handleInputChange} mt="md" />
-                <TextInput label="Father's Occupation Description" name="fathersOccupationDescription" placeholder="Describe father's occupation" value={formData.fathersOccupationDescription} onChange={handleInputChange} mt="md" />
-                <TextInput label="Mother's Occupation Description" name="mothersOccupationDescription" placeholder="Describe mother's occupation" value={formData.mothersOccupationDescription} onChange={handleInputChange} mt="md" />
-                <TextInput label="Brother's Occupation" name="brothersOccupation" placeholder="Enter brother's occupation" value={formData.brothersOccupation} onChange={handleInputChange} mt="md" />
-                <TextInput label="Sister's Name" name="sistersName" placeholder="Enter sister's name" value={formData.sistersName} onChange={handleInputChange} mt="md" />
-                <TextInput label="Father's Annual Income" name="fathersIncome" placeholder="Enter father's income" value={formData.fathersIncome} onChange={handleInputChange} mt="md" />
-                <TextInput label="Other Sources Annual Income" name="otherSourcesIncome" placeholder="Enter other sources' income" value={formData.otherSourcesIncome} onChange={handleInputChange} mt="md" />
-                <TextInput label="Four Wheeler Description" name="fourWheelerDescription" placeholder="Enter vehicle description" value={formData.fourWheelerDescription} onChange={handleInputChange} mt="md" />
+                <TextInput label="Father's Occupation Description" name="father_occ_desc" placeholder="Describe father's occupation" value={formData.father_occ_desc} onChange={handleInputChange} mt="md" />
+                <TextInput label="Mother's Occupation Description" name="mother_occ_desc" placeholder="Describe mother's occupation" value={formData.mother_occ_desc} onChange={handleInputChange} mt="md" />
+                <TextInput label="Brother's Occupation" name="brother_occupation" placeholder="Enter brother's occupation" value={formData.brother_occupation} onChange={handleInputChange} mt="md" />
+                <TextInput label="Sister's Name" name="sister_name" placeholder="Enter sister's name" value={formData.sister_name} onChange={handleInputChange} mt="md" />
+                <TextInput label="Father's Annual Income" name="income_father" placeholder="Enter father's income" value={formData.income_father} onChange={handleInputChange} mt="md" />
+                <TextInput label="Other Sources Annual Income" name="income_other" placeholder="Enter other sources' income" value={formData.income_other} onChange={handleInputChange} mt="md" />
+                <TextInput label="Four Wheeler Description" name="four_wheeler_desc" placeholder="Enter vehicle description" value={formData.four_wheeler_desc} onChange={handleInputChange} mt="md" />
+                <TextInput label="School Fee" name="school_fee" placeholder="Enter vehicle description" value={formData.school_fee} onChange={handleInputChange} mt="md" />
+                <TextInput label="School Name" name="school_name" placeholder="Enter vehicle description" value={formData.school_name} onChange={handleInputChange} mt="md" />
+                <TextInput label="Bank Name" name="bank_name" placeholder="Enter vehicle description" value={formData.bank_name} onChange={handleInputChange} mt="md" />
+                <TextInput label="Loan Amount" name="loan_amount" placeholder="Enter vehicle description" value={formData.loan_amount} onChange={handleInputChange} mt="md" />
+                <TextInput label="College Fee" name="college_fee" placeholder="Enter vehicle description" value={formData.college_fee} onChange={handleInputChange} mt="md" />
+
               </Grid.Col>
 
             </Grid>

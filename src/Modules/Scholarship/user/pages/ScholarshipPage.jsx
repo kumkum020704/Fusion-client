@@ -45,8 +45,6 @@ const CatalogPage = () => {
           />
         </div>
 
-        <hr className={styles.hr} />
-
         {desc === 1 && <AwardsAndScholarshipCatalog />}
         {desc === 2 && <SpacsMembers />}
         {desc === 3 && <PreviousWinners />}

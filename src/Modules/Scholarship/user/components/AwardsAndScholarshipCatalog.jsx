@@ -57,9 +57,9 @@ function AwardsAndScholarshipCatalog() {
           <div className={styles.contentContainer}>
             {selectedAward && (
               <>
-                <Title order={2}>{selectedAward.award_name}</Title>
+                <Title order={2} size="26px">{selectedAward.award_name}</Title>
                 <Divider my="sm" />
-                <Text>{selectedAward.catalog}</Text>
+                <Text size="14px">{selectedAward.catalog}</Text>
               </>
             )}
           </div>

@@ -13,12 +13,18 @@ function MCM_Applications() {
   useEffect(() => {
     const fetchApplications = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/spacs/scholarship-details/");
+        const token = localStorage.getItem("authToken");
+        const response = await fetch("http://127.0.0.1:8000/spacs/scholarship-details/", {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }        
         const data = await response.json();
         setApplications(data); // Assuming data is an array of application objects
+        console.log(applications[0]);
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch scholarship details:", error);
@@ -83,9 +89,9 @@ function MCM_Applications() {
                 <tbody>
                   {applications.map((app, index) => (
                     <tr key={index}>
-                      <td>{app.roll}</td>
+                      <td>{app.student}</td>
                       <td>{app.category}</td>
-                      <td>{app.income}</td>
+                      <td>{app.annual_income}</td>
                       <td>{app.cpi}</td>
                       <td>
                         <Button color="blue">Files</Button>

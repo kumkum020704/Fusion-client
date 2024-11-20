@@ -1,44 +1,78 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from "react";
+import { Tabs, Text } from "@mantine/core";
+import { NavLink } from "react-router-dom";
+import { CaretCircleLeft, CaretCircleRight } from "@phosphor-icons/react";
 import AwardsAndScholarshipCatalog from "../components/AwardsAndScholarshipCatalogC";
 import SpacsMembers from "../components/spacsMembersC";
 import PreviousWinners from "../components/previousWinnerC";
 import styles from "./Convenor.module.css";
 
 function CatalogPage() {
-  const [desc, setDesc] = useState(1);
+  const [desc, setDesc] = useState(1); // 'desc' should be a number here
 
-  const changeDesc = (event) => {
-    setDesc(parseInt(event.target.value, 10));
-  };
+  const tabItems = [
+    { value: 1, label: "Awards and Scholarship Catalogue" },
+    { value: 2, label: "SPACS Members and details" },
+    { value: 3, label: "Previous Winners" },
+  ];
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.buttonContainer}>
+        {/* Left Caret */}
         <button
-          onClick={changeDesc}
-          value={1}
-          className={`${styles.button} ${desc === 1 ? styles.activeButton : ""}`}
+          onClick={() => setDesc(desc - 1 < 1 ? 3 : desc - 1)}
+          className={styles.caretButton}
         >
-          Awards and Scholarship Catalogue
+          <CaretCircleLeft weight="light" size={32} />
         </button>
-        <button
-          onClick={changeDesc}
-          value={2}
-          className={`${styles.button} ${desc === 2 ? styles.activeButton : ""}`}
+
+        {/* Tabs */}
+        <Tabs
+          value={desc.toString()}
+          onTabChange={(value) => setDesc(Number(value))}
         >
-          SPACS Members and details
-        </button>
+          <Tabs.List style={{ display: "flex", flexWrap: "nowrap" }}>
+            {tabItems.map((item) => (
+              <Tabs.Tab
+                key={item.value}
+                value={item.value.toString()} // Ensure value is a string
+                className={
+                  desc === item.value ? styles.activeTab : styles.inactiveTab
+                }
+                style={{
+                  textAlign: "center",
+                  padding: "1rem 1.5rem", // Consistent padding
+                  backgroundColor:
+                    desc === item.value ? "#f0f8ff" : "transparent", // Light background for active tab
+                }}
+              >
+                <NavLink
+                  to="#"
+                  style={{
+                    textDecoration: "none",
+                    color: desc === item.value ? "#17abff" : "black", // Color change for active tab
+                  }}
+                >
+                  <Text size="lg" weight={500}>
+                    {item.label}
+                  </Text>
+                </NavLink>
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
+        </Tabs>
+
+        {/* Right Caret */}
         <button
-          onClick={changeDesc}
-          value={3}
-          className={`${styles.button} ${desc === 3 ? styles.activeButton : ""}`}
+          onClick={() => setDesc(desc + 1 > 3 ? 1 : desc + 1)}
+          className={styles.caretButton}
         >
-          Previous Winners
+          <CaretCircleRight weight="light" size={32} />
         </button>
       </div>
 
-      {/* Line below the active button */}
+      {/* Progress Bar Line */}
       <div className={styles.lineContainer}>
         <div
           className={`${styles.line} ${desc === 1 ? styles.activeLine : ""}`}
@@ -53,6 +87,7 @@ function CatalogPage() {
 
       <hr className={styles.hr} />
 
+      {/* Tab Content */}
       {desc === 1 && <AwardsAndScholarshipCatalog />}
       {desc === 2 && <SpacsMembers />}
       {desc === 3 && <PreviousWinners />}

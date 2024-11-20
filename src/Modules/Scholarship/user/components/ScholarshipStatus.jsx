@@ -131,38 +131,44 @@ function ScholarshipStatus() {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>View Application Status</h2>
-      <div className={styles.underline1} />
-
       {page === 1 && (
         <div className={styles.scholarshipContainer}>
-          <div className={styles.scholarshipName}>
-            Merit-Cum-Means Scholarship
+          <div className={styles.sch}>
+            <div className={styles.scholarshipName}>
+              Merit-Cum-Means Scholarship
+            </div>
+            <button className={styles.checkStatusButton} onClick={() => navigateToForm(2)}>
+              Check Status
+            </button>
           </div>
-          <button className={styles.checkStatusButton} onClick={() => navigateToForm(2)}>
-            Check Status
-          </button>
-          <div className={styles.underline} />
+
+          <div className={styles.sch}>
           <div className={styles.scholarshipName}>
             Director's Gold Medal
           </div>
           <button className={styles.checkStatusButton} onClick={() => navigateToForm(3)}>
             Check Status
           </button>
-          <div className={styles.underline} />
+          </div>
+          
+          <div className={styles.sch}>
           <div className={styles.scholarshipName}>
             Director's Silver Medal
           </div>
           <button className={styles.checkStatusButton} onClick={() => navigateToForm(4)}>
             Check Status
           </button>
-          <div className={styles.underline} />
+          </div>
+          
+          <div className={styles.sch}>
           <div className={styles.scholarshipName}>
             D&M Proficiency Gold Medal
           </div>
           <button className={styles.checkStatusButton} onClick={() => navigateToForm(5)}>
             Check Status
           </button>
+          </div>
+         
         </div>
       )}
 

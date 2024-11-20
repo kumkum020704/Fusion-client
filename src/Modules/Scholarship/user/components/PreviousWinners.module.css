@@ -60,8 +60,24 @@
 }
 
 
-.table{
-  text-align: left;
-  font-size: 14px;
+
+
+
+.table {
+  border-collapse: collapse;
+  border-style: hidden;
+  margin-top: 80px;
+  
+}
+.table td {
+  border: 2px solid rgb(199, 190, 190);
+  padding: 12px;
+}
+.table thead tr th{
+  border: 2px solid  rgb(199, 190, 190);
+  background-color: white;
 }
 
+tr:nth-child(odd) {
+  background-color: rgb(220, 223, 224);
+}

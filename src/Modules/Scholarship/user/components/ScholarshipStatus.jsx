@@ -11,11 +11,10 @@ function ScholarshipStatus() {
     setPage(pageNumber);
   };
 
-  const handleSubmit1 = async (event) => {
+  const handleSubmit1 = async () => {
     event.preventDefault();
     setShowStatus(true);
 
-    const rollNumber = event.target.roll_number.value;
 
     try {
       const token = localStorage.getItem("authToken");
@@ -25,7 +24,6 @@ function ScholarshipStatus() {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ roll_number: rollNumber }),
       });
 
       if (response.ok) {
@@ -40,11 +38,10 @@ function ScholarshipStatus() {
     }
   };
 
-  const handleSubmit2 = async (event) => {
+  const handleSubmit2 = async () => {
     event.preventDefault();
     setShowStatus(true);
 
-    const rollNumber = event.target.roll_number.value;
 
     try {
       const token = localStorage.getItem("authToken");
@@ -54,7 +51,6 @@ function ScholarshipStatus() {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ roll_number: rollNumber }),
       });
 
       if (response.ok) {
@@ -70,11 +66,10 @@ function ScholarshipStatus() {
   };
 
 
-  const handleSubmit3 = async (event) => {
+  const handleSubmit3 = async () => {
     event.preventDefault();
     setShowStatus(true);
 
-    const rollNumber = event.target.roll_number.value;
 
     try {
       const token = localStorage.getItem("authToken");
@@ -84,7 +79,6 @@ function ScholarshipStatus() {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ roll_number: rollNumber }),
       });
 
       if (response.ok) {
@@ -100,11 +94,11 @@ function ScholarshipStatus() {
   };
 
 
-  const handleSubmit4 = async (event) => {
+  const handleSubmit4 = async () => {
     event.preventDefault();
     setShowStatus(true);
 
-    const rollNumber = event.target.roll_number.value;
+   
 
     try {
       const token = localStorage.getItem("authToken");
@@ -114,7 +108,7 @@ function ScholarshipStatus() {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ roll_number: rollNumber }),
+        
       });
 
       if (response.ok) {
@@ -177,15 +171,7 @@ function ScholarshipStatus() {
           <h3 className={styles.scholarshipName}>Merit-Cum-Means Scholarship</h3>
           {!showStatus ? (
             <form className={styles.form} onSubmit={handleSubmit1}>
-              <div className={styles.inputContainer}>
-                <input
-                  className={styles.inputField}
-                  type="text"
-                  name="roll_number"
-                  placeholder="Roll Number"
-                  required
-                />
-              </div>
+             
               <button type="submit" className={styles.checkStatusButton}>
                 Check Status
               </button>
@@ -224,15 +210,7 @@ function ScholarshipStatus() {
           <h3 className={styles.scholarshipName}>Director's Gold Medal</h3>
           {!showStatus ? (
             <form className={styles.form} onSubmit={handleSubmit2}>
-              <div className={styles.inputContainer}>
-                <input
-                  className={styles.inputField}
-                  type="text"
-                  name="roll_number"
-                  placeholder="Roll Number"
-                  required
-                />
-              </div>
+              
               <button type="submit" className={styles.checkStatusButton}>
                 Check Status
               </button>
@@ -271,15 +249,7 @@ function ScholarshipStatus() {
           <h3 className={styles.scholarshipName}>Director's Silver Medal</h3>
           {!showStatus ? (
             <form className={styles.form} onSubmit={handleSubmit3}>
-              <div className={styles.inputContainer}>
-                <input
-                  className={styles.inputField}
-                  type="text"
-                  name="roll_number"
-                  placeholder="Roll Number"
-                  required
-                />
-              </div>
+             
               <button type="submit" className={styles.checkStatusButton}>
                 Check Status
               </button>
@@ -318,15 +288,7 @@ function ScholarshipStatus() {
           <h3 className={styles.scholarshipName}>D&M Proficiency Gold Medal</h3>
           {!showStatus ? (
             <form className={styles.form} onSubmit={handleSubmit4}>
-              <div className={styles.inputContainer}>
-                <input
-                  className={styles.inputField}
-                  type="text"
-                  name="roll_number"
-                  placeholder="Roll Number"
-                  required
-                />
-              </div>
+              
               <button type="submit" className={styles.checkStatusButton}>
                 Check Status
               </button>
@@ -351,6 +313,7 @@ function ScholarshipStatus() {
                     ))}
                   </tbody>
                 </Table>
+                
               </div>
               {applications.length === 0 && (
                 <h3>no application found</h3>

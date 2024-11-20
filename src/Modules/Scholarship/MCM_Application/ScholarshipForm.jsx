@@ -106,6 +106,8 @@ const ScholarshipForm = () => {
 
       if (response.ok) {
         console.log('Form data and documents submitted successfully.');
+        alert('Form data and documents submitted successfully.');
+        
       } else {
         console.error('Failed to submit form data and documents:', response.statusText);
       }

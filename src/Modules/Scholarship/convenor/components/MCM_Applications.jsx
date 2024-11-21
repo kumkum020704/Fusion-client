@@ -1,18 +1,39 @@
 /* eslint-disable */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Button } from "@mantine/core";
 import styles from "./MCM_applications.module.css";
 import Medal_applications from "./medal_applications";
 
 function MCM_Applications() {
   const [activeTab, setActiveTab] = useState("MCM");
+  const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const applications = [
-    { roll: "2017013", category: "GEN", income: "1413", cpi: "9.5" },
-    { roll: "2017027", category: "GEN", income: "678", cpi: "9.5" },
-    { roll: "2017120", category: "GEN", income: "2691701", cpi: "9.5" },
-    { roll: "2017121", category: "GEN", income: "15", cpi: "9.5" },
-  ];
+  // Fetch scholarship details from the API
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const response = await fetch("http://127.0.0.1:8000/spacs/scholarship-details/", {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }        
+        const data = await response.json();
+        setApplications(data); // Assuming data is an array of application objects
+        console.log(applications[0]);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch scholarship details:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchApplications();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -49,42 +70,46 @@ function MCM_Applications() {
         {activeTab === "MCM" && (
           <>
             <h2>Merit-cum-Means Scholarship</h2>
-            <Table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Roll</th>
-                  <th>Category</th>
-                  <th>Income</th>
-                  <th>CPI</th>
-                  <th>File</th>
-                  <th>Accept</th>
-                  <th>Reject</th>
-                  <th>Under Review</th>
-                </tr>
-              </thead>
-              <tbody>
-                {applications.map((app, index) => (
-                  <tr key={index}>
-                    <td>{app.roll}</td>
-                    <td>{app.category}</td>
-                    <td>{app.income}</td>
-                    <td>{app.cpi}</td>
-                    <td>
-                      <Button color="blue">Files</Button>
-                    </td>
-                    <td>
-                      <Button color="green">Accept</Button>
-                    </td>
-                    <td>
-                      <Button color="red">Reject</Button>
-                    </td>
-                    <td>
-                      <Button color="grey">Under Review</Button>
-                    </td>
+            {loading ? (
+              <p>Loading applications...</p>
+            ) : (
+              <Table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Roll</th>
+                    <th>Category</th>
+                    <th>Income</th>
+                    <th>CPI</th>
+                    <th>File</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
+                    <th>Under Review</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {applications.map((app, index) => (
+                    <tr key={index}>
+                      <td>{app.student}</td>
+                      <td>{app.category}</td>
+                      <td>{app.annual_income}</td>
+                      <td>{app.cpi}</td>
+                      <td>
+                        <Button color="blue">Files</Button>
+                      </td>
+                      <td>
+                        <Button color="green">Accept</Button>
+                      </td>
+                      <td>
+                        <Button color="red">Reject</Button>
+                      </td>
+                      <td>
+                        <Button color="grey">Under Review</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
           </>
         )}
 

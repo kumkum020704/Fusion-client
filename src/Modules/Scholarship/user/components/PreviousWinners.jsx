@@ -46,6 +46,7 @@ function PreviousWinners() {
       );
 
       if (response.data.result === "Success") {
+        console.log(response.data);
         const { student_name, student_program, roll } = response.data;
         const winnersArray = student_name.map((name, index) => ({
           name,
@@ -56,12 +57,14 @@ function PreviousWinners() {
         setWinners(winnersArray);
       } else {
         console.error("No winners found:", response.data.error);
-        setWinners([]);
+        
       }
     } catch (error) {
+      setWinners([]);
       console.error(
         "Error fetching winners:",
         error.response ? error.response.data : error.message
+
       );
     } finally {
       setIsLoading(false); 

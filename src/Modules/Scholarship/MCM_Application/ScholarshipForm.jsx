@@ -101,9 +101,11 @@ const ScholarshipForm = () => {
           alert('Form data and documents submitted successfully.');
         } else {
           console.error('Failed to submit form data and documents:', response.statusText);
+          alert("failed to submit data");
         }
       } catch (error) {
         console.error('An error occurred:', error);
+        alert("failed to submit data");
       }
     
   };
@@ -232,12 +234,6 @@ const ScholarshipForm = () => {
               ))}
             </Grid>
             <Group position="right" mt="xl">
-              <Button variant="default" onClick={() => setStep(1)}>
-                Back
-              </Button>
-              <Button color="blue" onClick={handleSubmit}>
-                Submit All Documents
-              </Button>
               <Button variant="default" onClick={() => setStep(1)}>
                 Back
               </Button>

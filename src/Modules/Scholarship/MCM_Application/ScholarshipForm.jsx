@@ -17,6 +17,7 @@ function ScholarshipForm() {
   const [step, setStep] = useState(1); // Step control for form sections
   const [uploadStatus, setUploadStatus] = useState({});
   const [formData, setFormData] = useState({
+    Student_ID: "",
     brother_name: "",
     brother_occupation: "",
     sister_name: "",
@@ -261,6 +262,14 @@ function ScholarshipForm() {
 
               {/* Right column */}
               <Grid.Col span={6}>
+                <TextInput
+                  label="Student ID"
+                  name="student_id"
+                  placeholder="Enter student ID"
+                  value={formData.student_id}
+                  onChange={handleInputChange}
+                  mt="md"
+                />
                 <TextInput
                   label="Father's Occupation Description"
                   name="father_occ_desc"

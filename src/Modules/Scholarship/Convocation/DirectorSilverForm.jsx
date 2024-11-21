@@ -38,13 +38,62 @@ export default function DirectorSilverForm() {
     setFormData((prev) => ({ ...prev, Marksheet: file }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formDataToSend = new FormData();
+    for (const key in formData) {
+      if (formData[key]) {
+        if (key === "Marksheet") {
+          formDataToSend.append(key, formData[key]); // Append the file directly
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
+      }
+    }
+
+    try {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        alert("User is not authenticated. Please log in.");
+        return;
+      }
+
+      const response = await fetch(
+        "http://127.0.0.1:8000/spacs/directorsilver_update/",
+        {
+          method: "POST",
+          body: formDataToSend,
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Form submitted successfully:", result);
+        alert("Form submitted successfully!");
+      } else {
+        const errorData = await response.json();
+        console.error("Submission failed:", errorData);
+        alert(
+          `Failed to submit the form: ${errorData.detail || response.statusText}`
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred while submitting the form.");
+    }
+  };
+
   return (
     <Container size="lg">
       <Paper radius="md" p="sm">
         <Title order={2} mb="lg">
           Director's Silver Medal Application Form
         </Title>
-        <form >
+        <form onSubmit={handleSubmit}>
           <Grid gutter="lg">
             {/* Basic Information */}
             <Grid.Col span={6}>

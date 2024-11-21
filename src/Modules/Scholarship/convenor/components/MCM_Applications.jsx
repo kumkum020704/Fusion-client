@@ -77,9 +77,9 @@ function MCM_Applications() {
                 <thead>
                   <tr>
                     <th>Roll</th>
-                    <th>Category</th>
+                    
                     <th>Income</th>
-                    <th>CPI</th>
+                    
                     <th>File</th>
                     <th>Accept</th>
                     <th>Reject</th>
@@ -90,9 +90,9 @@ function MCM_Applications() {
                   {applications.map((app, index) => (
                     <tr key={index}>
                       <td>{app.student}</td>
-                      <td>{app.category}</td>
+                     
                       <td>{app.annual_income}</td>
-                      <td>{app.cpi}</td>
+                      
                       <td>
                         <Button color="blue">Files</Button>
                       </td>

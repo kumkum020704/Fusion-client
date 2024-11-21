@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Button,
   TextInput,
@@ -66,10 +66,10 @@ const ScholarshipForm = () => {
 
   const handleFileChange = (docId, file) => {
     if (file) {
-      setUploadStatus((prev) => ({ ...prev, [docId]: 'uploading' }));
+      setUploadStatus((prev) => ({ ...prev, [docId]: "uploading" }));
       setDocuments((prev) => ({ ...prev, [docId]: file }));
       setTimeout(() => {
-        setUploadStatus((prev) => ({ ...prev, [docId]: 'success' }));
+        setUploadStatus((prev) => ({ ...prev, [docId]: "success" }));
       }, 1500);
     }
   };
@@ -112,7 +112,9 @@ const ScholarshipForm = () => {
     <Container size="lg">
       <Paper radius="md" p="sm">
         <Title order={2} mb="lg">
-          {step === 1 ? 'Application Form for Merit Cum Means (MCM) Scholarship:' : 'Document Upload'}
+          {step === 1
+            ? "Application Form for Merit Cum Means (MCM) Scholarship:"
+            : "Document Upload"}
         </Title>
 
         {step === 1 && (
@@ -123,13 +125,13 @@ const ScholarshipForm = () => {
                   label="Father's Occupation"
                   placeholder="Select father's occupation"
                   data={[
-                    { value: 'government', label: 'Government' },
-                    { value: 'private', label: 'Private' },
-                    { value: 'public', label: 'Public' },
-                    { value: 'business', label: 'Business' },
-                    { value: 'medical', label: 'Medical' },
-                    { value: 'consultant', label: 'Consultant' },
-                    { value: 'pensioners', label: 'Pensioners' },
+                    { value: "government", label: "Government" },
+                    { value: "private", label: "Private" },
+                    { value: "public", label: "Public" },
+                    { value: "business", label: "Business" },
+                    { value: "medical", label: "Medical" },
+                    { value: "consultant", label: "Consultant" },
+                    { value: "pensioners", label: "Pensioners" },
                   ]}
                   mt="md"
                   {...form.getInputProps('father_occ')}
@@ -138,8 +140,8 @@ const ScholarshipForm = () => {
                   label="Mother's Occupation"
                   placeholder="Select mother's occupation"
                   data={[
-                    { value: 'EMPLOYED', label: 'Employed' },
-                    { value: 'HOUSE_WIFE', label: 'House Wife' },
+                    { value: "EMPLOYED", label: "Employed" },
+                    { value: "HOUSE_WIFE", label: "House Wife" },
                   ]}
                   mt="md"
                   {...form.getInputProps('mother_occ')}
@@ -210,12 +212,17 @@ const ScholarshipForm = () => {
                   <Text size="sm" weight={500} mb="xs">
                     {doc.name}
                   </Text>
-                  <FileButton onChange={(file) => handleFileChange(doc.id, file)} accept={doc.type}>
+                  <FileButton
+                    onChange={(file) => handleFileChange(doc.id, file)}
+                    accept={doc.type}
+                  >
                     {(fileButtonProps) => (
                       <Button
                         onClick={fileButtonProps.onClick}
                         fullWidth
-                        color={uploadStatus[doc.id] === 'success' ? 'green' : 'gray'}
+                        color={
+                          uploadStatus[doc.id] === "success" ? "green" : "gray"
+                        }
                       >
                         {uploadStatus[doc.id] === 'success' ? 'Uploaded' : `Choose ${doc.name}`}
                       </Button>
@@ -231,12 +238,18 @@ const ScholarshipForm = () => {
               <Button color="blue" onClick={handleSubmit}>
                 Submit All Documents
               </Button>
+              <Button variant="default" onClick={() => setStep(1)}>
+                Back
+              </Button>
+              <Button color="blue" onClick={handleSubmit}>
+                Submit All Documents
+              </Button>
             </Group>
           </>
         )}
       </Paper>
     </Container>
   );
-};
+}
 
 export default ScholarshipForm;

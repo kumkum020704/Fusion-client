@@ -52,13 +52,62 @@ export default function DMProficiencyForm() {
     setFormData((prev) => ({ ...prev, Marksheet: file }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formDataToSend = new FormData();
+    for (const key in formData) {
+      if (formData[key]) {
+        if (key === "Marksheet") {
+          formDataToSend.append(key, formData[key]);
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
+      }
+    }
+
+    try {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        alert("User is not authenticated. Please log in.");
+        return;
+      }
+
+      const response = await fetch(
+        "http://127.0.0.1:8000/spacs/proficiencydm_update/",
+        {
+          method: "POST",
+          body: formDataToSend,
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Form submitted successfully:", result);
+        alert("Form submitted successfully!");
+      } else {
+        const errorData = await response.json();
+        console.error("Submission failed:", errorData);
+        alert(
+          `Failed to submit the form: ${errorData.detail || response.statusText}`
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred while submitting the form.");
+    }
+  };
+
   return (
     <Container size="lg">
       <Paper radius="md" padding="sm">
         <Title order={2} mb="lg">
           DM Proficiency Form
         </Title>
-        <form >
+        <form onSubmit={handleSubmit}>
           <Grid gutter="lg">
             {/* Basic Information */}
             <Grid.Col span={6}>
@@ -181,12 +230,13 @@ export default function DMProficiencyForm() {
               />
             </Grid.Col>
             {[1, 2, 3, 4, 5].map((num) => (
-              <Grid.Col span={6} >
+              <Grid.Col span={6} key={`roll_no_${num}`}>
                 <TextInput
                   label={`Roll No ${num}`}
                   name={`roll_no_${num}`}
+                  value={formData[`roll_no_${num}`]}
                   onChange={handleChange}
-                  placeholder="Enter roll no"
+                  placeholder={`Enter Roll No ${num}`}
                 />
               </Grid.Col>
             ))}
@@ -210,6 +260,7 @@ export default function DMProficiencyForm() {
                   <TextInput
                     label={`${field.toUpperCase()} Topic`}
                     name={`${field}_topic`}
+                    value={formData[`${field}_topic`]}
                     onChange={handleChange}
                     placeholder={`Enter ${field.toUpperCase()} Topic`}
                   />
@@ -219,7 +270,7 @@ export default function DMProficiencyForm() {
                     label={`${field.toUpperCase()} Percentage`}
                     name={`${field}_percentage`}
                     type="number"
-                    value={`formData[${field}_percentage]`}
+                    value={formData[`${field}_percentage`]}
                     onChange={handleChange}
                     placeholder={`Enter ${field.toUpperCase()} Percentage`}
                   />
@@ -254,6 +305,6 @@ export default function DMProficiencyForm() {
           </Group>
         </form>
       </Paper>
-    </Container >
+    </Container>
   );
 }

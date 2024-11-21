@@ -9,7 +9,8 @@ import {
   Group,
 } from "@mantine/core";
 import { NavLink } from "react-router-dom";
-import DirectorSilver from "./DirectorSilver";
+//import DirectorSilver from "./DirectorSilver";
+import AwardRegistration from "./AwardRegistration";
 
 function ConvocationMedal() {
   const [next,setnext]=useState(false);
@@ -77,7 +78,7 @@ function ConvocationMedal() {
           </Group>
         </Paper>
       </Container>}
-      {next&&<DirectorSilver></DirectorSilver>}
+      {next&&<AwardRegistration></AwardRegistration>}
     </>
   );
 }

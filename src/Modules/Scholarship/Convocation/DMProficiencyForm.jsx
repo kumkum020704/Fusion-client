@@ -10,16 +10,14 @@ import {
   Paper,
   Title,
 } from "@mantine/core";
+import { submitPdm } from "../../../routes/SPACSRoutes";
 
 export default function DMProficiencyForm() {
   const [formData, setFormData] = useState({
     award_type: "DMProficiencyform",
-    award_id: "",
-    student: "",
-    date: "",
+   
     justification: "",
     correspondence_address: "",
-    status: "",
     nearest_policestation: "",
     nearest_railwaystation: "",
     financial_assistance: "",
@@ -74,7 +72,7 @@ export default function DMProficiencyForm() {
       }
 
       const response = await fetch(
-        "http://127.0.0.1:8000/spacs/proficiencydm_update/",
+        submitPdm,
         {
           method: "POST",
           body: formDataToSend,
@@ -110,43 +108,7 @@ export default function DMProficiencyForm() {
         <form onSubmit={handleSubmit}>
           <Grid gutter="lg">
             {/* Basic Information */}
-            <Grid.Col span={6}>
-              <TextInput
-                label="Award ID"
-                name="award_id"
-                type="number"
-                value={formData.award_id}
-                onChange={handleChange}
-                placeholder="Enter Award ID"
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Student ID"
-                name="student"
-                value={formData.student}
-                onChange={handleChange}
-                placeholder="Enter Student ID"
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Date"
-                name="date"
-                type="date"
-                value={formData.date}
-                onChange={handleChange}
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Status"
-                name="status"
-                value={formData.status}
-                onChange={handleChange}
-                placeholder="Enter Status"
-              />
-            </Grid.Col>
+           
 
             {/* Addresses */}
             <Grid.Col span={12}>

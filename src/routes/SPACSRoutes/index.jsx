@@ -1,0 +1,10 @@
+import { host } from "../globalRoutes";
+export const showAwardRoute=`${host}/spacs/create-award/`;
+export const showGetAwardRoute=`${host}/spacs/get-winners/`;
+export const showDirectorGoldSubmitRoute=`${host}/spacs/directorgold_update/`; 
+export const showMcmStatus=`${host}/spacs/mcm_show/`;
+export const showGoldStatus=`${host}/spacs/directorgold_show/`;
+export const showSilverStatus=`${host}/spacs/directorsilver_show/`;
+export const showPdmStatus=`${host}/spacs/proficiencydm_show/`;
+export const submitSilver=`${host}/spacs/directorsilver_update/`;
+export const submitPdm=`${host}/spacs/proficiencydm_update/`;

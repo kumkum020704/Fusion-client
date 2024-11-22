@@ -1,6 +1,6 @@
 import React from "react";
 import { EnvelopeSimple, Phone } from "@phosphor-icons/react"; // Import Phosphor icons
-import styles from "./SpacsMembersC.module.css";
+import styles from "./spacsMembersC.module.css";
 import conv from "../images/convener.png";
 import assi from "../images/assistant.png";
 

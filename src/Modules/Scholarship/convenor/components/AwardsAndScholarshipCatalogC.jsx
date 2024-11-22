@@ -118,7 +118,7 @@ function AwardsAndScholarshipCatalog() {
             {selectedAward && (
               <>
                 <div className={styles.header}>
-                  <Title order={2}>{selectedAward.award_name}</Title>
+                  <Title order={2} size="26px">{selectedAward.award_name}</Title>
                   <Button
                     className={styles.editButton}
                     onClick={editMode ? saveChanges : toggleEditMode}
@@ -130,12 +130,13 @@ function AwardsAndScholarshipCatalog() {
                 <Divider my="sm" />
                 {editMode ? (
                   <Textarea
+                    size="14px"
                     value={updatedText}
                     onChange={handleTextChange}
                     className={styles.editTextarea}
                   />
                 ) : (
-                  <Text>{selectedAward.catalog}</Text>
+                  <Text size="14px">{selectedAward.catalog}</Text>
                 )}
               </>
             )}

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import styles from "./ScholarshipStatus.module.css";
 import { Table } from "@mantine/core";
+import { showMcmStatus,showGoldStatus,showSilverStatus,showPdmStatus } from "../../../../routes/SPACSRoutes";
+
+
+
+
 
 function ScholarshipStatus() {
   const [page, setPage] = useState(1);
@@ -18,7 +23,7 @@ function ScholarshipStatus() {
 
     try {
       const token = localStorage.getItem("authToken");
-      const response = await fetch("http://127.0.0.1:8000/spacs/mcm_show/", {
+      const response = await fetch(showMcmStatus, {
         method: "POST",
         headers: {
           Authorization: `Token ${token}`,
@@ -45,7 +50,7 @@ function ScholarshipStatus() {
 
     try {
       const token = localStorage.getItem("authToken");
-      const response = await fetch("http://127.0.0.1:8000/spacs/directorgold_show/", {
+      const response = await fetch(showGoldStatus, {
         method: "POST",
         headers: {
           Authorization: `Token ${token}`,
@@ -73,7 +78,7 @@ function ScholarshipStatus() {
 
     try {
       const token = localStorage.getItem("authToken");
-      const response = await fetch("http://127.0.0.1:8000/spacs/directorsilver_show/", {
+      const response = await fetch(showSilverStatus, {
         method: "POST",
         headers: {
           Authorization: `Token ${token}`,
@@ -102,7 +107,7 @@ function ScholarshipStatus() {
 
     try {
       const token = localStorage.getItem("authToken");
-      const response = await fetch("http://127.0.0.1:8000/spacs/proficiencydm_show/", {
+      const response = await fetch(showPdmStatus, {
         method: "POST",
         headers: {
           Authorization: `Token ${token}`,

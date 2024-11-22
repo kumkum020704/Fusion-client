@@ -70,7 +70,7 @@ function MCM_Applications() {
         {activeTab === "MCM" && (
           <>
             <h2>Merit-cum-Means Scholarship</h2>
-            {loading ? (
+            {loading ? ( 
               <p>Loading applications...</p>
             ) : (
               <Table className={styles.table}>

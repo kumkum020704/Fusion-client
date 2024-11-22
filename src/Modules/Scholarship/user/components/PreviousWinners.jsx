@@ -3,6 +3,9 @@ import { CaretDown } from "@phosphor-icons/react";
 import axios from "axios";
 import { Select, Button, Table, Text, Loader } from "@mantine/core";
 import styles from "./PreviousWinners.module.css";
+import { showGetAwardRoute } from "../../../../routes/SPACSRoutes";
+
+
 
 function PreviousWinners() {
   const [programme, setProgramme] = useState("");
@@ -35,7 +38,7 @@ function PreviousWinners() {
     try {
       const token = localStorage.getItem("authToken");
       const response = await axios.post(
-        "http://127.0.0.1:8000/spacs/get-winners/",
+        showGetAwardRoute,
         formData,
         {
           headers: {

@@ -1,5 +1,7 @@
 DirectorGoldForm
 import React, { useState } from "react";
+import { showDirectorGoldSubmitRoute } from "../../../routes/SPACSRoutes";
+
 import {
   Button,
   TextInput,
@@ -14,12 +16,9 @@ import {
 
 export default function DirectorGoldForm() {
   const [formData, setFormData] = useState({
-    award_id: "",
-    student: "",
-    date: "",
+    
     justification: "",
     correspondence_address: "",
-    status: "",
     nearest_policestation: "",
     nearest_railwaystation: "",
     financial_assistance: "",
@@ -72,7 +71,7 @@ export default function DirectorGoldForm() {
       }
 
       const response = await fetch(
-        "http://127.0.0.1:8000/spacs/directorgold_update/",
+        showDirectorGoldSubmitRoute,
         {
           method: "POST",
           body: formDataToSend,
@@ -107,45 +106,7 @@ export default function DirectorGoldForm() {
         </Title>
         <form onSubmit={handleSubmit}>
           <Grid gutter="lg">
-            {/* Basic Information */}
-            <Grid.Col span={6}>
-              <TextInput
-                label="Award ID"
-                name="award_id"
-                type="number"
-                value={formData.award_id}
-                onChange={handleChange}
-                placeholder="Enter Award ID"
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Student ID"
-                name="student"
-                type=""
-                value={formData.student}
-                onChange={handleChange}
-                placeholder="Enter Student ID"
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Date"
-                name="date"
-                type="date"
-                value={formData.date}
-                onChange={handleChange}
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Status"
-                name="status"
-                value={formData.status}
-                onChange={handleChange}
-                placeholder="Enter Status"
-              />
-            </Grid.Col>
+            {/* Basic Information */}      
             <Grid.Col span={6}>
               <TextInput
                 label="Nearest Police Station"

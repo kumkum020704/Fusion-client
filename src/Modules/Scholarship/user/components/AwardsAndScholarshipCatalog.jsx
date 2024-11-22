@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { List, Text, Title, Divider, Container, Loader } from "@mantine/core"; // Import Loader for loading indicator
 import axios from "axios";
 import styles from "./Catalog.module.css";
+import { showAwardRoute } from "../../../../routes/SPACSRoutes";
 
 function AwardsAndScholarshipCatalog() {
   const [selectedAward, setSelectedAward] = useState(null);
@@ -16,7 +17,7 @@ function AwardsAndScholarshipCatalog() {
     const fetchAwardsData = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await axios.get("http://127.0.0.1:8000/spacs/create-award/", {
+        const response = await axios.get(showAwardRoute, {
           headers: {
             Authorization: `Token ${token}`,
             "Content-Type": "application/json",

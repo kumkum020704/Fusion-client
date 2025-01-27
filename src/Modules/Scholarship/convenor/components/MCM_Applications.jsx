@@ -14,17 +14,26 @@ function MCM_Applications() {
     const fetchApplications = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await fetch("http://127.0.0.1:8000/spacs/scholarship-details/", {
-          headers: {
-            Authorization: `Token ${token}`,
+        if (!token) {
+          throw new Error("Authentication token not found");
+        }
+
+        const response = await fetch(
+          "http://127.0.0.1:8000/spacs/scholarship-details/",
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
           },
-        });
+        );
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
-        }        
+        }
+
         const data = await response.json();
         setApplications(data); // Assuming data is an array of application objects
-        console.log(applications[0]);
+        console.log(data[0]); // Correctly logging after setting applications
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch scholarship details:", error);
@@ -70,16 +79,14 @@ function MCM_Applications() {
         {activeTab === "MCM" && (
           <>
             <h2>Merit-cum-Means Scholarship</h2>
-            {loading ? ( 
+            {loading ? (
               <p>Loading applications...</p>
             ) : (
               <Table className={styles.table}>
                 <thead>
                   <tr>
                     <th>Roll</th>
-                    
                     <th>Income</th>
-                    
                     <th>File</th>
                     <th>Accept</th>
                     <th>Reject</th>
@@ -90,20 +97,26 @@ function MCM_Applications() {
                   {applications.map((app, index) => (
                     <tr key={index}>
                       <td>{app.student}</td>
-                     
                       <td>{app.annual_income}</td>
-                      
                       <td>
-                        <Button color="blue">Files</Button>
+                        <Button variant="light" color="blue">
+                          Files
+                        </Button>
                       </td>
                       <td>
-                        <Button color="green">Accept</Button>
+                        <Button variant="filled" color="green">
+                          Accept
+                        </Button>
                       </td>
                       <td>
-                        <Button color="red">Reject</Button>
+                        <Button variant="filled" color="red">
+                          Reject
+                        </Button>
                       </td>
                       <td>
-                        <Button color="grey">Under Review</Button>
+                        <Button variant="outline" color="gray">
+                          Under Review
+                        </Button>
                       </td>
                     </tr>
                   ))}

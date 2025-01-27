@@ -13,9 +13,10 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
-    "@mantine/core": "^7.14.1",
+    "@mantine/core": "^7.16.1",
     "@mantine/dates": "^7.13.3",
     "@mantine/form": "^7.14.1",
+    "@mantine/hooks": "^7.16.1",
     "@mantine/modals": "^7.13.3",
     "@mantine/notifications": "^7.13.3",
     "@phosphor-icons/react": "^2.1.7",
@@ -57,7 +58,7 @@
     "*.{js,jsx}": [
       "prettier --write",
       "eslint --fix",
-     "git add"
+      "git add"
     ]
   }
 }

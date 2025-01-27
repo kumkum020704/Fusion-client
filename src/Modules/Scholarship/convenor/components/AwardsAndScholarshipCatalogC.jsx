@@ -37,6 +37,10 @@ function AwardsAndScholarshipCatalog() {
   const saveChanges = async () => {
     try {
       const token = localStorage.getItem("authToken");
+      if (!token) {
+        throw new Error("Authentication token not found");
+      }
+
       await axios.post(
         "http://127.0.0.1:8000/spacs/award/",
         { id: selectedAward.id, catalog: updatedText },
@@ -47,6 +51,7 @@ function AwardsAndScholarshipCatalog() {
           },
         },
       );
+
       // Update the local awards state to reflect the changes
       setAwards((prevAwards) =>
         prevAwards.map((award) =>
@@ -69,6 +74,10 @@ function AwardsAndScholarshipCatalog() {
     const fetchAwardsData = async () => {
       try {
         const token = localStorage.getItem("authToken");
+        if (!token) {
+          throw new Error("Authentication token not found");
+        }
+
         const response = await axios.get(
           "http://127.0.0.1:8000/spacs/create-award/",
           {
@@ -78,6 +87,7 @@ function AwardsAndScholarshipCatalog() {
             },
           },
         );
+
         setAwards(response.data);
         setSelectedAward(response.data[0]);
         setUpdatedText(response.data[0]?.catalog || "");
@@ -106,7 +116,9 @@ function AwardsAndScholarshipCatalog() {
                 <List.Item
                   key={award.id}
                   onClick={() => handleAwardSelect(award)}
-                  className={`${styles.listItem} ${selectedAward?.id === award.id ? styles.activeItem : ""}`}
+                  className={`${styles.listItem} ${
+                    selectedAward?.id === award.id ? styles.activeItem : ""
+                  }`}
                 >
                   {award.award_name}
                 </List.Item>
@@ -118,7 +130,9 @@ function AwardsAndScholarshipCatalog() {
             {selectedAward && (
               <>
                 <div className={styles.header}>
-                  <Title order={2} size="26px">{selectedAward.award_name}</Title>
+                  <Title order={2} size="26px">
+                    {selectedAward.award_name}
+                  </Title>
                   <Button
                     className={styles.editButton}
                     onClick={editMode ? saveChanges : toggleEditMode}

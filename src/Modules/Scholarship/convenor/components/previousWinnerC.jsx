@@ -10,7 +10,7 @@ function PreviousWinners() {
   const [award, setAward] = useState("");
   const [winners, setWinners] = useState([]);
   const [showTable, setShowTable] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
 
   const awardMapping = {
     "Director's Gold": 2,
@@ -24,7 +24,7 @@ function PreviousWinners() {
     e.preventDefault();
     const awardId = awardMapping[award];
     setShowTable(true);
-    setIsLoading(true); 
+    setIsLoading(true);
 
     const formData = {
       programme,
@@ -42,7 +42,7 @@ function PreviousWinners() {
             Authorization: `Token ${token}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       if (response.data.result === "Success") {
@@ -57,17 +57,15 @@ function PreviousWinners() {
         setWinners(winnersArray);
       } else {
         console.error("No winners found:", response.data.error);
-        
       }
     } catch (error) {
       setWinners([]);
       console.error(
         "Error fetching winners:",
-        error.response ? error.response.data : error.message
-
+        error.response ? error.response.data : error.message,
       );
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
@@ -127,37 +125,35 @@ function PreviousWinners() {
       </form>
 
       {showTable && (
-  <div className={styles.winnersList}>
-    {isLoading ? ( 
-      <Loader size="lg" />
-    ) : winners.length > 0 ? (
-      <div className={styles.tableContainer}>
-        <Table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Roll No</th>
-              <th>Program</th>
-            </tr>
-          </thead>
-          <tbody>
-            {winners.map((winner, index) => (
-              <tr key={index}>
-                <td>{winner.name}</td>
-                <td>{winner.roll}</td>
-                <td>{winner.program}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-    ) : (
-      <Text>No winners found</Text>
-    )}
-  </div>
-)}
-
-
+        <div className={styles.winnersList}>
+          {isLoading ? (
+            <Loader size="lg" />
+          ) : winners.length > 0 ? (
+            <div className={styles.tableContainer}>
+              <Table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Program</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {winners.map((winner, index) => (
+                    <tr key={index}>
+                      <td>{winner.name}</td>
+                      <td>{winner.roll}</td>
+                      <td>{winner.program}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          ) : (
+            <Text>No winners found</Text>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import styles from "./inviteApplications.module.css";
-import axios from "axios";
+
 function InviteApplications() {
   const [formData, setFormData] = useState({
     award: "",
@@ -27,10 +27,11 @@ function InviteApplications() {
   // };
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const token = localStorage.getItem("authToken");
-      const response = await fetch("http://127.0.0.1:8000/spacs/release", { // Adjust the URL if needed
+      const response = await fetch("http://127.0.0.1:8000/spacs/release", {
+        // Adjust the URL if needed
         method: "POST",
         headers: {
           Authorization: `Token ${token}`,

@@ -1,67 +1,77 @@
 .wrapper {
+  padding: 20px;
+  width: 100%;
+}
+
+.mainContent {
   display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping */
-  gap: 1rem; /* Add spacing between the list and content */
+  gap: 20px;
 }
 
-.listContainer {
-  width: 12rem; /* Set the desired width for the list container */
-  padding: 1rem;
-  flex-shrink: 0; /* Prevent shrinking */
+.burgerMenu {
+  display: none;
+  margin-bottom: 1rem;
 }
 
-.listItem {
-  cursor: pointer;
-  color: gray;
-  padding: 0.5rem;
-  white-space: nowrap; /* Prevent text wrapping */
-  position: relative; /* For the active indicator */
-}
-
-.activeItem {
-  color: black;
-  font-weight: bold;
+.sideList {
+  width: 250px;
+  padding-right: 20px;
+  border-right: 1px solid #eee;
 }
 
 .contentContainer {
-  flex-grow: 1; /* Take up remaining space */
-  padding: 1rem;
-  max-height: 60vh; /* Limit height */
-  overflow: auto; /* Allow scrolling */
-  word-break: break-word; /* Handle long words */
-  background-color: #fff; /* Optional: Background */
+  flex: 1;
+  min-width: 0;
 }
-
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+.listItem {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.listItem:hover {
+  background-color: #f5f5f5;
+}
+
+.activeItem {
+  background-color: #e6e6e6;
 }
 
 .editButton {
-  background-color: red; /* Set the button background to red */
-  color: white; /* Set the text color to white */
-  border: none; /* Remove border */
-  padding: 0.5rem 1rem; /* Add padding */
-  cursor: pointer; /* Change cursor to pointer */
   display: flex;
   align-items: center;
-  border-radius: 4px; /* Add rounded corners */
-  transition: background-color 0.3s; /* Add transition effect */
-}
-
-.editButton:hover {
-  background-color: darkred; /* Darken the button on hover */
+  gap: 8px;
 }
 
 .editTextarea {
-  width: 100%; /* Full width */
-  height: 100px; /* Set height as needed */
-  resize: none; /* Prevent resizing */
+  width: 100%;
+  min-height: 200px;
 }
 
-.pencilIcon {
-  margin-left: 0.5rem; /* Add space between text and icon */
+/* Responsive styles */
+@media (max-width: 992px) {
+  .burgerMenu {
+    display: block;
+  }
+
+  .sideList {
+    display: none;
+  }
+
+  .mainContent {
+    flex-direction: column;
+  }
+
+  .contentContainer {
+    width: 100%;
+  }
 }

@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./medal_applications.module.css"; // Ensure this file is present with correct styles
+import { 
+  Container, 
+  Select, 
+  Table, 
+  Button, 
+  Text, 
+  Loader,
+  Grid 
+} from '@mantine/core';
+import styles from "./medal_applications.module.css";
 
 function MedalApplications() {
   const [selectedAward, setSelectedAward] = useState("Director's Silver Medal");
@@ -8,7 +17,6 @@ function MedalApplications() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch medals data based on the selected award
   const fetchMedalsData = async () => {
     try {
       const token = localStorage.getItem("authToken");
@@ -21,7 +29,6 @@ function MedalApplications() {
       }
 
       let apiUrl = "";
-      // Select the API based on the selected award
       if (selectedAward === "Director's Silver Medal") {
         apiUrl = "http://127.0.0.1:8000/spacs/director-silver/";
       } else if (selectedAward === "Director's Gold Medal") {
@@ -71,21 +78,19 @@ function MedalApplications() {
   
       if (selectedAward === "Director's Gold Medal") {
         apiUrl = "http://127.0.0.1:8000/spacs/director-gold/accept-reject/";
-        // For Gold Medal, send "accept" or "reject" as action
         payload = {
           id: medalId,
-          action: action === "approved" ? "accept" : "reject", // Ensure it's 'accept' or 'reject'
+          action: action === "approved" ? "accept" : "reject",
         };
       } else if (selectedAward === "Director's Silver Medal") {
         apiUrl = "http://127.0.0.1:8000/spacs/api/director_silver/decision/";
-        // For Silver Medal, send 'ACCEPTED' or 'REJECTED'
         payload = {
           id: medalId,
           status: action === "approved" ? "ACCEPTED" : "REJECTED",
         };
       }
   
-      console.log("Sending payload:", payload);  // Log payload for debugging
+      console.log("Sending payload:", payload);
   
       const response = await axios.post(apiUrl, payload, {
         headers: {
@@ -95,7 +100,7 @@ function MedalApplications() {
       });
   
       if (response.status === 200) {
-        fetchMedalsData(); // Refresh the list of medals
+        fetchMedalsData();
         setError(null);
       } else {
         setError("Error updating status.");
@@ -109,73 +114,85 @@ function MedalApplications() {
   };
   
   return (
-    <div className={styles.container}>
+    <Container fluid className={styles.container}>
       <h2 className={styles.title}>Medal Applications</h2>
 
-      <div className={styles.awardSelector}>
-        <label htmlFor="award-select">Select Award:</label>
-        <select
-          id="award-select"
-          value={selectedAward}
-          onChange={(e) => setSelectedAward(e.target.value)}
-          className={styles.select}
-        >
-          <option value="Director's Silver Medal">Director's Silver Medal</option>
-          <option value="Director's Gold Medal">Director's Gold Medal</option>
-        </select>
-      </div>
+      <Grid mb="md">
+        <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+          <div className={styles.awardSelector}>
+            <Select
+              label="Select Award:"
+              value={selectedAward}
+              onChange={setSelectedAward}
+              data={[
+                { value: "Director's Silver Medal", label: "Director's Silver Medal" },
+                { value: "Director's Gold Medal", label: "Director's Gold Medal" }
+              ]}
+              size={{ base: 'xs', sm: 'sm' }}
+              className={styles.select}
+            />
+          </div>
+        </Grid.Col>
+      </Grid>
 
-      {isLoading && <p>Loading medals...</p>}
+      {isLoading && <Loader size="md" />}
       
-
       {!isLoading && !error && medals.length > 0 && (
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Roll No</th>
-              <th>Award</th>
-              <th>File</th>
-              <th>Accept</th>
-              <th>Reject</th>
-            </tr>
-          </thead>
-          <tbody>
-            {medals.map((medal, index) => (
-              <tr key={index}>
-                <td>{medal.student}</td>
-                <td>{selectedAward}</td>
-                <td>
-                  <button
-                    className={`${styles.button} ${styles.fileButton}`}
-                    onClick={() => handleView(medal.id)}
-                  >
-                    View
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className={`${styles.button} ${styles.acceptButton}`}
-                    onClick={() => handleApproval(medal.id, "approved")}
-                  >
-                    Approve
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className={`${styles.button} ${styles.rejectButton}`}
-                    onClick={() => handleApproval(medal.id, "rejected")}
-                  >
-                    Reject
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div style={{ overflowX: 'auto', width: '100%' }}>
+          <Table.ScrollContainer minWidth={500}>
+            <Table className={styles.table} highlightOnHover>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Roll No</Table.Th>
+                  <Table.Th>Award</Table.Th>
+                  <Table.Th>File</Table.Th>
+                  <Table.Th>Accept</Table.Th>
+                  <Table.Th>Reject</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>
+                {medals.map((medal, index) => (
+                  <Table.Tr key={index}>
+                    <Table.Td>{medal.student}</Table.Td>
+                    <Table.Td>{selectedAward}</Table.Td>
+                    <Table.Td>
+                      <Button
+                        className={`${styles.button} ${styles.fileButton}`}
+                        size={{ base: 'xs', sm: 'sm' }}
+                      >
+                        View
+                      </Button>
+                    </Table.Td>
+                    <Table.Td>
+                      <Button
+                        className={`${styles.button} ${styles.acceptButton}`}
+                        onClick={() => handleApproval(medal.id, "approved")}
+                        size={{ base: 'xs', sm: 'sm' }}
+                      >
+                        Approve
+                      </Button>
+                    </Table.Td>
+                    <Table.Td>
+                      <Button
+                        className={`${styles.button} ${styles.rejectButton}`}
+                        onClick={() => handleApproval(medal.id, "rejected")}
+                        size={{ base: 'xs', sm: 'sm' }}
+                      >
+                        Reject
+                      </Button>
+                    </Table.Td>
+                  </Table.Tr>
+                ))}
+              </Table.Tbody>
+            </Table>
+          </Table.ScrollContainer>
+        </div>
       )}
 
-      {!isLoading && !error && medals.length === 0 && <p>No medals found.</p>}
-    </div>
+      {!isLoading && !error && medals.length === 0 && (
+        <Text size="lg" c="dimmed" ta="center">No medals found.</Text>
+      )}
+    </Container>
   );
 }
 

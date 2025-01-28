@@ -8,8 +8,6 @@ import {
   Loader,
   Textarea,
   Button,
-  Burger,
-  Drawer,
 } from "@mantine/core";
 import axios from "axios";
 import { Pencil } from "@phosphor-icons/react";
@@ -21,13 +19,11 @@ function AwardsAndScholarshipCatalog() {
   const [isLoading, setIsLoading] = useState(true);
   const [editMode, setEditMode] = useState(false);
   const [updatedText, setUpdatedText] = useState("");
-  const [drawerOpened, setDrawerOpened] = useState(false);
 
   const handleAwardSelect = (award) => {
     setSelectedAward(award);
     setEditMode(false);
-    setUpdatedText(award.catalog);
-    setDrawerOpened(false);
+    setUpdatedText(award.catalog); // Load the current text into the textarea
   };
 
   const toggleEditMode = () => {
@@ -49,21 +45,22 @@ function AwardsAndScholarshipCatalog() {
             Authorization: `Token ${token}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
+      // Update the local awards state to reflect the changes
       setAwards((prevAwards) =>
         prevAwards.map((award) =>
           award.id === selectedAward.id
             ? { ...award, catalog: updatedText }
-            : award
-        )
+            : award,
+        ),
       );
       setSelectedAward((prev) => ({ ...prev, catalog: updatedText }));
       setEditMode(false);
     } catch (error) {
       console.error(
         "Error saving changes:",
-        error.response ? error.response.data : error.message
+        error.response ? error.response.data : error.message,
       );
     }
   };
@@ -79,7 +76,7 @@ function AwardsAndScholarshipCatalog() {
               Authorization: `Token ${token}`,
               "Content-Type": "application/json",
             },
-          }
+          },
         );
         setAwards(response.data);
         setSelectedAward(response.data[0]);
@@ -88,7 +85,7 @@ function AwardsAndScholarshipCatalog() {
       } catch (error) {
         console.error(
           "Error fetching awards data:",
-          error.response ? error.response.data : error.message
+          error.response ? error.response.data : error.message,
         );
         setIsLoading(false);
       }
@@ -97,86 +94,52 @@ function AwardsAndScholarshipCatalog() {
     fetchAwardsData();
   }, []);
 
-  const renderAwardsList = () => (
-    <List spacing="sm" size="lg">
-      {awards.map((award) => (
-        <List.Item
-          key={award.id}
-          onClick={() => handleAwardSelect(award)}
-          className={`${styles.listItem} ${
-            selectedAward?.id === award.id ? styles.activeItem : ""
-          }`}
-        >
-          {award.award_name}
-        </List.Item>
-      ))}
-    </List>
-  );
-
-  const renderContent = () => (
-    selectedAward && (
-      <>
-        <div className={styles.header}>
-          <Title order={2} size="26px">
-            {selectedAward.award_name}
-          </Title>
-          <Button
-            className={styles.editButton}
-            onClick={editMode ? saveChanges : toggleEditMode}
-          >
-            {editMode ? "Save" : "Edit"}
-            <Pencil className={styles.pencilIcon} />
-          </Button>
-        </div>
-        <Divider my="sm" />
-        {editMode ? (
-          <Textarea
-            size="14px"
-            value={updatedText}
-            onChange={handleTextChange}
-            className={styles.editTextarea}
-            minRows={10}
-          />
-        ) : (
-          <Text size="14px">{selectedAward.catalog}</Text>
-        )}
-      </>
-    )
-  );
-
   return (
-    <Container className={styles.wrapper} size="xl">
+    <Container className={styles.wrapper}>
       {isLoading ? (
         <Loader size="lg" />
       ) : (
         <>
-          <div className={styles.burgerMenu}>
-            <Burger
-              opened={drawerOpened}
-              onClick={() => setDrawerOpened(!drawerOpened)}
-              size="sm"
-            />
+          <div className={styles.listContainer}>
+            <List spacing="sm" size="lg">
+              {awards.map((award) => (
+                <List.Item
+                  key={award.id}
+                  onClick={() => handleAwardSelect(award)}
+                  className={`${styles.listItem} ${selectedAward?.id === award.id ? styles.activeItem : ""}`}
+                >
+                  {award.award_name}
+                </List.Item>
+              ))}
+            </List>
           </div>
 
-          <div className={styles.mainContent}>
-            <div className={styles.sideList}>
-              {renderAwardsList()}
-            </div>
-
-            <Drawer
-              opened={drawerOpened}
-              onClose={() => setDrawerOpened(false)}
-              size="xs"
-              padding="md"
-              title="Awards"
-              zIndex={1000}
-            >
-              {renderAwardsList()}
-            </Drawer>
-
-            <div className={styles.contentContainer}>
-              {renderContent()}
-            </div>
+          <div className={styles.contentContainer}>
+            {selectedAward && (
+              <>
+                <div className={styles.header}>
+                  <Title order={2} size="26px">{selectedAward.award_name}</Title>
+                  <Button
+                    className={styles.editButton}
+                    onClick={editMode ? saveChanges : toggleEditMode}
+                  >
+                    {editMode ? "Save" : "Edit"}
+                    <Pencil className={styles.pencilIcon} />
+                  </Button>
+                </div>
+                <Divider my="sm" />
+                {editMode ? (
+                  <Textarea
+                    size="14px"
+                    value={updatedText}
+                    onChange={handleTextChange}
+                    className={styles.editTextarea}
+                  />
+                ) : (
+                  <Text size="14px">{selectedAward.catalog}</Text>
+                )}
+              </>
+            )}
           </div>
         </>
       )}

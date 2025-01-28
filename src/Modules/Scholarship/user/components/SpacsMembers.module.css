@@ -1,47 +1,46 @@
 .container {
-  width: 100%; /* Take full width to ensure space for the grid */
-  padding-left: 1rem;
+  width: 100%; /* Full width */
+  padding-left: 1rem; /* Left padding */
 }
 
 .heading {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-size: 24px;
+  font-size: 24px; /* Adjust heading font size */
 }
 
 .membersContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(2, 1fr); /* 3 columns for larger screens */
   gap: 1rem; /* Gap between cards */
-  border-top: 2px solid #17ABFF;
-  padding-top: 1rem;
+  border-top: 2px solid #17ABFF; /* Top border */
+  padding-top: 1rem; /* Padding above content */
 }
 
 .memberCard {
   border: 1px solid black;
-  border-radius: 0.375rem;
-  padding: 1rem;
+  border-radius: 0.375rem; /* Rounded corners */
+  padding: 1rem; /* Padding inside the card */
   width: 80%;
-  /* min-width: 250px; */
 }
 
 .cardHeading {
   margin-bottom: 0.5rem;
-  font-size: 24px;
+  font-size: 24px; /* Card heading size */
 }
 
 .memb {
   width: 100%;
-  height: 12rem;
+  height: 16rem; /* Fixed image height */
   padding: 1px;
   margin: auto;
-  border-radius: 0.375rem;
-  font-size: 14px;
+  border-radius: 0.375rem; /* Rounded corners for image */
+  font-size: 14px; /* Small font size */
 }
 
 .nameRole {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack name and role */
   margin-top: 0.5rem;
   margin-bottom: 0.25rem; /* Reduced gap between name and role */
   font-size: 14px;
@@ -50,14 +49,14 @@
 .name {
   font-weight: normal;
   margin: 0;
-  font-size: 14px;
+  font-size: 14px; /* Small font size for name */
 }
 
 .role {
   font-weight: lighter;
   color: #555;
   margin: 0;
-  font-size: 14px;
+  font-size: 14px; /* Small font size for role */
 }
 
 .icon {
@@ -68,12 +67,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem; /* Gap between icon and label */
-  margin-bottom: 0.5rem;
-  font-size: 14px;
-}
-
-.contactLabel {
-  margin-right: 0.5rem; /* Space between label and value */
+  margin-bottom: 0.5rem; /* Spacing between contacts */
+  font-size: 14px; /* Smaller font size for contact info */
 }
 
 /* Responsive breakpoints */

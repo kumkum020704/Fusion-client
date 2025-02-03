@@ -1,7 +1,4 @@
-DirectorGoldForm
 import React, { useState } from "react";
-import { showDirectorGoldSubmitRoute } from "../../../routes/SPACSRoutes";
-
 import {
   Button,
   TextInput,
@@ -12,32 +9,25 @@ import {
   Container,
   Paper,
   Title,
+  Box,
 } from "@mantine/core";
 
-export default function DirectorGoldForm() {
+export default function DirectorSilverForm() {
   const [formData, setFormData] = useState({
-    
+    award_type: "Director's Silver Medal",
+    Marksheet: null,
+    award_id: "",
+    student: "",
+    date: "",
     justification: "",
     correspondence_address: "",
+    status: "",
     nearest_policestation: "",
     nearest_railwaystation: "",
     financial_assistance: "",
     grand_total: "",
-    academic_achievements: "",
-    social: "",
-    corporate: "",
-    hall_activities: "",
-    gymkhana_activities: "",
-    institute_activities: "",
-    counselling_activities: "",
-    other_activities: "",
-    science_inside: "",
-    science_outside: "",
-    games_inside: "",
-    games_outside: "",
-    cultural_inside: "",
-    cultural_outside: "",
-    Marksheet: null,
+    inside_achievements: "",
+    outside_achievements: "",
   });
 
   const handleChange = (e) => {
@@ -50,7 +40,7 @@ export default function DirectorGoldForm() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
     const formDataToSend = new FormData();
     for (const key in formData) {
@@ -71,7 +61,7 @@ export default function DirectorGoldForm() {
       }
 
       const response = await fetch(
-        showDirectorGoldSubmitRoute,
+        "http://127.0.0.1:8000/spacs/directorsilver_update/",
         {
           method: "POST",
           body: formDataToSend,
@@ -101,31 +91,96 @@ export default function DirectorGoldForm() {
   return (
     <Container size="lg">
       <Paper radius="md" p="sm">
-        <Title order={2} mb="lg">
-          Director's Gold Medal Application Form
+        <Title
+          order={2}
+          mb="lg"
+          sx={(theme) => ({
+            fontSize: theme.fontSizes.lg,
+            [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+              fontSize: theme.fontSizes.md,
+            },
+          })}
+        >
+          Director's Silver Medal Application Form
         </Title>
         <form onSubmit={handleSubmit}>
           <Grid gutter="lg">
-            {/* Basic Information */}      
-            <Grid.Col span={6}>
+            {/* Basic Information */}
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Award ID"
+                name="award_id"
+                type="number"
+                value={formData.award_id}
+                onChange={handleChange}
+                placeholder="Enter Award ID"
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
+              />
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Student ID"
+                name="student"
+                type="text"
+                value={formData.student}
+                onChange={handleChange}
+                placeholder="Enter Student ID"
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
+              />
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Date"
+                name="date"
+                type="date"
+                value={formData.date}
+                onChange={handleChange}
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
+              />
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Status"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                placeholder="Enter Status"
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
+              />
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
               <TextInput
                 label="Nearest Police Station"
                 name="nearest_policestation"
                 value={formData.nearest_policestation}
                 onChange={handleChange}
                 placeholder="Enter Nearest Police Station"
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
               <TextInput
                 label="Nearest Railway Station"
                 name="nearest_railwaystation"
                 value={formData.nearest_railwaystation}
                 onChange={handleChange}
                 placeholder="Enter Nearest Railway Station"
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
               <TextInput
                 label="Grand Total Amount"
                 name="grand_total"
@@ -133,6 +188,9 @@ export default function DirectorGoldForm() {
                 value={formData.grand_total}
                 onChange={handleChange}
                 placeholder="Enter Grand Total Amount"
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
               />
             </Grid.Col>
             <Grid.Col span={12}>
@@ -143,6 +201,9 @@ export default function DirectorGoldForm() {
                 onChange={handleChange}
                 placeholder="Enter Justification"
                 minRows={3}
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
               />
             </Grid.Col>
             <Grid.Col span={12}>
@@ -153,6 +214,9 @@ export default function DirectorGoldForm() {
                 onChange={handleChange}
                 placeholder="Enter Correspondence Address"
                 minRows={3}
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
               />
             </Grid.Col>
             <Grid.Col span={12}>
@@ -163,39 +227,37 @@ export default function DirectorGoldForm() {
                 onChange={handleChange}
                 placeholder="Describe Financial Assistance"
                 minRows={3}
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
               />
             </Grid.Col>
-
-            {/* Achievements Section */}
-            {[
-              "academic_achievements",
-              "social",
-              "corporate",
-              "hall_activities",
-              "gymkhana_activities",
-              "institute_activities",
-              "counselling_activities",
-              "other_activities",
-              "science_inside",
-              "science_outside",
-              "games_inside",
-              "games_outside",
-              "cultural_inside",
-              "cultural_outside",
-            ].map((field) => (
-              <Grid.Col span={6} key={field}>
-                <Textarea
-                  label={field.replace(/_/g, " ")}
-                  name={field}
-                  value={formData[field]}
-                  onChange={handleChange}
-                  placeholder={`Enter ${field.replace(/_/g, " ")}`}
-                  minRows={2}
-                />
-              </Grid.Col>
-            ))}
-
-            {/* Marksheet Upload at the Bottom */}
+            <Grid.Col span={12}>
+              <Textarea
+                label="Inside Achievements"
+                name="inside_achievements"
+                value={formData.inside_achievements}
+                onChange={handleChange}
+                placeholder="Enter Inside Achievements"
+                minRows={3}
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
+              />
+            </Grid.Col>
+            <Grid.Col span={12}>
+              <Textarea
+                label="Outside Achievements"
+                name="outside_achievements"
+                value={formData.outside_achievements}
+                onChange={handleChange}
+                placeholder="Enter Outside Achievements"
+                minRows={3}
+                sx={(theme) => ({
+                  fontSize: "16px",
+                })}
+              />
+            </Grid.Col>
             <Grid.Col span={12}>
               <FileButton onChange={handleFileChange} accept="application/pdf">
                 {(props) => (
@@ -210,6 +272,9 @@ export default function DirectorGoldForm() {
                   readOnly
                   mt="sm"
                   label="Uploaded File"
+                  sx={(theme) => ({
+                    fontSize: "16px",
+                  })}
                 />
               )}
             </Grid.Col>
@@ -225,3 +290,5 @@ export default function DirectorGoldForm() {
     </Container>
   );
 }
+
+// director gold

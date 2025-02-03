@@ -9,15 +9,18 @@ import {
   Container,
   Paper,
   Title,
+  Box,
 } from "@mantine/core";
-import { submitPdm } from "../../../routes/SPACSRoutes";
 
 export default function DMProficiencyForm() {
   const [formData, setFormData] = useState({
     award_type: "DMProficiencyform",
-   
+    award_id: "",
+    student: "",
+    date: "",
     justification: "",
     correspondence_address: "",
+    status: "",
     nearest_policestation: "",
     nearest_railwaystation: "",
     financial_assistance: "",
@@ -72,7 +75,7 @@ export default function DMProficiencyForm() {
       }
 
       const response = await fetch(
-        submitPdm,
+        "http://127.0.0.1:8000/spacs/proficiencydm_update/",
         {
           method: "POST",
           body: formDataToSend,
@@ -102,15 +105,69 @@ export default function DMProficiencyForm() {
   return (
     <Container size="lg">
       <Paper radius="md" padding="sm">
-        <Title order={2} mb="lg">
+        <Title
+          order={2}
+          mb="lg"
+          sx={(theme) => ({
+            fontSize: theme.fontSizes.lg,
+            [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+              fontSize: theme.fontSizes.md,
+            },
+          })}
+        >
           DM Proficiency Form
         </Title>
         <form onSubmit={handleSubmit}>
           <Grid gutter="lg">
-            {/* Basic Information */}
-           
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Award ID"
+                name="award_id"
+                type="number"
+                value={formData.award_id}
+                onChange={handleChange}
+                placeholder="Enter Award ID"
+                size="md"
+                style={{ marginBottom: "1rem" }}
+              />
+            </Grid.Col>
 
-            {/* Addresses */}
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Student ID"
+                name="student"
+                value={formData.student}
+                onChange={handleChange}
+                placeholder="Enter Student ID"
+                size="md"
+                style={{ marginBottom: "1rem" }}
+              />
+            </Grid.Col>
+
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Date"
+                name="date"
+                type="date"
+                value={formData.date}
+                onChange={handleChange}
+                size="md"
+                style={{ marginBottom: "1rem" }}
+              />
+            </Grid.Col>
+
+            <Grid.Col span={{ base: 12, sm: 6 }}>
+              <TextInput
+                label="Status"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                placeholder="Enter Status"
+                size="md"
+                style={{ marginBottom: "1rem" }}
+              />
+            </Grid.Col>
+
             <Grid.Col span={12}>
               <Textarea
                 label="Justification"
@@ -119,8 +176,11 @@ export default function DMProficiencyForm() {
                 onChange={handleChange}
                 placeholder="Enter Justification"
                 minRows={3}
+                size="md"
+                style={{ marginBottom: "1rem" }}
               />
             </Grid.Col>
+
             <Grid.Col span={12}>
               <Textarea
                 label="Correspondence Address"
@@ -129,38 +189,48 @@ export default function DMProficiencyForm() {
                 onChange={handleChange}
                 placeholder="Enter Correspondence Address"
                 minRows={3}
+                size="md"
+                style={{ marginBottom: "1rem" }}
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+
+            <Grid.Col span={{ base: 12, sm: 6 }}>
               <TextInput
                 label="Nearest Police Station"
                 name="nearest_policestation"
                 value={formData.nearest_policestation}
                 onChange={handleChange}
                 placeholder="Enter Nearest Police Station"
+                size="md"
+                style={{ marginBottom: "1rem" }}
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+
+            <Grid.Col span={{ base: 12, sm: 6 }}>
               <TextInput
                 label="Nearest Railway Station"
                 name="nearest_railwaystation"
                 value={formData.nearest_railwaystation}
                 onChange={handleChange}
                 placeholder="Enter Nearest Railway Station"
+                size="md"
+                style={{ marginBottom: "1rem" }}
               />
             </Grid.Col>
 
-            {/* Financial Information */}
-            <Grid.Col span={6}>
+            <Grid.Col span={{ base: 12, sm: 6 }}>
               <TextInput
                 label="Financial Assistance"
                 name="financial_assistance"
                 value={formData.financial_assistance}
                 onChange={handleChange}
                 placeholder="Enter Financial Assistance"
+                size="md"
+                style={{ marginBottom: "1rem" }}
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+
+            <Grid.Col span={{ base: 12, sm: 6 }}>
               <TextInput
                 label="Grand Total"
                 name="grand_total"
@@ -168,83 +238,15 @@ export default function DMProficiencyForm() {
                 value={formData.grand_total}
                 onChange={handleChange}
                 placeholder="Enter Grand Total"
+                size="md"
+                style={{ marginBottom: "1rem" }}
               />
             </Grid.Col>
 
-            {/* Project/Team Information */}
-            <Grid.Col span={6}>
-              <TextInput
-                label="Title Name"
-                name="title_name"
-                value={formData.title_name}
-                onChange={handleChange}
-                placeholder="Enter Title Name"
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <TextInput
-                label="Number of Students"
-                name="no_of_students"
-                type="number"
-                value={formData.no_of_students}
-                onChange={handleChange}
-                placeholder="Enter Number of Students"
-              />
-            </Grid.Col>
-            {[1, 2, 3, 4, 5].map((num) => (
-              <Grid.Col span={6} key={`roll_no_${num}`}>
-                <TextInput
-                  label={`Roll No ${num}`}
-                  name={`roll_no_${num}`}
-                  value={formData[`roll_no_${num}`]}
-                  onChange={handleChange}
-                  placeholder={`Enter Roll No ${num}`}
-                />
-              </Grid.Col>
-            ))}
-
-            {/* Brief Description */}
-            <Grid.Col span={12}>
-              <Textarea
-                label="Brief Description"
-                name="brief_description"
-                value={formData.brief_description}
-                onChange={handleChange}
-                placeholder="Enter a brief description"
-                minRows={4}
-              />
-            </Grid.Col>
-
-            {/* Disciplines */}
-            {["cse", "ece", "mech", "design"].map((field) => (
-              <React.Fragment key={field}>
-                <Grid.Col span={6}>
-                  <TextInput
-                    label={`${field.toUpperCase()} Topic`}
-                    name={`${field}_topic`}
-                    value={formData[`${field}_topic`]}
-                    onChange={handleChange}
-                    placeholder={`Enter ${field.toUpperCase()} Topic`}
-                  />
-                </Grid.Col>
-                <Grid.Col span={6}>
-                  <TextInput
-                    label={`${field.toUpperCase()} Percentage`}
-                    name={`${field}_percentage`}
-                    type="number"
-                    value={formData[`${field}_percentage`]}
-                    onChange={handleChange}
-                    placeholder={`Enter ${field.toUpperCase()} Percentage`}
-                  />
-                </Grid.Col>
-              </React.Fragment>
-            ))}
-
-            {/* File Upload */}
             <Grid.Col span={12}>
               <FileButton onChange={handleFileUpload} accept="application/pdf">
                 {(props) => (
-                  <Button {...props} fullWidth>
+                  <Button {...props} fullWidth size="md">
                     Upload Marksheet (PDF)
                   </Button>
                 )}
@@ -255,13 +257,15 @@ export default function DMProficiencyForm() {
                   readOnly
                   mt="sm"
                   label="Uploaded File"
+                  size="md"
+                  style={{ marginBottom: "1rem" }}
                 />
               )}
             </Grid.Col>
           </Grid>
 
           <Group position="right" mt="xl">
-            <Button type="submit" color="blue">
+            <Button type="submit" color="blue" size="md">
               Submit
             </Button>
           </Group>
@@ -270,3 +274,5 @@ export default function DMProficiencyForm() {
     </Container>
   );
 }
+
+// dm proficiency form

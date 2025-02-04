@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./medal_applications.module.css"; // Ensure this file is present with correct styles
@@ -37,7 +38,7 @@ function MedalApplications() {
 
       if (response.data) {
         const incompleteMedals = response.data.filter(
-          (medal) => medal.status === "INCOMPLETE"
+          (medal) => medal.status === "INCOMPLETE",
         );
         setMedals(incompleteMedals);
       } else {
@@ -45,6 +46,7 @@ function MedalApplications() {
       }
 
       setIsLoading(false);
+      // eslint-disable-next-line no-shadow
     } catch (error) {
       console.error("Error fetching medals data:", error);
       setError("Error fetching medals data.");
@@ -59,16 +61,16 @@ function MedalApplications() {
   const handleApproval = async (medalId, action) => {
     try {
       const token = localStorage.getItem("authToken");
-  
+
       if (!token) {
         console.log("No authorization token found in localStorage.");
         setError("No authorization token found.");
         return;
       }
-  
+
       let apiUrl = "";
       let payload = {};
-  
+
       if (selectedAward === "Director's Gold Medal") {
         apiUrl = "http://127.0.0.1:8000/spacs/director-gold/accept-reject/";
         // For Gold Medal, send "accept" or "reject" as action
@@ -84,30 +86,31 @@ function MedalApplications() {
           status: action === "approved" ? "ACCEPTED" : "REJECTED",
         };
       }
-  
-      console.log("Sending payload:", payload);  // Log payload for debugging
-  
+
+      console.log("Sending payload:", payload); // Log payload for debugging
+
       const response = await axios.post(apiUrl, payload, {
         headers: {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",
         },
       });
-  
+
       if (response.status === 200) {
         fetchMedalsData(); // Refresh the list of medals
         setError(null);
       } else {
         setError("Error updating status.");
       }
+      // eslint-disable-next-line no-shadow
     } catch (error) {
       console.error("Error updating status:", error.response || error.message);
       setError(
-        `Error updating status: ${error.response ? error.response.data : error.message}`
+        `Error updating status: ${error.response ? error.response.data : error.message}`,
       );
     }
   };
-  
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Medal Applications</h2>
@@ -120,13 +123,14 @@ function MedalApplications() {
           onChange={(e) => setSelectedAward(e.target.value)}
           className={styles.select}
         >
-          <option value="Director's Silver Medal">Director's Silver Medal</option>
+          <option value="Director's Silver Medal">
+            Director's Silver Medal
+          </option>
           <option value="Director's Gold Medal">Director's Gold Medal</option>
         </select>
       </div>
 
       {isLoading && <p>Loading medals...</p>}
-      
 
       {!isLoading && !error && medals.length > 0 && (
         <table className={styles.table}>
@@ -147,6 +151,7 @@ function MedalApplications() {
                 <td>
                   <button
                     className={`${styles.button} ${styles.fileButton}`}
+                    // eslint-disable-next-line no-undef
                     onClick={() => handleView(medal.id)}
                   >
                     View

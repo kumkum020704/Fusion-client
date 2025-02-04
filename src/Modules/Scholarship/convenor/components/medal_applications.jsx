@@ -221,3 +221,4 @@ const MedalApplications = () => {
 };
 
 export default MedalApplications;
+

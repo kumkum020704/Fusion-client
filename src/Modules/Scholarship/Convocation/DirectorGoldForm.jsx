@@ -107,7 +107,7 @@ export default function DirectorGoldForm() {
         <form onSubmit={handleSubmit}>
           <Grid gutter="lg">
             {/* Basic Information */}      
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Nearest Police Station"
                 name="nearest_policestation"
@@ -116,7 +116,7 @@ export default function DirectorGoldForm() {
                 placeholder="Enter Nearest Police Station"
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Nearest Railway Station"
                 name="nearest_railwaystation"
@@ -125,7 +125,7 @@ export default function DirectorGoldForm() {
                 placeholder="Enter Nearest Railway Station"
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Grand Total Amount"
                 name="grand_total"
@@ -183,7 +183,7 @@ export default function DirectorGoldForm() {
               "cultural_inside",
               "cultural_outside",
             ].map((field) => (
-              <Grid.Col span={6} key={field}>
+              <Grid.Col span={{base: 12,sm: 6}} key={field}>
                 <Textarea
                   label={field.replace(/_/g, " ")}
                   name={field}

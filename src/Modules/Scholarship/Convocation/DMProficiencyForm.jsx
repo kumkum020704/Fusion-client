@@ -131,7 +131,7 @@ export default function DMProficiencyForm() {
                 minRows={3}
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Nearest Police Station"
                 name="nearest_policestation"
@@ -140,7 +140,7 @@ export default function DMProficiencyForm() {
                 placeholder="Enter Nearest Police Station"
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Nearest Railway Station"
                 name="nearest_railwaystation"
@@ -151,7 +151,7 @@ export default function DMProficiencyForm() {
             </Grid.Col>
 
             {/* Financial Information */}
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Financial Assistance"
                 name="financial_assistance"
@@ -160,7 +160,7 @@ export default function DMProficiencyForm() {
                 placeholder="Enter Financial Assistance"
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Grand Total"
                 name="grand_total"
@@ -172,7 +172,7 @@ export default function DMProficiencyForm() {
             </Grid.Col>
 
             {/* Project/Team Information */}
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Title Name"
                 name="title_name"
@@ -181,7 +181,7 @@ export default function DMProficiencyForm() {
                 placeholder="Enter Title Name"
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Number of Students"
                 name="no_of_students"
@@ -192,7 +192,7 @@ export default function DMProficiencyForm() {
               />
             </Grid.Col>
             {[1, 2, 3, 4, 5].map((num) => (
-              <Grid.Col span={6} key={`roll_no_${num}`}>
+              <Grid.Col span={{base: 12,sm: 6}} key={`roll_no_${num}`}>
                 <TextInput
                   label={`Roll No ${num}`}
                   name={`roll_no_${num}`}
@@ -218,7 +218,7 @@ export default function DMProficiencyForm() {
             {/* Disciplines */}
             {["cse", "ece", "mech", "design"].map((field) => (
               <React.Fragment key={field}>
-                <Grid.Col span={6}>
+                <Grid.Col span={{base: 12,sm: 6}}>
                   <TextInput
                     label={`${field.toUpperCase()} Topic`}
                     name={`${field}_topic`}
@@ -227,7 +227,7 @@ export default function DMProficiencyForm() {
                     placeholder={`Enter ${field.toUpperCase()} Topic`}
                   />
                 </Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{base: 12,sm: 6}}>
                   <TextInput
                     label={`${field.toUpperCase()} Percentage`}
                     name={`${field}_percentage`}

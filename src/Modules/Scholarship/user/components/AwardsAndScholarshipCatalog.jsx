@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
   List,
@@ -6,7 +7,6 @@ import {
   Divider,
   Container,
   Loader,
-  Box,
   Grid,
 } from "@mantine/core";
 import axios from "axios";
@@ -37,7 +37,7 @@ function AwardsAndScholarshipCatalog() {
       } catch (error) {
         console.error(
           "Error fetching awards data:",
-          error.response ? error.response.data : error.message
+          error.response ? error.response.data : error.message,
         );
         setIsLoading(false);
       }
@@ -57,7 +57,7 @@ function AwardsAndScholarshipCatalog() {
       ) : (
         <Grid gap={{ base: "sm", md: "lg" }}>
           <Grid.Col
-            span={{ sm: 12, md: 4}}
+            span={{ sm: 12, md: 4 }}
             bg={{ base: "gray.0", md: "gray.1" }}
             p={{ base: "xs", md: "sm" }}
             style={{ borderRadius: "8px" }}
@@ -79,14 +79,17 @@ function AwardsAndScholarshipCatalog() {
             </List>
           </Grid.Col>
           <Grid.Col
-            span={{ sm: 12, md: 8}}
+            span={{ sm: 12, md: 8 }}
             bg="gray.0"
             p={{ base: "xs", md: "sm" }}
             style={{ borderRadius: "8px" }}
           >
             {selectedAward && (
               <>
-                <Title order={2} size={{ base: "16px", sm: "20px", md: "26px" }}>
+                <Title
+                  order={2}
+                  size={{ base: "16px", sm: "20px", md: "26px" }}
+                >
                   {selectedAward.award_name}
                 </Title>
                 <Divider my="sm" />

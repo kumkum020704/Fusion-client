@@ -9,8 +9,8 @@ import {
   Textarea,
   Button,
 } from "@mantine/core";
-import axios from "axios";
 import { Pencil } from "@phosphor-icons/react";
+import axios from "axios";
 import styles from "./CatalogC.module.css";
 
 function AwardsAndScholarshipCatalog() {
@@ -23,7 +23,7 @@ function AwardsAndScholarshipCatalog() {
   const handleAwardSelect = (award) => {
     setSelectedAward(award);
     setEditMode(false);
-    setUpdatedText(award.catalog); // Load the current text into the textarea
+    setUpdatedText(award.catalog);
   };
 
   const toggleEditMode = () => {
@@ -47,7 +47,6 @@ function AwardsAndScholarshipCatalog() {
           },
         },
       );
-      // Update the local awards state to reflect the changes
       setAwards((prevAwards) =>
         prevAwards.map((award) =>
           award.id === selectedAward.id
@@ -106,7 +105,9 @@ function AwardsAndScholarshipCatalog() {
                 <List.Item
                   key={award.id}
                   onClick={() => handleAwardSelect(award)}
-                  className={`${styles.listItem} ${selectedAward?.id === award.id ? styles.activeItem : ""}`}
+                  className={`${styles.listItem} ${
+                    selectedAward?.id === award.id ? styles.activeItem : ""
+                  }`}
                 >
                   {award.award_name}
                 </List.Item>
@@ -118,7 +119,7 @@ function AwardsAndScholarshipCatalog() {
             {selectedAward && (
               <>
                 <div className={styles.header}>
-                  <Title order={2} size="26px">{selectedAward.award_name}</Title>
+                  <Title order={2}>{selectedAward.award_name}</Title>
                   <Button
                     className={styles.editButton}
                     onClick={editMode ? saveChanges : toggleEditMode}
@@ -130,13 +131,12 @@ function AwardsAndScholarshipCatalog() {
                 <Divider my="sm" />
                 {editMode ? (
                   <Textarea
-                    size="14px"
                     value={updatedText}
                     onChange={handleTextChange}
                     className={styles.editTextarea}
                   />
                 ) : (
-                  <Text size="14px">{selectedAward.catalog}</Text>
+                  <Text>{selectedAward.catalog}</Text>
                 )}
               </>
             )}

@@ -7,7 +7,6 @@ import {
   Divider,
   Container,
   Loader,
-  Box,
   Grid,
 } from "@mantine/core";
 import axios from "axios";
@@ -16,7 +15,6 @@ import { showAwardRoute } from "../../../../routes/SPACSRoutes";
 function AwardsAndScholarshipCatalog() {
   const [selectedAward, setSelectedAward] = useState(null);
   const [awards, setAwards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleAwardSelect = (award) => {
@@ -36,7 +34,6 @@ function AwardsAndScholarshipCatalog() {
         setAwards(response.data);
         setSelectedAward(response.data[0]);
         setIsLoading(false);
-        setIsLoading(false);
       } catch (error) {
         console.error(
           "Error fetching awards data:",
@@ -55,18 +52,12 @@ function AwardsAndScholarshipCatalog() {
       px={{ base: "xs", sm: "md", md: "lg" }}
       py={{ base: "sm", sm: "md", md: "xl" }}
     >
-    <Container
-      size="lg"
-      px={{ base: "xs", sm: "md", md: "lg" }}
-      py={{ base: "sm", sm: "md", md: "xl" }}
-    >
       {isLoading ? (
-        <Loader size="lg" />
         <Loader size="lg" />
       ) : (
         <Grid gap={{ base: "sm", md: "lg" }}>
           <Grid.Col
-            span={{ sm: 12, md: 4}}
+            span={{ sm: 12, md: 4 }}
             bg={{ base: "gray.0", md: "gray.1" }}
             p={{ base: "xs", md: "sm" }}
             style={{ borderRadius: "8px" }}
@@ -78,13 +69,7 @@ function AwardsAndScholarshipCatalog() {
                   onClick={() => handleAwardSelect(award)}
                   style={{
                     cursor: "pointer",
-                    fontWeight:
-                      selectedAward?.id === award.id ? "bold" : "normal",
-                  }}
-                  style={{
-                    cursor: "pointer",
-                    fontWeight:
-                      selectedAward?.id === award.id ? "bold" : "normal",
+                    fontWeight: selectedAward?.id === award.id ? "bold" : "normal",
                   }}
                 >
                   {award.award_name}
@@ -93,7 +78,7 @@ function AwardsAndScholarshipCatalog() {
             </List>
           </Grid.Col>
           <Grid.Col
-            span={{ sm: 12, md: 8}}
+            span={{ sm: 12, md: 8 }}
             bg="gray.0"
             p={{ base: "xs", md: "sm" }}
             style={{ borderRadius: "8px" }}
@@ -107,13 +92,8 @@ function AwardsAndScholarshipCatalog() {
                 <Text size={{ base: "16px", sm: "18px" }}>
                   {selectedAward.catalog}
                 </Text>
-                <Text size={{ base: "16px", sm: "18px" }}>
-                  {selectedAward.catalog}
-                </Text>
               </>
             )}
-          </Grid.Col>
-        </Grid>
           </Grid.Col>
         </Grid>
       )}

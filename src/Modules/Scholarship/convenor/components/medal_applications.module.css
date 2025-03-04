@@ -84,3 +84,13 @@
 .button:hover {
   opacity: 0.8;
 }
+
+.exportButton{
+  background-color: #6d7d92;
+  width: 20%;
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
+  margin-left: 80%;
+  margin-bottom: 2%;
+}

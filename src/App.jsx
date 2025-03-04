@@ -71,75 +71,20 @@ export default function App() {
               {role === "spacsconvenor" && (
                 <>
                   <ConvenorBreadcumbs />
-                  <Convenor />
+                  
                 </>
               )}
               {role === "student" && (
                 <>
                   <UserBreadcrumbs />
-                  <ScholarshipPage />
                 </>
               )}
               {role === "spacsassistant" && (
                 <>
                   <ConvenorBreadcumbs />
-                  <Convenor />
+                  
                 </>
               )}
-            </Layout>
-          }
-        />
-        <Route
-          path="/user/browseApplication"
-          element={
-            <Layout>
-              <BrowseApplicationPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/user/scholarshipStatus"
-          element={
-            <Layout>
-              <ScholarStatusPage />
-            </Layout>
-          }
-        />
-
-        {/* convenor routes */}
-        <Route
-          path="/convenor/members"
-          element={
-            <Layout>
-              <ConvenorBreadcumbs />
-              <Convenor />
-            </Layout>
-          }
-        />
-        <Route
-          path="/convenor/invite"
-          element={
-            <Layout>
-              <ConvenorBreadcumbs />
-              <InviteApplications />
-            </Layout>
-          }
-        />
-        <Route
-          path="/convenor/MCM_application"
-          element={
-            <Layout>
-              <ConvenorBreadcumbs />
-              <MCM_Applications />
-            </Layout>
-          }
-        />
-        <Route
-          path="/convenor/Medal_applications"
-          element={
-            <Layout>
-              <ConvenorBreadcumbs />
-              <Medal_applications />
             </Layout>
           }
         />

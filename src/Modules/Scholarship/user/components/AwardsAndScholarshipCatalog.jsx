@@ -37,7 +37,7 @@ function AwardsAndScholarshipCatalog() {
       } catch (error) {
         console.error(
           "Error fetching awards data:",
-          error.response ? error.response.data : error.message,
+          error.response ? error.response.data : error.message
         );
         setIsLoading(false);
       }
@@ -69,8 +69,7 @@ function AwardsAndScholarshipCatalog() {
                   onClick={() => handleAwardSelect(award)}
                   style={{
                     cursor: "pointer",
-                    fontWeight:
-                      selectedAward?.id === award.id ? "bold" : "normal",
+                    fontWeight: selectedAward?.id === award.id ? "bold" : "normal",
                   }}
                 >
                   {award.award_name}
@@ -86,10 +85,7 @@ function AwardsAndScholarshipCatalog() {
           >
             {selectedAward && (
               <>
-                <Title
-                  order={2}
-                  size={{ base: "16px", sm: "20px", md: "26px" }}
-                >
+                <Title order={2} size={{ base: "16px", sm: "20px", md: "26px" }}>
                   {selectedAward.award_name}
                 </Title>
                 <Divider my="sm" />

@@ -1,4 +1,5 @@
-/* eslint-disable */
+/* eslint-disable react/jsx-pascal-case */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from "react";
 import { Table, Button } from "@mantine/core";
 import styles from "./MCM_applications.module.css";
@@ -14,17 +15,19 @@ function MCM_Applications() {
     const fetchApplications = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await fetch("http://127.0.0.1:8000/spacs/scholarship-details/", {
-          headers: {
-            Authorization: `Token ${token}`,
+        const response = await fetch(
+          "http://127.0.0.1:8000/spacs/scholarship-details/",
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
           },
-        });
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
-        }        
+        }
         const data = await response.json();
         setApplications(data); // Assuming data is an array of application objects
-        console.log(applications[0]);
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch scholarship details:", error);
@@ -70,45 +73,43 @@ function MCM_Applications() {
         {activeTab === "MCM" && (
           <>
             <h2>Merit-cum-Means Scholarship</h2>
-            {loading ? ( 
+            {loading ? (
               <p>Loading applications...</p>
             ) : (
-              <Table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>Roll</th>
-                    
-                    <th>Income</th>
-                    
-                    <th>File</th>
-                    <th>Accept</th>
-                    <th>Reject</th>
-                    <th>Under Review</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {applications.map((app, index) => (
-                    <tr key={index}>
-                      <td>{app.student}</td>
-                     
-                      <td>{app.annual_income}</td>
-                      
-                      <td>
-                        <Button color="blue">Files</Button>
-                      </td>
-                      <td>
-                        <Button color="green">Accept</Button>
-                      </td>
-                      <td>
-                        <Button color="red">Reject</Button>
-                      </td>
-                      <td>
-                        <Button color="grey">Under Review</Button>
-                      </td>
+              <div className={styles.tableWrapper}>
+                <Table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <th>Roll</th>
+                      <th>Income</th>
+                      <th>File</th>
+                      <th>Accept</th>
+                      <th>Reject</th>
+                      <th>Under Review</th>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
+                  </thead>
+                  <tbody>
+                    {applications.map((app, index) => (
+                      <tr key={index}>
+                        <td>{app.student}</td>
+                        <td>{app.annual_income}</td>
+                        <td>
+                          <Button color="blue">Files</Button>
+                        </td>
+                        <td>
+                          <Button color="green">Accept</Button>
+                        </td>
+                        <td>
+                          <Button color="red">Reject</Button>
+                        </td>
+                        <td>
+                          <Button color="grey">Under Review</Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
             )}
           </>
         )}

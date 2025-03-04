@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
   List,
@@ -15,6 +16,7 @@ import { showAwardRoute } from "../../../../routes/SPACSRoutes";
 function AwardsAndScholarshipCatalog() {
   const [selectedAward, setSelectedAward] = useState(null);
   const [awards, setAwards] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleAwardSelect = (award) => {
@@ -34,6 +36,7 @@ function AwardsAndScholarshipCatalog() {
         setAwards(response.data);
         setSelectedAward(response.data[0]);
         setIsLoading(false);
+        setIsLoading(false);
       } catch (error) {
         console.error(
           "Error fetching awards data:",
@@ -52,7 +55,13 @@ function AwardsAndScholarshipCatalog() {
       px={{ base: "xs", sm: "md", md: "lg" }}
       py={{ base: "sm", sm: "md", md: "xl" }}
     >
+    <Container
+      size="lg"
+      px={{ base: "xs", sm: "md", md: "lg" }}
+      py={{ base: "sm", sm: "md", md: "xl" }}
+    >
       {isLoading ? (
+        <Loader size="lg" />
         <Loader size="lg" />
       ) : (
         <Grid gap={{ base: "sm", md: "lg" }}>
@@ -67,6 +76,11 @@ function AwardsAndScholarshipCatalog() {
                 <List.Item
                   key={award.id}
                   onClick={() => handleAwardSelect(award)}
+                  style={{
+                    cursor: "pointer",
+                    fontWeight:
+                      selectedAward?.id === award.id ? "bold" : "normal",
+                  }}
                   style={{
                     cursor: "pointer",
                     fontWeight:
@@ -93,8 +107,13 @@ function AwardsAndScholarshipCatalog() {
                 <Text size={{ base: "16px", sm: "18px" }}>
                   {selectedAward.catalog}
                 </Text>
+                <Text size={{ base: "16px", sm: "18px" }}>
+                  {selectedAward.catalog}
+                </Text>
               </>
             )}
+          </Grid.Col>
+        </Grid>
           </Grid.Col>
         </Grid>
       )}

@@ -44,9 +44,17 @@
   padding: 5px;
 }
 
+.tableWrapper {
+  max-height: 400px; /* Set a fixed height for the scrollable table */
+  overflow: auto; /* Enable scrolling */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Rounded corners */
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px; /* Ensure the table doesn't shrink too much on smaller screens */
 }
 
 .table th, .table td {
@@ -58,6 +66,9 @@
 .table th {
   background-color: #f0f0f0;
   font-weight: bold;
+  position: sticky;
+  top: 0; /* Sticky header */
+  z-index: 1;
 }
 
 .button {

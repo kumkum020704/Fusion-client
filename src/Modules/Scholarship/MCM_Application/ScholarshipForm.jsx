@@ -122,7 +122,7 @@ const ScholarshipForm = () => {
         {step === 1 && (
           <form onSubmit={handleNext}>
             <Grid>
-              <Grid.Col span={6}>
+              <Grid.Col span={{base: 12,sm: 6}}>
                 <Select
                   label="Father's Occupation"
                   placeholder="Select father's occupation"
@@ -169,7 +169,7 @@ const ScholarshipForm = () => {
 
 
               </Grid.Col>
-              <Grid.Col span={6}>
+              <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput label="Father's Occupation Description"  placeholder="Describe father's occupation" mt="md" {...form.getInputProps('father_occ_desc')}/>
 
                 <TextInput label="Mother's Occupation Description" placeholder="Describe mother's occupation" mt="md" {...form.getInputProps('mother_occ_desc')}/>

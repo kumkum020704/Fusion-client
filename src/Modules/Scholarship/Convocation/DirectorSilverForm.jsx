@@ -100,7 +100,7 @@ export default function DirectorSilverForm() {
             {/* Basic Information */}
             
            
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Nearest Police Station"
                 name="nearest_policestation"
@@ -109,7 +109,7 @@ export default function DirectorSilverForm() {
                 placeholder="Enter Nearest Police Station"
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Nearest Railway Station"
                 name="nearest_railwaystation"
@@ -118,7 +118,7 @@ export default function DirectorSilverForm() {
                 placeholder="Enter Nearest Railway Station"
               />
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col span={{base: 12,sm: 6}}>
               <TextInput
                 label="Grand Total Amount"
                 name="grand_total"

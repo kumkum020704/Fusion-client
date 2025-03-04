@@ -57,6 +57,10 @@ export default function DirectorSilverForm() {
         return;
       }
 
+      console.log(formData);
+      
+      console.log(formDataToSend);
+
       const response = await fetch(
         submitSilver,
         {

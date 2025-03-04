@@ -14,7 +14,7 @@ const BrowseApplicationPage = () => {
   
     return (
       <>
-        <UserBreadcumbs></UserBreadcumbs>
+        {/* <UserBreadcumbs></UserBreadcumbs> */}
         <div className={styles.wrapper}>
           <div className={styles.buttonContainer}>
             <button onClick={changeDesc} value={1} className={styles.button}>
